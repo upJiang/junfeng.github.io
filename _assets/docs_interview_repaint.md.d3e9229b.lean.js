@@ -1,0 +1,1 @@
+import{g as e,f as l,E as i}from"./common-d6bd45c0.js";const t='{"title":"减少重绘回流的方式","frontmatter":{},"headers":[{"level":2,"title":"减少重绘回流的方式","slug":"减少重绘回流的方式"}],"relativePath":"docs/interview/repaint.md","lastUpdated":1627828744648.189}';var a={};const r=i('',5);a.render=function(i,t,a,o,s,n){return l(),e("div",null,[r])};export default a;export{t as __pageData};

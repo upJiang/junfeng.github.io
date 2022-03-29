@@ -1,0 +1,1 @@
+import{g as t,p as e,f as a}from"./common-d6bd45c0.js";const r='{"title":"分类","frontmatter":{"page":true,"date":"2020-11-13","title":"分类","describe":"分类"},"relativePath":"tags.md","lastUpdated":1626625195156.809}';var d={};d.render=function(r,d,o,s,n,i){return a(),t("div",null,[e(" <Tags/> ")])};export default d;export{r as __pageData};

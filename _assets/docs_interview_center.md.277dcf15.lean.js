@@ -1,0 +1,1 @@
+import{g as e,f as n,E as l}from"./common-d6bd45c0.js";const i='{"title":"","frontmatter":{},"relativePath":"docs/interview/center.md","lastUpdated":1627828179616.4336}';var a={};const t=l('',15);a.render=function(l,i,a,d,r,p){return n(),e("div",null,[t])};export default a;export{i as __pageData};

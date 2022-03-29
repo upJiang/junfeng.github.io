@@ -1,0 +1,1 @@
+import{g as t,f as e,j as r}from"./common-d6bd45c0.js";const o='{"title":"","frontmatter":{},"relativePath":"docs/howReview/start.md","lastUpdated":1648480005139.9995}';var a={};const n=r("p",null,"前端面试之道",-1);a.render=function(r,o,a,d,s,l){return e(),t("div",null,[n])};export default a;export{o as __pageData};

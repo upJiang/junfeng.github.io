@@ -1,0 +1,1 @@
+import{g as l,f as i,E as n}from"./common-d6bd45c0.js";const t='{"title":"","frontmatter":{},"relativePath":"docs/algorithm/dynamic.md","lastUpdated":1646232808402.0188}';var o={};const r=n('',10);o.render=function(n,t,o,e,f,c){return i(),l("div",null,[r])};export default o;export{t as __pageData};

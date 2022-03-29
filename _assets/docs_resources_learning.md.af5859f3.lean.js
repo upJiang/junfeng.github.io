@@ -1,0 +1,1 @@
+import{g as e,f as r,E as t}from"./common-d6bd45c0.js";const o='{"title":"","frontmatter":{},"relativePath":"docs/resources/learning.md","lastUpdated":1628952903091.5876}';var n={};const a=t('',6);n.render=function(t,o,n,p,l,s){return r(),e("div",null,[a])};export default n;export{o as __pageData};

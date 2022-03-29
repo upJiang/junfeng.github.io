@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      TypeScript 基础类型 | Jiang's Blog
+    </title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/_assets/style.d3cbd45d.css">
+    <link rel="modulepreload" href="/_assets/common-d6bd45c0.js">
+    <link rel="modulepreload" href="/_assets/docs_jsAdvanced_ts.md.a8705ef7.lean.js">
+    <link rel="modulepreload" href="/_assets/app.bac4ca22.js">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="Jiang的个人博客">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="navbar"><!--[--><a class="title" aria-label="Jiang&#39;s Blog, back to home" href="/"><!----><span style="color:var(--accent-color);">Jiang&#39;s Blog</span></a><div class="flex-grow"></div><nav class="nav-links hide-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!-- <AlgoliaSearchBox
+              v-if="$site.themeConfig.algolia"
+              :options="$site.themeConfig.algolia"
+            /> --><!--]--><!--]--><!--]--><div class="sidebar-button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div></header><aside class=""><!--[--><nav class="nav-links show-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!--]--><!--]--><ul class="sidebar"><!--[--><li class="sidebar-item"><p class="sidebar-link">进阶</p><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link active" href="/docs/jsAdvanced/ts">TS</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#typescript-基础类型">TypeScript 基础类型</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#boolean-类型">Boolean 类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#number-类型">Number 类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#string-类型">String 类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#array-类型">Array 类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#元组类型-tuple">元组类型(tuple)</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#enum-类型">Enum 类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#symbol">Symbol</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#any-与-unknown">Any 与 Unknown</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#void-类型">void 类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#never-类型">never 类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#bigint-大数类型">BigInt 大数类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#object-object-和-类型">object, Object 和 {} 类型</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#类型推论">类型推论</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#联合类型">联合类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#类型断言as">类型断言as</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#字面量类型">字面量类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#类型别名">类型别名</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#交叉类型">交叉类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#类型保护">类型保护</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#typeof-类型保护">typeof 类型保护</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#in-关键字">in 关键字</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#instanceof-类型保护">instanceof 类型保护</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#自定义类型保护">自定义类型保护</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#函数-function">函数(function)</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#函数的定义">函数的定义</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#函数表达式">函数表达式</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#可选参数">可选参数</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#默认参数">默认参数</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#剩余参数">剩余参数</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#函数重载">函数重载</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#类-class">类(class)</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#类的定义">类的定义</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#存取器">存取器</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#readonly-只读属性">readonly 只读属性</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#继承">继承</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#类里面的修饰符">类里面的修饰符</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#静态属性-静态方法">静态属性 静态方法**</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#抽象类和抽象方法">抽象类和抽象方法</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#接口-interface">接口(interface)</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#对象的形状">对象的形状</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#行为的抽象">行为的抽象</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#定义任意属性">定义任意属性</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#接口的继承">接口的继承</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#函数类型接口">函数类型接口</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#构造函数的类型接口">构造函数的类型接口</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#interface-与-type">interface 与 type</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#相同点">相同点</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#不同点-2">不同点</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#泛型">泛型</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#多个类型参数">多个类型参数</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#泛型约束-t-extends-xx">泛型约束(T extends xx)</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#泛型接口">泛型接口</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#泛型类">泛型类</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#泛型类型别名">泛型类型别名</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#泛型参数的默认类型">泛型参数的默认类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#typeof-关键词">typeof 关键词</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#keyof-关键词">keyof 关键词</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#索引访问操作符">索引访问操作符</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#映射类型-in">映射类型 in</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#infer-关键字">infer 关键字</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#内置工具类型">内置工具类型</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#typescript-装饰器">TypeScript 装饰器</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#类装饰器">类装饰器</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#属性装饰器">属性装饰器</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#方法装饰器">方法装饰器</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#参数装饰器">参数装饰器</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#装饰器执行顺序">装饰器执行顺序</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#编译">编译</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#tsconfig-json-的作用">tsconfig.json 的作用</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#tsconfig-json-重要字段">tsconfig.json 重要字段</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#compileroptions-选项">compilerOptions 选项</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#模块和声明文件">模块和声明文件</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#全局模块">全局模块</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#文件模块">文件模块</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#声明文件">声明文件</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#第三方声明文件">第三方声明文件</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#查找声明文件">查找声明文件</a><!----></li></ul></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/vue3">vue3</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/vite">vite</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/pureFuntion">纯函数</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/nvm">nvm管理node</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/cURL">cURL</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/husky">husky</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/jsAdvanced">js原理学习路线</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/sentry">sentry</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/vueComponent">vue3的三种组件封装</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/mock">mock</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/jiangVui">组件库开发</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/loadingHandle">请求loading封装</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/standard">前端规范</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/changelog">changelog</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/monitor">监控与埋点</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/gulp">gulp</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/performance">性能优化</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/server">服务器知识</a><!----></li></ul></li><!--]--></ul><!--[--><!--[--><!--]--><!--]--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main><div class="content"><!--[--><!--[--><!--]--><!--]--><div class="md-header"><!-- <div class="md-title">{{ pageData.title }}</div> --><!-- {{ pageData.frontmatter.date }} --><div class="md-date">今日诗词欣赏</div><span id="jinrishici-sentence">正在加载今日诗词....</span></div><!-- 右边导航 --><!-- <ul class="catalog">
+      <li class="catalog-item" v-for="item in pageData.headers">
+        <a class="level level-2" v-if="item.level == 2" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+        <a class="level level-3" v-if="item.level == 3" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+      </li>
+    </ul> --><!-- md主内容 --><div><p><a href="https://mp.weixin.qq.com/s/y6C4R04mpvBmyV80p5WOug" target="_blank" rel="noopener noreferrer">重学TypeScript系列教程</a></p><p>类型系统按照<code>「是否允许隐式类型转换」</code>来分类，可以分为强类型和弱类型。</p><p>TypeScript 是完全兼容 JavaScript 的，它不会修改 JavaScript 运行时的特性，所以它们都是弱类型。</p><p>TypeScript 的核心设计理念：在完整保留 JavaScript 运行时行为的基础上，通过引入静态类型系统来提高代码的可维护性，减少可能出现的 bug。</p><h2 id="typescript-基础类型"><a class="header-anchor" href="#typescript-基础类型" aria-hidden="true">#</a> TypeScript 基础类型</h2><h3 id="boolean-类型"><a class="header-anchor" href="#boolean-类型" aria-hidden="true">#</a> Boolean 类型</h3><div class="language-"><pre><code>let isDone: boolean = false;
+// ES5：var isDone = false;
+</code></pre></div><h3 id="number-类型"><a class="header-anchor" href="#number-类型" aria-hidden="true">#</a> Number 类型</h3><div class="language-"><pre><code>let count: number = 10;
+// ES5：var count = 10;
+</code></pre></div><h3 id="string-类型"><a class="header-anchor" href="#string-类型" aria-hidden="true">#</a> String 类型</h3><div class="language-"><pre><code>let name: string = &quot;Semliker&quot;;
+// ES5：var name = &#39;Semlinker&#39;;
+</code></pre></div><h3 id="array-类型"><a class="header-anchor" href="#array-类型" aria-hidden="true">#</a> Array 类型</h3><div class="language-"><pre><code>let list: number[] = [1, 2, 3];
+// ES5：var list = [1,2,3];
+
+let list: Array&lt;number&gt; = [1, 2, 3]; // Array&lt;number&gt;泛型语法
+// ES5：var list = [1,2,3];
+</code></pre></div><h3 id="元组类型-tuple"><a class="header-anchor" href="#元组类型-tuple" aria-hidden="true">#</a> 元组类型(tuple)</h3><p>在 TypeScript 的基础类型中，元组（ Tuple ）表示一个已知数量和类型的数组 其实可以理解为他是一种特殊的数组</p><div class="language-"><pre><code>const flag: [string, number] = [&quot;hello&quot;, 1];
+</code></pre></div><h3 id="enum-类型"><a class="header-anchor" href="#enum-类型" aria-hidden="true">#</a> Enum 类型</h3><p>使用枚举我们可以定义一些带名字的常量。 使用枚举可以清晰地表达意图或创建一组有区别的用例。 TypeScript 支持数字的和基于字符串的枚举。</p><h4 id="_1-数字枚举"><a class="header-anchor" href="#_1-数字枚举" aria-hidden="true">#</a> 1.数字枚举</h4><div class="language-"><pre><code>enum Direction {
+  NORTH,
+  SOUTH,
+  EAST,
+  WEST,
+}
+
+let dir: Direction = Direction.NORTH;
+</code></pre></div><p>默认情况下，NORTH 的初始值为 0，其余的成员会从 1 开始自动增长。换句话说，Direction.SOUTH 的值为 1，Direction.EAST 的值为 2，Direction.WEST 的值为 3。</p><p>上面的枚举示例代码经过编译后会生成以下代码：</p><div class="language-"><pre><code>&quot;use strict&quot;;
+var Direction;
+(function (Direction) {
+  Direction[(Direction[&quot;NORTH&quot;] = 0)] = &quot;NORTH&quot;;
+  Direction[(Direction[&quot;SOUTH&quot;] = 1)] = &quot;SOUTH&quot;;
+  Direction[(Direction[&quot;EAST&quot;] = 2)] = &quot;EAST&quot;;
+  Direction[(Direction[&quot;WEST&quot;] = 3)] = &quot;WEST&quot;;
+})(Direction || (Direction = {}));
+var dir = Direction.NORTH;
+</code></pre></div><p>当然我们也可以设置 NORTH 的初始值，比如：</p><div class="language-"><pre><code>enum Direction {
+  NORTH = 3,
+  SOUTH,
+  EAST,
+  WEST,
+}
+</code></pre></div><h4 id="字符串枚举"><a class="header-anchor" href="#字符串枚举" aria-hidden="true">#</a> 字符串枚举</h4><p>在 TypeScript 2.4 版本，允许我们使用字符串枚举。在一个字符串枚举里，<strong>每个成员都必须用字符串字面量，或另外一个字符串枚举成员进行初始化</strong>。</p><div class="language-"><pre><code>enum Direction {
+  NORTH = &quot;NORTH&quot;,
+  SOUTH = &quot;SOUTH&quot;,
+  EAST = &quot;EAST&quot;,
+  WEST = &quot;WEST&quot;,
+}
+</code></pre></div><h4 id="异构枚举"><a class="header-anchor" href="#异构枚举" aria-hidden="true">#</a> 异构枚举</h4><p>异构枚举的成员值是数字和字符串的混合：</p><div class="language-"><pre><code>enum Enum {
+  A,
+  B,
+  C = &quot;C&quot;,
+  D = &quot;D&quot;,
+  E = 8,
+  F,
+}
+</code></pre></div><h3 id="symbol"><a class="header-anchor" href="#symbol" aria-hidden="true">#</a> Symbol</h3><p>我们在使用 Symbol 的时候，必须添加 es6 的编译辅助库 需要在 tsconfig.json 的 libs 字段加上ES2015 Symbol 的值是唯一不变的</p><div class="language-"><pre><code>const sym1 = Symbol(&quot;hello&quot;);
+const sym2 = Symbol(&quot;hello&quot;);
+console.log(Symbol(&quot;hello&quot;) === Symbol(&quot;hello&quot;));
+</code></pre></div><h3 id="any-与-unknown"><a class="header-anchor" href="#any-与-unknown" aria-hidden="true">#</a> Any 与 Unknown</h3><h4 id="any-类型"><a class="header-anchor" href="#any-类型" aria-hidden="true">#</a> Any 类型</h4><p>在 TypeScript 中，任何类型都可以被归为 any 类型。这让 any 类型成为了类型系统的顶级类型（也被称作全局超级类型）。</p><div class="language-"><pre><code>let notSure: any = 666;
+notSure = &quot;Semlinker&quot;;
+notSure = false;
+</code></pre></div><p><code>any</code> 类型本质上是类型系统的一个逃逸舱。作为开发者，这给了我们很大的自由：TypeScript 允许我们对 any 类型的值执行任何操作，而无需事先执行任何形式的检查。比如：</p><div class="language-"><pre><code>let value: any;
+
+value.foo.bar; // OK
+value.trim(); // OK
+value(); // OK
+new value(); // OK
+value[0][1]; // OK
+</code></pre></div><p>在许多场景下，这太宽松了。使用 any 类型，可以很容易地编写类型正确但在运行时有问题的代码。如果我们使用 any 类型，就无法使用 TypeScript 提供的大量的保护机制。<strong>为了解决 any 带来的问题，TypeScript 3.0 引入了 <code>unknown</code> 类型</strong>。</p><h4 id="unknown-类型"><a class="header-anchor" href="#unknown-类型" aria-hidden="true">#</a> Unknown 类型</h4><p>就像所有类型都可以赋值给 any，所有类型也都可以赋值给 unknown。这使得 unknown 成为 TypeScript 类型系统的另一种顶级类型（另一种是 any）。下面我们来看一下 unknown 类型的使用示例：</p><div class="language-"><pre><code>let value: unknown;
+
+value = true; // OK
+value = 42; // OK
+value = &quot;Hello World&quot;; // OK
+value = []; // OK
+value = {}; // OK
+value = Math.random; // OK
+value = null; // OK
+value = undefined; // OK
+value = new TypeError(); // OK
+value = Symbol(&quot;type&quot;); // OK
+</code></pre></div><p>对 value 变量的所有赋值都被认为是类型正确的。但是，当我们尝试将类型为 unknown 的值赋值给其他类型的变量时会发生什么？</p><div class="language-"><pre><code>let value: unknown;
+
+let value1: unknown = value; // OK
+let value2: any = value; // OK
+let value3: boolean = value; // Error
+let value4: number = value; // Error
+let value5: string = value; // Error
+let value6: object = value; // Error
+let value7: any[] = value; // Error
+let value8: Function = value; // Error
+</code></pre></div><p>unknown 类型只能被赋值给 any 类型和 unknown 类型本身。直观地说，这是有道理的：只有能够保存任意类型值的容器才能保存 unknown 类型的值。毕竟我们不知道变量 value 中存储了什么类型的值。</p><p>现在让我们看看当我们尝试对类型为 unknown 的值<strong>执行操作</strong>时会发生什么。以下是我们在之前 any 章节看过的相同操作：</p><div class="language-"><pre><code>let value: unknown;
+
+value.foo.bar; // Error
+value.trim(); // Error
+value(); // Error
+new value(); // Error
+value[0][1]; // Error
+</code></pre></div><p>将 value 变量类型设置为 unknown 后，这些操作都不再被认为是类型正确的。通过将 any 类型改变为 unknown 类型，我们已将允许所有更改的默认设置，更改为禁止任何更改。</p><p>unknown 比 any 安全是因为 unknown 只允许被赋值，而无法被操作，也无法赋值给其它（除了 any 跟 unknown）</p><h4 id="共同点"><a class="header-anchor" href="#共同点" aria-hidden="true">#</a> 共同点</h4><p>any 和 unknown 都可以接收任何。即可以被赋上任何值</p><h4 id="不同点"><a class="header-anchor" href="#不同点" aria-hidden="true">#</a> 不同点</h4><p>any 绕过类型检查，因此可以<strong>访问任意方法和属性</strong>，并且可<strong>自由转换为其他任意类型</strong>。即无任何限制</p><div class="language-"><pre><code>var a:any = &quot;123&quot;
+a.toFixed(2) // ok
+
+// ok，把一个 string 赋值给 number 也是可以的
+var b:number = a;
+</code></pre></div><p>unknown 标识一个元素的类型未知，<strong>不可以调用任何属性或方法，也不可以转换为其他任意类型</strong>。即不能操作，不能转换类型，也不能把指赋给变量(但可以用过as转换类型类型后操作)</p><div class="language-"><pre><code>var b:unknown = &quot;123&quot;;
+b.length; // 错误
+
+var b:unknown = &quot;123&quot;;
+b.length; // 错误
+
+// 但是可以通过 as 转换一下
+let c:string = b as string;
+</code></pre></div><h3 id="void-类型"><a class="header-anchor" href="#void-类型" aria-hidden="true">#</a> void 类型</h3><p>void 表示没有任何类型 <strong>当一个函数没有返回值时</strong> TS 会认为它的返回值是 void 类型。</p><div class="language-"><pre><code>function hello(name: string): void {}
+</code></pre></div><h3 id="never-类型"><a class="header-anchor" href="#never-类型" aria-hidden="true">#</a> never 类型</h3><p>never 一般表示用户无法达到的类型 例如never 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型</p><div class="language-"><pre><code>function neverReach(): never {
+  throw new Error(&quot;an error&quot;);
+}
+</code></pre></div><p>思考：never 和 void 的区别 void 可以被赋值为 null 和 undefined 的类型。 never 则是一个不包含值的类型。 拥有 void 返回值类型的函数能正常运行。拥有 never 返回值类型的函数无法正常返回，无法终止，或会抛出异常。</p><h3 id="bigint-大数类型"><a class="header-anchor" href="#bigint-大数类型" aria-hidden="true">#</a> BigInt 大数类型</h3><p>使用 <code>BigInt</code> 可以安全地存储和操作大整数 我们在使用 <code>BigIn</code>t 的时候 必须添加 <code>ESNext</code> 的编译辅助库 需要在 tsconfig.json 的 <code>libs</code> 字段加上<code>ESNext</code> 要使用<code>1n</code>需要 <code>&quot;target&quot;</code>: <code>&quot;ESNext&quot;</code><code>number</code> 和 <code>BigInt</code> 类型不一样 不兼容</p><div class="language-"><pre><code>const max1 = Number.MAX_SAFE_INTEGER; // 2**53-1
+console.log(max1 + 1 === max1 + 2); //true
+
+const max2 = BigInt(Number.MAX_SAFE_INTEGER);
+console.log(max2 + 1n === max2 + 2n); //false
+
+let foo: number;
+let bar: bigint;
+foo = bar; //error
+bar = foo; //error
+</code></pre></div><h3 id="object-object-和-类型"><a class="header-anchor" href="#object-object-和-类型" aria-hidden="true">#</a> object, Object 和 {} 类型</h3><p><strong>object</strong> 类型用于表示非原始类型</p><div class="language-"><pre><code>let objectCase: object;
+objectCase = 1; // error
+objectCase = &quot;a&quot;; // error
+objectCase = true; // error
+objectCase = null; // error
+objectCase = undefined; // error
+objectCase = {}; // ok
+</code></pre></div><p><strong>大 Object</strong> 代表所有拥有 toString、hasOwnProperty 方法的类型 所以所有原始类型、非原始类型都可以赋给 Object(严格模式下 null 和 undefined 不可以)</p><div class="language-"><pre><code>let ObjectCase: Object;
+ObjectCase = 1; // ok
+ObjectCase = &quot;a&quot;; // ok
+ObjectCase = true; // ok
+ObjectCase = null; // error
+ObjectCase = undefined; // error
+ObjectCase = {}; // ok
+</code></pre></div><p>{} 空对象类型和大 Object 一样 也是表示原始类型和非原始类型的集合</p><div class="language-"><pre><code>let simpleCase: {};
+simpleCase = 1; // ok
+simpleCase = &quot;a&quot;; // ok
+simpleCase = true; // ok
+simpleCase = null; // error
+simpleCase = undefined; // error
+simpleCase = {}; // ok
+</code></pre></div><h2 id="类型推论"><a class="header-anchor" href="#类型推论" aria-hidden="true">#</a> 类型推论</h2><p>指编程语言中<strong>能够自动推导出值的类型的能力</strong> 它是一些强静态类型语言中出现的特性 定义时未赋值就会推论成 any 类型 如果定义的时候就赋值就能利用到类型推论</p><div class="language-"><pre><code>let flag; //推断为any
+let count = 123; //为number类型
+let hello = &quot;hello&quot;; //为string类型
+</code></pre></div><h2 id="联合类型"><a class="header-anchor" href="#联合类型" aria-hidden="true">#</a> 联合类型</h2><p>联合类型（Union Types）表示取值可以为多种类型中的一种 未赋值时联合类型上只能访问两个类型共有的属性和方法</p><div class="language-"><pre><code>let name: string | number;
+console.log(name.toString());
+name = 1;
+console.log(name.toFixed(2));
+name = &quot;hello&quot;;
+console.log(name.length);
+</code></pre></div><h2 id="类型断言as"><a class="header-anchor" href="#类型断言as" aria-hidden="true">#</a> 类型断言as</h2><p>类型断言（Type Assertion）就是手动指定一个值的类型。当你<strong>确定这个值的类型</strong>时才使用类型断言</p><p>类型断言有两种形式：</p><div class="language-"><pre><code>let someValue: any = &quot;this is a string&quot;;
+
+// 尖括号 语法
+let strLength: number = (&lt;string&gt;someValue).length;
+
+// as 语法
+let strLength: number = (someValue as string).length;
+</code></pre></div><p>以上两种方式虽然没有任何区别，但是尖括号格式会与 react 中 JSX 产生语法冲突，因此我们更推荐使用 as 语法。</p><p><strong>非空断言</strong> 在上下文中当类型检查器无法断定类型时 一个新的后缀表达式操作符 ! 可以用于断言操作对象是非 null 和非 undefined 类型</p><div class="language-"><pre><code>let flag: null | undefined | string;
+flag!.toString(); // ok
+flag.toString(); // error
+</code></pre></div><h2 id="字面量类型"><a class="header-anchor" href="#字面量类型" aria-hidden="true">#</a> 字面量类型</h2><p>在 TypeScript 中，字面量不仅可以表示值，还可以表示类型，即所谓的字面量类型。 目前，TypeScript 支持 3 种字面量类型：字符串字面量类型、数字字面量类型、布尔字面量类型，对应的字符串字面量、数字字面量、布尔字面量分别拥有与其值一样的字面量类型，具体示例如下：</p><div class="language-"><pre><code>let flag1: &quot;hello&quot; = &quot;hello&quot;;
+let flag2: 1 = 1;
+let flag3: true = true;
+</code></pre></div><h2 id="类型别名"><a class="header-anchor" href="#类型别名" aria-hidden="true">#</a> 类型别名</h2><p>类型别名用来给一个类型起个新名字</p><div class="language-"><pre><code>type flag = string | number;
+
+function hello(value: flag) {}
+</code></pre></div><h2 id="交叉类型"><a class="header-anchor" href="#交叉类型" aria-hidden="true">#</a> 交叉类型</h2><p>交叉类型是将多个类型合并为一个类型。通过 &amp; 运算符可以将现有的多种类型叠加到一起成为一种类型，它包含了所需的所有类型的特性</p><div class="language-"><pre><code>type Flag1 = { x: number };
+type Flag2 = Flag1 &amp; { y: string };
+
+let flag3: Flag2 = {
+  x: 1,
+  y: &quot;hello&quot;,
+  henb,
+};
+</code></pre></div><h2 id="类型保护"><a class="header-anchor" href="#类型保护" aria-hidden="true">#</a> 类型保护</h2><p>类型保护就是一些表达式，他们在编译的时候就能通过类型信息确保某个作用域内变量的类型 其主要思想是尝试检测属性、方法或原型，以确定如何处理值</p><h3 id="typeof-类型保护"><a class="header-anchor" href="#typeof-类型保护" aria-hidden="true">#</a> typeof 类型保护</h3><p>判断当前值的类型</p><div class="language-"><pre><code>function double(input: string | number | boolean) {
+  if (typeof input === &quot;string&quot;) {
+    return input + input;
+  } else {
+    if (typeof input === &quot;number&quot;) {
+      return input * 2;
+    } else {
+      return !input;
+    }
+  }
+}
+</code></pre></div><h3 id="in-关键字"><a class="header-anchor" href="#in-关键字" aria-hidden="true">#</a> in 关键字</h3><p>判断当前值的类型是否在另一个类型定义中</p><div class="language-"><pre><code>interface Bird {
+  fly: number;
+}
+
+interface Dog {
+  leg: number;
+}
+
+function getNumber(value: Bird | Dog) {
+  if (&quot;fly&quot; in value) {
+    return value.fly;
+  }
+  return value.leg;
+}
+</code></pre></div><h3 id="instanceof-类型保护"><a class="header-anchor" href="#instanceof-类型保护" aria-hidden="true">#</a> instanceof 类型保护</h3><p>判断当前值的类型是否继承于另一个类型中</p><div class="language-"><pre><code>class Animal {
+  name!: string;
+}
+class Bird extends Animal {
+  fly!: number;
+}
+function getName(animal: Animal) {
+  if (animal instanceof Bird) {
+    console.log(animal.fly);
+  } else {
+    console.log(animal.name);
+  }
+}
+</code></pre></div><h3 id="自定义类型保护"><a class="header-anchor" href="#自定义类型保护" aria-hidden="true">#</a> 自定义类型保护</h3><p>通过 <code>type is xxx</code> 这样的类型谓词来进行类型保护</p><div class="language-"><pre><code>function isObject(value: unknown): value is object {
+  return typeof value === &quot;object&quot; &amp;&amp; value !== null;
+}
+
+function fn(x: string | object) {
+  if (isObject(x)) {
+    // ....
+  } else {
+    // .....
+  }
+}
+</code></pre></div><h2 id="函数-function"><a class="header-anchor" href="#函数-function" aria-hidden="true">#</a> 函数(function)</h2><h3 id="函数的定义"><a class="header-anchor" href="#函数的定义" aria-hidden="true">#</a> 函数的定义</h3><p>可以指定参数的类型和返回值的类型</p><div class="language-"><pre><code>function hello(name: string): void {
+  console.log(&quot;hello&quot;, name);
+}
+hello(&quot;hahaha&quot;);
+</code></pre></div><h3 id="函数表达式"><a class="header-anchor" href="#函数表达式" aria-hidden="true">#</a> 函数表达式</h3><p>定义函数类型</p><div class="language-"><pre><code>type SumFunc = (x: number, y: number) =&gt; number;
+
+let countNumber: SumFunc = function (a, b) {
+  return a + b;
+};
+</code></pre></div><h3 id="可选参数"><a class="header-anchor" href="#可选参数" aria-hidden="true">#</a> 可选参数</h3><p>在 TS 中函数的形参和实参必须一样，不一样就要配置可选参数,而且必须是<strong>最后一个参数</strong></p><div class="language-"><pre><code>function print(name: string, age?: number): void {
+  console.log(name, age);
+}
+print(&quot;hahaha&quot;);
+</code></pre></div><h3 id="默认参数"><a class="header-anchor" href="#默认参数" aria-hidden="true">#</a> 默认参数</h3><div class="language-"><pre><code>function ajax(url: string, method: string = &quot;GET&quot;) {
+  console.log(url, method);
+}
+ajax(&quot;/users&quot;);
+</code></pre></div><h3 id="剩余参数"><a class="header-anchor" href="#剩余参数" aria-hidden="true">#</a> 剩余参数</h3><div class="language-"><pre><code>function sum(...numbers: number[]) {
+  return numbers.reduce((val, item) =&gt; (val += item), 0);
+}
+console.log(sum(1, 2, 3));
+</code></pre></div><h3 id="函数重载"><a class="header-anchor" href="#函数重载" aria-hidden="true">#</a> 函数重载</h3><p>函数重载或方法重载是使用相同名称和不同参数数量或类型创建多个方法的一种能力。 在 TypeScript 中，表现为给同一个函数提供多个函数类型定义</p><div class="language-"><pre><code>let obj: any = {};
+function attr(val: string): void;
+function attr(val: number): void;
+function attr(val: any): void {
+  if (typeof val === &quot;string&quot;) {
+    obj.name = val;
+  } else {
+    obj.age = val;
+  }
+}
+attr(&quot;hahaha&quot;);
+attr(9);
+attr(true);
+console.log(obj);
+</code></pre></div><blockquote><p>注意：函数重载真正执行的是同名函数最后定义的函数体 在最后一个函数体定义之前全都属于函数类型定义 不能写具体的函数实现方法 只能定义类型。感觉好像没啥用。。。</p></blockquote><h2 id="类-class"><a class="header-anchor" href="#类-class" aria-hidden="true">#</a> 类(class)</h2><h3 id="类的定义"><a class="header-anchor" href="#类的定义" aria-hidden="true">#</a> 类的定义</h3><p>在 TypeScript 中，我们可以通过 <code>Class</code> 关键字来定义一个类</p><div class="language-"><pre><code>class Person {
+  name!: string; //如果初始属性没赋值就需要加上!
+  constructor(_name: string) {
+    this.name = _name;
+  }
+  getName(): void {
+    console.log(this.name);
+  }
+}
+let p1 = new Person(&quot;hello&quot;);
+p1.getName(); 
+</code></pre></div><p>当我们定义一个类的时候,会得到 2 个类型 一个是构造函数类型的函数类型(当做普通构造函数的类型) 另一个是类的实例类型（代表实例）</p><div class="language-"><pre><code>class Component {
+  static myName: string = &quot;静态名称属性&quot;;
+  myName: string = &quot;实例名称属性&quot;;
+}
+//ts 一个类型 一个叫值
+//放在=后面的是值
+let com = Component; //这里是代表构造函数
+//冒号后面的是类型
+let c: Component = new Component(); //这里是代表实例类型
+let f: typeof Component = com;
+</code></pre></div><h3 id="存取器"><a class="header-anchor" href="#存取器" aria-hidden="true">#</a> 存取器</h3><p>在 TypeScript 中，我们可以通过存取器来改变一个类中属性的读取和赋值行为</p><div class="language-"><pre><code>class User {
+  myname: string;
+  constructor(myname: string) {
+    this.myname = myname;
+  }
+  get name() {
+    return this.myname;
+  }
+  set name(value) {
+    this.myname = value;
+  }
+}
+
+let user = new User(&quot;hello&quot;);
+user.name = &quot;world&quot;;
+console.log(user.name);
+</code></pre></div><p>其实我们可以看看翻译成 es5 的代码 原理很简单 就是使用了 Object.defineProperty 在类的原型上面拦截了属性对应的 get 和 set 方法</p><div class="language-"><pre><code>var User = /** @class */ (function () {
+  function User(myname) {
+    this.myname = myname;
+  }
+  Object.defineProperty(User.prototype, &quot;name&quot;, {
+    get: function () {
+      return this.myname;
+    },
+    set: function (value) {
+      this.myname = value;
+    },
+    enumerable: false,
+    configurable: true,
+  });
+  return User;
+})();
+var user = new User(&quot;hello&quot;);
+user.name = &quot;world&quot;;
+console.log(user.name);
+</code></pre></div><h3 id="readonly-只读属性"><a class="header-anchor" href="#readonly-只读属性" aria-hidden="true">#</a> readonly 只读属性</h3><p>readonly 修饰的变量只能在<code>构造函数</code>中初始化 TypeScript 的类型系统同样也允许将 interface、type、 class 上的属性标识为 readonly readonly 实际上只是在编译阶段进行代码检查。</p><div class="language-"><pre><code>class Animal {
+  public readonly name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  changeName(name: string) {
+    this.name = name; //这个ts是报错的
+  }
+}
+
+let a = new Animal(&quot;hello&quot;);
+</code></pre></div><h3 id="继承"><a class="header-anchor" href="#继承" aria-hidden="true">#</a> 继承</h3><p>子类继承父类后子类的实例就拥有了父类中的属性和方法，可以增强代码的可复用性</p><p>将子类公用的方法抽象出来放在父类中，自己的特殊逻辑放在子类中重写父类的逻辑</p><p>super 可以调用父类上的方法和属性</p><p>在 TypeScript 中，我们可以通过 extends 关键字来实现继承</p><div class="language-"><pre><code>class Person {
+  name: string; //定义实例的属性，默认省略public修饰符
+  age: number;
+  constructor(name: string, age: number) {
+    //构造函数
+    this.name = name;
+    this.age = age;
+  }
+  getName(): string {
+    return this.name;
+  }
+  setName(name: string): void {
+    this.name = name;
+  }
+}
+class Student extends Person {
+  no: number;
+  constructor(name: string, age: number, no: number) {
+    super(name, age);
+    this.no = no;
+  }
+  getNo(): number {
+    return this.no;
+  }
+}
+let s1 = new Student(&quot;hello&quot;, 10, 1);
+console.log(s1);
+</code></pre></div><h3 id="类里面的修饰符"><a class="header-anchor" href="#类里面的修饰符" aria-hidden="true">#</a> 类里面的修饰符</h3><p>publi类: 子类 其它任何地方外边都可以访问<br> protected类: 子类可以访问，但其它任何地方不能访问 <br> private类：子类和其它任何地方都不可以访问<br></p><div class="language-"><pre><code>class Parent {
+  public name: string;
+  protected age: number;
+  private car: number;
+  constructor(name: string, age: number, car: number) {
+    //构造函数
+    this.name = name;
+    this.age = age;
+    this.car = car;
+  }
+  getName(): string {
+    return this.name;
+  }
+  setName(name: string): void {
+    this.name = name;
+  }
+}
+class Child extends Parent {
+  constructor(name: string, age: number, car: number) {
+    super(name, age, car);
+  }
+  desc() {
+    console.log(`${this.name} ${this.age} ${this.car}`); //car访问不到 会报错
+  }
+}
+
+let child = new Child(&quot;hello&quot;, 10, 1000);
+console.log(child.name);
+console.log(child.age); //age访问不到 会报错
+console.log(child.car); //car访问不到 会报错
+</code></pre></div><h3 id="静态属性-静态方法"><a class="header-anchor" href="#静态属性-静态方法" aria-hidden="true">#</a> 静态属性 静态方法**</h3><p>类的静态属性和方法是直接定义在类本身上面的 所以也<strong>只能通过直接调用类的方法和属性来访问</strong></p><div class="language-"><pre><code>class Parent {
+  static mainName = &quot;Parent&quot;;
+  static getmainName() {
+    console.log(this); //注意静态方法里面的this指向的是类本身 而不是类的实例对象 所以静态方法里面只能访问类的静态属性和方法
+    return this.mainName;
+  }
+  public name: string;
+  constructor(name: string) {
+    //构造函数
+    this.name = name;
+  }
+}
+console.log(Parent.mainName);
+console.log(Parent.getmainName());
+</code></pre></div><h3 id="抽象类和抽象方法"><a class="header-anchor" href="#抽象类和抽象方法" aria-hidden="true">#</a> 抽象类和抽象方法</h3><p>抽象类，无法被实例化，只能被继承并且无法创建抽象类的实例 子类可以对抽象类进行不同的实现</p><p>抽象方法只能出现在抽象类中并且抽象方法不能在抽象类中被具体实现，只能在抽象类的子类中实现（必须要实现）</p><p>使用场景： 我们一般用抽象类和抽象方法抽离出事物的共性 以后所有继承的子类必须按照规范去实现自己的具体逻辑 这样可以增加代码的可维护性和复用性</p><p>使用 abstract 关键字来定义抽象类和抽象方法</p><div class="language-"><pre><code>abstract class Animal {
+  name!: string;
+  abstract speak(): void;
+}
+class Cat extends Animal {
+  speak() {
+    console.log(&quot;喵喵喵&quot;);
+  }
+}
+let animal = new Animal(); //直接报错 无法创建抽象类的实例
+let cat = new Cat();
+cat.speak();
+</code></pre></div><blockquote><p>思考 1:重写(override)和重载(overload)的区别</p></blockquote><p><code>重写</code>是指子类重写继承自父类中的方法 <code>重载</code>是指为同一个函数提供多个类型定义</p><div class="language-"><pre><code>class Animal {
+  speak(word: string): string {
+    return &quot;动物:&quot; + word;
+  }
+}
+class Cat extends Animal {
+  speak(word: string): string {
+    return &quot;猫:&quot; + word;
+  }
+}
+let cat = new Cat();
+console.log(cat.speak(&quot;hello&quot;));
+// 上面是重写
+//--------------------------------------------
+// 下面是重载
+function double(val: number): number;
+function double(val: string): string;
+function double(val: any): any {
+  if (typeof val == &quot;number&quot;) {
+    return val * 2;
+  }
+  return val + val;
+}
+
+let r = double(1);
+console.log(r);
+</code></pre></div><blockquote><p>思考 2:什么是多态</p></blockquote><p>在父类中定义一个方法，在子类中有多个实现，在程序运行的时候，根据不同的对象执行不同的操作，实现运行时的绑定。</p><div class="language-"><pre><code>abstract class Animal {
+  // 声明抽象的方法，让子类去实现
+  abstract sleep(): void;
+}
+class Dog extends Animal {
+  sleep() {
+    console.log(&quot;dog sleep&quot;);
+  }
+}
+let dog = new Dog();
+class Cat extends Animal {
+  sleep() {
+    console.log(&quot;cat sleep&quot;);
+  }
+}
+let cat = new Cat();
+let animals: Animal[] = [dog, cat];
+animals.forEach((i) =&gt; {
+  i.sleep();
+});
+</code></pre></div><h2 id="接口-interface"><a class="header-anchor" href="#接口-interface" aria-hidden="true">#</a> 接口(interface)</h2><p>接口既可以在面向对象编程中表示为行为的抽象，也可以用来描述对象的形状</p><p>我们用 <code>interface</code> 关键字来定义接口 在接口中可以用分号或者逗号分割每一项，也可以什么都不加</p><h3 id="对象的形状"><a class="header-anchor" href="#对象的形状" aria-hidden="true">#</a> 对象的形状</h3><div class="language-"><pre><code>//接口可以用来描述`对象的形状`
+interface Speakable {
+  speak(): void;
+  readonly lng: string; //readonly表示只读属性 后续不可以更改
+  name?: string; //？表示可选属性
+}
+
+let speakman: Speakable = {
+  //   speak() {}, //少属性会报错
+  name: &quot;hello&quot;,
+  lng: &quot;en&quot;,
+  age: 111, //多属性也会报错
+};
+</code></pre></div><h3 id="行为的抽象"><a class="header-anchor" href="#行为的抽象" aria-hidden="true">#</a> 行为的抽象</h3><p>接口可以把一些类中共有的属性和方法抽象出来,可以用来约束实现此接口的类</p><p>一个类可以实现多个接口，一个接口也可以被多个类实现</p><p>我们用 <code>implements</code> 关键字来代表 实现</p><div class="language-"><pre><code>//接口可以在面向对象编程中表示为行为的抽象
+interface Speakable {
+  speak(): void;
+}
+interface Eatable {
+  eat(): void;
+}
+//一个类可以实现多个接口
+class Person implements Speakable, Eatable {
+  speak() {
+    console.log(&quot;Person说话&quot;);
+  }
+  //   eat() {} //需要实现的接口包含eat方法 不实现会报错
+}
+</code></pre></div><h3 id="定义任意属性"><a class="header-anchor" href="#定义任意属性" aria-hidden="true">#</a> 定义任意属性</h3><p>如果我们在定义接口的时候无法预先知道有哪些属性的时候,可以使用 <code>[propName:string]:any</code>,propName 名字是任意的</p><div class="language-"><pre><code>interface Person {
+  id: number;
+  name: string;
+  [propName: string]: any;
+}
+
+let p1:Person = {
+  id: 1,
+  name: &quot;hello&quot;,
+  age: 10,
+};
+</code></pre></div><p>这个接口表示 必须要有 id 和 name 这两个字段 然后还可以新加其余的未知字段</p><h3 id="接口的继承"><a class="header-anchor" href="#接口的继承" aria-hidden="true">#</a> 接口的继承</h3><p>接口继承类使用 <code>extends</code>，类继承接口使用 <code>implements</code></p><div class="language-interface Speakable {"><pre><code>  speak(): void;
+}
+interface SpeakChinese extends Speakable {
+  speakChinese(): void;
+}
+class Person implements SpeakChinese {
+  speak() {
+    console.log(&quot;Person&quot;);
+  }
+  speakChinese() {
+    console.log(&quot;speakChinese&quot;);
+  }
+}
+</code></pre></div><h3 id="函数类型接口"><a class="header-anchor" href="#函数类型接口" aria-hidden="true">#</a> 函数类型接口</h3><p>可以用接口来定义函数类型</p><div class="language-"><pre><code>interface discount {
+  (price: number): number;
+}
+let cost: discount = function (price: number): number {
+  return price * 0.8;
+};
+</code></pre></div><h3 id="构造函数的类型接口"><a class="header-anchor" href="#构造函数的类型接口" aria-hidden="true">#</a> 构造函数的类型接口</h3><p>使用特殊的 new()关键字来描述类的构造函数类型</p><div class="language-"><pre><code>class Animal {
+  constructor(public name: string) {}
+}
+//不加new是修饰函数的,加new是修饰类的
+interface WithNameClass {
+  new (name: string): Animal;
+}
+function createAnimal(clazz: WithNameClass, name: string) {
+  return new clazz(name);
+}
+let a = createAnimal(Animal, &quot;hello&quot;);
+console.log(a.name);
+</code></pre></div><p>其实这样的用法一般出现在 <strong>当我们需要把一个类作为参数的时候 我们需要对传入的类的构造函数类型进行约束</strong> 所以需要使用 new 关键字代表是类的构造函数类型 用以和普通函数进行区分</p><h2 id="interface-与-type"><a class="header-anchor" href="#interface-与-type" aria-hidden="true">#</a> interface 与 type</h2><h3 id="相同点"><a class="header-anchor" href="#相同点" aria-hidden="true">#</a> 相同点</h3><h4 id="都可以描述一个对象或者函数"><a class="header-anchor" href="#都可以描述一个对象或者函数" aria-hidden="true">#</a> 都可以描述一个对象或者函数</h4><p>interface</p><div class="language-"><pre><code>interface User {
+  name: string
+  age: number
+}
+
+interface SetUser {
+  (name: string, age: number): void;
+}
+</code></pre></div><p>type</p><div class="language-"><pre><code>type User = {
+  name: string
+  age: number
+};
+
+type SetUser = (name: string, age: number)=&gt; void;
+</code></pre></div><h4 id="都允许拓展（extends）"><a class="header-anchor" href="#都允许拓展（extends）" aria-hidden="true">#</a> 都允许拓展（extends）</h4><p>interface(extends) 和 type(&amp;) 都可以拓展，并且两者并不是相互独立的，也就是说 interface 可以 extends type, type 也可以 extends interface 。 <strong>虽然效果差不多，但是两者语法不同</strong>。</p><p>interface extends interface</p><div class="language-"><pre><code>interface Name { 
+  name: string; 
+}
+interface User extends Name { 
+  age: number; 
+}
+</code></pre></div><p>type extends type</p><div class="language-"><pre><code>type Name = { 
+  name: string; 
+}
+type User = Name &amp; { age: number  };
+</code></pre></div><p>interface extends type</p><div class="language-"><pre><code>type Name = { 
+  name: string; 
+}
+interface User extends Name { 
+  age: number; 
+}
+</code></pre></div><p>type extends interface</p><div class="language-"><pre><code>interface Name { 
+  name: string; 
+}
+type User = Name &amp; { 
+  age: number; 
+}
+</code></pre></div><h3 id="不同点-2"><a class="header-anchor" href="#不同点-2" aria-hidden="true">#</a> 不同点</h3><h4 id="type-可以而-interface-不行"><a class="header-anchor" href="#type-可以而-interface-不行" aria-hidden="true">#</a> type 可以而 interface 不行</h4><ul><li>type 可以声明基本类型别名，联合类型，元组等类型</li></ul><div class="language-"><pre><code>// 基本类型别名
+type Name = string
+
+// 联合类型
+interface Dog {
+    wong();
+}
+interface Cat {
+    miao();
+}
+
+type Pet = Dog | Cat
+
+// 具体定义数组每个位置的类型
+type PetList = [Dog, Pet]
+</code></pre></div><ul><li>type 语句中还可以使用 typeof 获取实例的 类型进行赋值</li></ul><div class="language-"><pre><code>// 当你想获取一个变量的类型时，使用 typeof
+let div = document.createElement(&#39;div&#39;);
+type B = typeof div
+</code></pre></div><ul><li>其他骚操作</li></ul><div class="language-"><pre><code>type StringOrNumber = string | number;  
+type Text = string | { text: string };  
+type NameLookup = Dictionary&lt;string, Person&gt;;  
+type Callback&lt;T&gt; = (data: T) =&gt; void;  
+type Pair&lt;T&gt; = [T, T];  
+type Coordinates = Pair&lt;number&gt;;  
+type Tree&lt;T&gt; = T | { left: Tree&lt;T&gt;, right: Tree&lt;T&gt; };
+</code></pre></div><h4 id="interface-可以而-type-不行"><a class="header-anchor" href="#interface-可以而-type-不行" aria-hidden="true">#</a> interface 可以而 type 不行</h4><p>interface 能够声明合并</p><div class="language-"><pre><code>interface User {
+  name: string
+  age: number
+}
+
+interface User {
+  sex: string
+}
+
+/*
+User 接口为 {
+  name: string
+  age: number
+  sex: string 
+}
+*/
+</code></pre></div><p><strong>总结:一般来说，如果不清楚什么时候用interface/type，能用 interface 实现，就用 interface , 如果不能就用 type 。</strong></p><h2 id="泛型"><a class="header-anchor" href="#泛型" aria-hidden="true">#</a> 泛型</h2><p>泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而<strong>在使用的时候再指定类型的一种特性</strong></p><p>为了更好的了解泛型的作用 我们可以看下面的一个例子</p><div class="language-"><pre><code>function createArray(length: number, value: any): any[] {
+  let result = [];
+  for (let i = 0; i &lt; length; i++) {
+    result[i] = value;
+  }
+  return result;
+}
+
+createArray(3, &quot;x&quot;); // [&#39;x&#39;, &#39;x&#39;, &#39;x&#39;]
+</code></pre></div><p>上述这段代码用来生成一个长度为 length 值为 value 的数组 但是我们其实可以发现一个问题 不管我们传入什么类型的 value 返回值的数组永远是 any 类型 如果我们想要的效果是 我们预先不知道会传入什么类型 但是我们希望不管我们传入什么类型 我们的返回的数组的指里面的类型应该和参数保持一致 那么这时候 泛型就登场了</p><p>使用泛型改造</p><div class="language-"><pre><code>function createArray&lt;T&gt;(length: number, value: T): Array&lt;T&gt; {
+  let result: T[] = [];
+  for (let i = 0; i &lt; length; i++) {
+    result[i] = value;
+  }
+  return result;
+}
+
+createArray&lt;string&gt;(3, &quot;x&quot;); // [&#39;x&#39;, &#39;x&#39;, &#39;x&#39;]
+</code></pre></div><p>我们可以使用&lt;&gt;的写法 然后再传入一个变量 T 用来表示后续函数需要用到的类型 当我们真正去调用函数的时候再传入 T 的类型就可以解决很多预先无法确定类型相关的问题</p><h3 id="多个类型参数"><a class="header-anchor" href="#多个类型参数" aria-hidden="true">#</a> 多个类型参数</h3><div class="language-"><pre><code>function swap&lt;T, U&gt;(tuple: [T, U]): [U, T] {
+  return [tuple[1], tuple[0]];
+}
+
+swap([7, &quot;seven&quot;]); // [&#39;seven&#39;, 7]
+</code></pre></div><h3 id="泛型约束-t-extends-xx"><a class="header-anchor" href="#泛型约束-t-extends-xx" aria-hidden="true">#</a> 泛型约束(T extends xx)</h3><p>在函数内部使用泛型变量的时候，由于事先不知道它是哪种类型，所以不能随意的操作它的属性或方法：</p><div class="language-"><pre><code>function loggingIdentity&lt;T&gt;(arg: T): T {
+  console.log(arg.length);
+  return arg;
+}
+
+// index.ts(2,19): error TS2339: Property &#39;length&#39; does not exist on type &#39;T&#39;.
+</code></pre></div><p>上例中，泛型 T 不一定包含属性 length，所以编译的时候报错了。</p><p>这时，我们可以对泛型进行约束，只允许这个函数传入那些包含 length 属性的变量。这就是泛型约束</p><div class="language-"><pre><code>interface Lengthwise {
+  length: number;
+}
+
+function loggingIdentity&lt;T extends Lengthwise&gt;(arg: T): T {
+  console.log(arg.length);
+  return arg;
+}
+</code></pre></div><blockquote><p>注意：我们在泛型里面使用 <code>extends</code> 关键字代表的是泛型约束 需要和类的继承区分开</p></blockquote><h3 id="泛型接口"><a class="header-anchor" href="#泛型接口" aria-hidden="true">#</a> 泛型接口</h3><p>定义接口的时候也可以指定泛型</p><div class="language-"><pre><code>interface Cart&lt;T&gt; {
+  list: T[];
+}
+let cart: Cart&lt;{ name: string; price: number }&gt; = {
+  list: [{ name: &quot;hello&quot;, price: 10 }],
+};
+console.log(cart.list[0].name, cart.list[0].price);
+</code></pre></div><p>我们定义了接口传入的类型 T 之后返回的对象数组里面 T 就是当时传入的参数类型</p><h3 id="泛型类"><a class="header-anchor" href="#泛型类" aria-hidden="true">#</a> 泛型类</h3><div class="language-"><pre><code>class MyArray&lt;T&gt; {
+  private list: T[] = [];
+  add(value: T) {
+    this.list.push(value);
+  }
+  getMax(): T {
+    let result = this.list[0];
+    for (let i = 0; i &lt; this.list.length; i++) {
+      if (this.list[i] &gt; result) {
+        result = this.list[i];
+      }
+    }
+    return result;
+  }
+}
+let arr = new MyArray();
+arr.add(1);
+arr.add(2);
+arr.add(3);
+let ret = arr.getMax();
+console.log(ret);
+</code></pre></div><p>上诉例子我们实现了一个在数组里面添加数字并且获取最大值的泛型类</p><h3 id="泛型类型别名"><a class="header-anchor" href="#泛型类型别名" aria-hidden="true">#</a> 泛型类型别名</h3><div class="language-"><pre><code>type Cart&lt;T&gt; = { list: T[] } | T[];
+let c1: Cart&lt;string&gt; = { list: [&quot;1&quot;] };
+let c2: Cart&lt;number&gt; = [1];
+</code></pre></div><h3 id="泛型参数的默认类型"><a class="header-anchor" href="#泛型参数的默认类型" aria-hidden="true">#</a> 泛型参数的默认类型</h3><p>我们可以为泛型中的类型参数指定默认类型。当使用泛型时没有在代码中直接指定类型参数，从实际值参数中也无法推测出时，这个默认类型就会起作用</p><div class="language-"><pre><code>function createArray&lt;T = string&gt;(length: number, value: T): Array&lt;T&gt; {
+  let result: T[] = [];
+  for (let i = 0; i &lt; length; i++) {
+    result[i] = value;
+  }
+  return result;
+}
+</code></pre></div><h3 id="typeof-关键词"><a class="header-anchor" href="#typeof-关键词" aria-hidden="true">#</a> typeof 关键词</h3><div class="language-"><pre><code>//先定义变量，再定义类型
+let p1 = {
+  name: &quot;hello&quot;,
+  age: 10,
+  gender: &quot;male&quot;,
+};
+type People = typeof p1;
+function getName(p: People): string {
+  return p.name;
+}
+getName(p1);
+</code></pre></div><p>上面的例子就是使用 typeof 获取一个变量的类型</p><h3 id="keyof-关键词"><a class="header-anchor" href="#keyof-关键词" aria-hidden="true">#</a> keyof 关键词</h3><p>keyof 可以用来取得一个对象接口的所有 key 值</p><div class="language-"><pre><code>interface Person {
+  name: string;
+  age: number;
+  gender: &quot;male&quot; | &quot;female&quot;;
+}
+//type PersonKey = &#39;name&#39;|&#39;age&#39;|&#39;gender&#39;;
+type PersonKey = keyof Person;
+
+function getValueByKey(p: Person, key: PersonKey) {
+  return p[key];
+}
+let val = getValueByKey({ name: &quot;hello&quot;, age: 10, gender: &quot;male&quot; }, &quot;name&quot;);
+console.log(val);
+</code></pre></div><h3 id="索引访问操作符"><a class="header-anchor" href="#索引访问操作符" aria-hidden="true">#</a> 索引访问操作符</h3><p>使用 [] 操作符可以进行索引访问</p><div class="language-"><pre><code>interface Person {
+  name: string;
+  age: number;
+}
+
+type x = Person[&quot;name&quot;]; // x is string
+</code></pre></div><h3 id="映射类型-in"><a class="header-anchor" href="#映射类型-in" aria-hidden="true">#</a> 映射类型 in</h3><p>在定义的时候用 in 操作符去批量定义类型中的属性</p><div class="language-"><pre><code>interface Person {
+  name: string;
+  age: number;
+  gender: &quot;male&quot; | &quot;female&quot;;
+}
+//批量把一个接口中的属性都变成可选的
+type PartPerson = {
+  [Key in keyof Person]?: Person[Key];
+};
+
+let p1: PartPerson = {};
+</code></pre></div><h3 id="infer-关键字"><a class="header-anchor" href="#infer-关键字" aria-hidden="true">#</a> infer 关键字</h3><p>在条件类型语句中，可以用 infer 声明一个类型变量并且对它进行使用。</p><div class="language-"><pre><code>type ReturnType&lt;T&gt; = T extends (...args: any[]) =&gt; infer R ? R : any;
+</code></pre></div><p>以上代码中 infer R 就是声明一个变量来承载传入函数签名的返回值类型，简单说就是用它取到函数返回值的类型方便之后使用。</p><h3 id="内置工具类型"><a class="header-anchor" href="#内置工具类型" aria-hidden="true">#</a> 内置工具类型</h3><ol><li>Exclude&lt;T,U&gt; 从 T 可分配给的类型中排除 U</li></ol><div class="language-"><pre><code>type Exclude&lt;T, U&gt; = T extends U ? never : T;
+
+type E = Exclude&lt;string | number, string&gt;;
+let e: E = 10;
+</code></pre></div><ol start="2"><li>Extract&lt;T,U&gt; 从 T 可分配给的类型中提取 U</li></ol><div class="language-"><pre><code>type Extract&lt;T, U&gt; = T extends U ? T : never;
+
+type E = Extract&lt;string | number, string&gt;;
+let e: E = &quot;1&quot;;
+</code></pre></div><ol start="3"><li>NonNullable 从 T 中排除 null 和 undefined</li></ol><div class="language-"><pre><code>type NonNullable&lt;T&gt; = T extends null | undefined ? never : T;
+
+type E = NonNullable&lt;string | number | null | undefined&gt;;
+let e: E = null;
+</code></pre></div><ol start="4"><li>ReturnType infer 最早出现在此 PR 中，表示在 extends 条件语句中待推断的类型变量</li></ol><div class="language-"><pre><code>type ReturnType&lt;T extends (...args: any[]) =&gt; any&gt; = T extends (
+  ...args: any[]
+) =&gt; infer R
+  ? R
+  : any;
+function getUserInfo() {
+  return { name: &quot;hello&quot;, age: 10 };
+}
+
+// 通过 ReturnType 将 getUserInfo 的返回值类型赋给了 UserInfo
+type UserInfo = ReturnType&lt;typeof getUserInfo&gt;;
+
+const userA: UserInfo = {
+  name: &quot;hello&quot;,
+  age: 10,
+};
+</code></pre></div><ol start="5"><li>Parameters 该工具类型主要是获取函数类型的参数类型</li></ol><div class="language-"><pre><code>type Parameters&lt;T&gt; = T extends (...args: infer R) =&gt; any ? R : any;
+
+type T0 = Parameters&lt;() =&gt; string&gt;; // []
+type T1 = Parameters&lt;(s: string) =&gt; void&gt;; // [string]
+type T2 = Parameters&lt;&lt;T&gt;(arg: T) =&gt; T&gt;; // [unknown]
+</code></pre></div><ol start="6"><li>Partial 可以将传入的属性由非可选变为可选</li></ol><div class="language-"><pre><code>type Partial&lt;T&gt; = { [P in keyof T]?: T[P] };
+interface A {
+  a1: string;
+  a2: number;
+  a3: boolean;
+}
+type aPartial = Partial&lt;A&gt;;
+const a: aPartial = {}; // 不会报错
+</code></pre></div><ol start="7"><li>Required 可以将传入的属性中的可选项变为必选项，这里用了 -? 修饰符来实现。</li></ol><div class="language-"><pre><code>interface Person {
+  name: string;
+  age: number;
+  gender?: &quot;male&quot; | &quot;female&quot;;
+}
+/**
+ * type Required&lt;T&gt; = { [P in keyof T]-?: T[P] };
+ */
+let p: Required&lt;Person&gt; = {
+  name: &quot;hello&quot;,
+  age: 10,
+  gender: &quot;male&quot;,
+};
+</code></pre></div><ol start="8"><li>Readonly 通过为传入的属性每一项都加上 readonly 修饰符来实现</li></ol><div class="language-"><pre><code>interface Person {
+  name: string;
+  age: number;
+  gender?: &quot;male&quot; | &quot;female&quot;;
+}
+//type Readonly&lt;T&gt; = { readonly [P in keyof T]: T[P] };
+let p: Readonly&lt;Person&gt; = {
+  name: &quot;hello&quot;,
+  age: 10,
+  gender: &quot;male&quot;,
+};
+p.age = 11; //error
+</code></pre></div><ol start="9"><li>Pick&lt;T,K&gt; Pick 能够帮助我们从传入的属性中摘取某些返回</li></ol><div class="language-"><pre><code>interface Todo {
+  title: string;
+  description: string;
+  done: boolean;
+}
+/**
+ * From T pick a set of properties K
+ * type Pick&lt;T, K extends keyof T&gt; = { [P in K]: T[P] };
+ */
+type TodoBase = Pick&lt;Todo, &quot;title&quot; | &quot;done&quot;&gt;;
+
+// =
+type TodoBase = {
+  title: string;
+  done: boolean;
+};
+</code></pre></div><ol start="10"><li>Record&lt;K,T&gt; <strong>构造一个类型，该类型具有一组属性 K，每个属性的类型为 T</strong>。可用于将一个类型的属性映射为另一个类型。Record 后面的泛型就是对象键和值的类型。</li></ol><p>简单理解：K 对应对象的 key，T 对应对象的 value，返回的就是一个声明好的对象 但是 K 对应的泛型约束是keyof any 也就意味着只能传入 string|number|symbol</p><div class="language-"><pre><code>// type Record&lt;K extends keyof any, T&gt; = {
+// [P in K]: T;
+// };
+type Point = &quot;x&quot; | &quot;y&quot;;
+type PointList = Record&lt;Point, { value: number }&gt;;
+const cars: PointList = {
+  x: { value: 10 },
+  y: { value: 20 },
+};
+</code></pre></div><ol start="11"><li>Omit&lt;K,T&gt; 基于已经声明的类型进行属性剔除获得新类型</li></ol><div class="language-"><pre><code>// type Omit=Pick&lt;T,Exclude&lt;keyof T,K&gt;&gt;
+type User = {
+id: string;
+name: string;
+email: string;
+};
+type UserWithoutEmail = Omit&lt;User, &quot;email&quot;&gt;;// UserWithoutEmail ={id: string;name: string;}
+};
+</code></pre></div><h2 id="typescript-装饰器"><a class="header-anchor" href="#typescript-装饰器" aria-hidden="true">#</a> TypeScript 装饰器</h2><p>装饰器是一种特殊类型的声明，它能够被附加到类声明、方法、属性或参数上，可以修改类的行为</p><p>常见的装饰器有类装饰器、属性装饰器、方法装饰器和参数装饰器</p><p>装饰器的写法分为普通装饰器和装饰器工厂</p><p>使用@装饰器的写法需要把 tsconfig.json 的 <code>experimentalDecorators</code> 字段设置为 true</p><h3 id="类装饰器"><a class="header-anchor" href="#类装饰器" aria-hidden="true">#</a> 类装饰器</h3><p>类装饰器在类声明之前声明，用来监视、修改或替换类定义</p><div class="language-"><pre><code>namespace a {
+  //当装饰器作为修饰类的时候，会把构造器传递进去
+  function addNameEat(constructor: Function) {
+    constructor.prototype.name = &quot;hello&quot;;
+    constructor.prototype.eat = function () {
+      console.log(&quot;eat&quot;);
+    };
+  }
+  @addNameEat
+  class Person {
+    name!: string;
+    eat!: Function;
+    constructor() {}
+  }
+  let p: Person = new Person();
+  console.log(p.name);
+  p.eat();
+}
+
+namespace b {
+  //还可以使用装饰器工厂 这样可以传递额外参数
+  function addNameEatFactory(name: string) {
+    return function (constructor: Function) {
+      constructor.prototype.name = name;
+      constructor.prototype.eat = function () {
+        console.log(&quot;eat&quot;);
+      };
+    };
+  }
+  @addNameEatFactory(&quot;hello&quot;)
+  class Person {
+    name!: string;
+    eat!: Function;
+    constructor() {}
+  }
+  let p: Person = new Person();
+  console.log(p.name);
+  p.eat();
+}
+
+namespace c {
+  //还可以替换类,不过替换的类要与原类结构相同
+  function enhancer(constructor: Function) {
+    return class {
+      name: string = &quot;jiagou&quot;;
+      eat() {
+        console.log(&quot;吃饭饭&quot;);
+      }
+    };
+  }
+  @enhancer
+  class Person {
+    name!: string;
+    eat!: Function;
+    constructor() {}
+  }
+  let p: Person = new Person();
+  console.log(p.name);
+  p.eat();
+}
+</code></pre></div><h3 id="属性装饰器"><a class="header-anchor" href="#属性装饰器" aria-hidden="true">#</a> 属性装饰器</h3><p>属性装饰器表达式会在运行时当作函数被调用，传入 2 个参数 第一个参数对于静态成员来说是类的构造函数，对于实例成员是类的原型对象 第二个参数是属性的名称</p><div class="language-"><pre><code>//修饰实例属性
+function upperCase(target: any, propertyKey: string) {
+  let value = target[propertyKey];
+  const getter = function () {
+    return value;
+  };
+  // 用来替换的setter
+  const setter = function (newVal: string) {
+    value = newVal.toUpperCase();
+  };
+  // 替换属性，先删除原先的属性，再重新定义属性
+  if (delete target[propertyKey]) {
+    Object.defineProperty(target, propertyKey, {
+      get: getter,
+      set: setter,
+      enumerable: true,
+      configurable: true,
+    });
+  }
+}
+
+class Person {
+  @upperCase
+  name!: string;
+}
+let p: Person = new Person();
+p.name = &quot;world&quot;;
+console.log(p.name);
+</code></pre></div><h3 id="方法装饰器"><a class="header-anchor" href="#方法装饰器" aria-hidden="true">#</a> 方法装饰器</h3><p>方法装饰器顾名思义，用来装饰类的方法。它接收三个参数：</p><ul><li>target: Object - 对于静态成员来说是类的构造函数，对于实例成员是类的原型对象</li><li>propertyKey: string | symbol - 方法名</li><li>descriptor: TypePropertyDescript - 属性描述符</li></ul><div class="language-"><pre><code>//修饰实例方法
+function noEnumerable(
+  target: any,
+  property: string,
+  descriptor: PropertyDescriptor
+) {
+  console.log(&quot;target.getName&quot;, target.getName);
+  console.log(&quot;target.getAge&quot;, target.getAge);
+  descriptor.enumerable = false;
+}
+//重写方法
+function toNumber(
+  target: any,
+  methodName: string,
+  descriptor: PropertyDescriptor
+) {
+  let oldMethod = descriptor.value;
+  descriptor.value = function (...args: any[]) {
+    args = args.map((item) =&gt; parseFloat(item));
+    return oldMethod.apply(this, args);
+  };
+}
+class Person {
+  name: string = &quot;hello&quot;;
+  public static age: number = 10;
+  constructor() {}
+  @noEnumerable
+  getName() {
+    console.log(this.name);
+  }
+  @toNumber
+  sum(...args: any[]) {
+    return args.reduce((accu: number, item: number) =&gt; accu + item, 0);
+  }
+}
+let p: Person = new Person();
+for (let attr in p) {
+  console.log(&quot;attr=&quot;, attr);
+}
+p.getName();
+console.log(p.sum(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;));
+</code></pre></div><h3 id="参数装饰器"><a class="header-anchor" href="#参数装饰器" aria-hidden="true">#</a> 参数装饰器</h3><p>参数装饰器顾名思义，是用来装饰函数参数，它接收三个参数：</p><p>target: Object - 被装饰的类 propertyKey: string | symbol - 方法名 parameterIndex: number - 方法中参数的索引值</p><div class="language-"><pre><code>function Log(target: Function, key: string, parameterIndex: number) {
+  let functionLogged = key || target.prototype.constructor.name;
+  console.log(`The parameter in position ${parameterIndex} at ${functionLogged} has
+	been decorated`);
+}
+
+class Greeter {
+  greeting: string;
+  constructor(@Log phrase: string) {
+    this.greeting = phrase;
+  }
+}
+</code></pre></div><p>以上代码成功运行后，控制台会输出以下结果： &quot;The parameter in position 0 at Greeter has been decorated&quot;</p><h3 id="装饰器执行顺序"><a class="header-anchor" href="#装饰器执行顺序" aria-hidden="true">#</a> 装饰器执行顺序</h3><p>有多个参数装饰器时：从最后一个参数依次向前执行</p><p>方法和方法参数中参数装饰器先执行。 方法和属性装饰器，谁在前面谁先执行。因为参数属于方法一部分，所以参数会一直紧紧挨着方法执行</p><p>类装饰器总是最后执行</p><div class="language-"><pre><code>function Class1Decorator() {
+  return function (target: any) {
+    console.log(&quot;类1装饰器&quot;);
+  };
+}
+function Class2Decorator() {
+  return function (target: any) {
+    console.log(&quot;类2装饰器&quot;);
+  };
+}
+function MethodDecorator() {
+  return function (
+    target: any,
+    methodName: string,
+    descriptor: PropertyDescriptor
+  ) {
+    console.log(&quot;方法装饰器&quot;);
+  };
+}
+function Param1Decorator() {
+  return function (target: any, methodName: string, paramIndex: number) {
+    console.log(&quot;参数1装饰器&quot;);
+  };
+}
+function Param2Decorator() {
+  return function (target: any, methodName: string, paramIndex: number) {
+    console.log(&quot;参数2装饰器&quot;);
+  };
+}
+function PropertyDecorator(name: string) {
+  return function (target: any, propertyName: string) {
+    console.log(name + &quot;属性装饰器&quot;);
+  };
+}
+
+@Class1Decorator()
+@Class2Decorator()
+class Person {
+  @PropertyDecorator(&quot;name&quot;)
+  name: string = &quot;hello&quot;;
+  @PropertyDecorator(&quot;age&quot;)
+  age: number = 10;
+  @MethodDecorator()
+  greet(@Param1Decorator() p1: string, @Param2Decorator() p2: string) {}
+}
+
+/**
+name属性装饰器
+age属性装饰器
+参数2装饰器
+参数1装饰器
+方法装饰器
+类2装饰器
+类1装饰器
+ */
+</code></pre></div><h2 id="编译"><a class="header-anchor" href="#编译" aria-hidden="true">#</a> 编译</h2><h3 id="tsconfig-json-的作用"><a class="header-anchor" href="#tsconfig-json-的作用" aria-hidden="true">#</a> tsconfig.json 的作用</h3><ul><li>用于标识 TypeScript 项目的根路径；</li><li>用于配置 TypeScript 编译器；</li><li>用于指定编译的文件。</li></ul><h3 id="tsconfig-json-重要字段"><a class="header-anchor" href="#tsconfig-json-重要字段" aria-hidden="true">#</a> tsconfig.json 重要字段</h3><ul><li>files - 设置要编译的文件的名称；</li><li>include - 设置需要进行编译的文件，支持路径模式匹配；</li><li>exclude - 设置无需进行编译的文件，支持路径模式匹配；</li><li>compilerOptions - 设置与编译流程相关的选项。</li></ul><h3 id="compileroptions-选项"><a class="header-anchor" href="#compileroptions-选项" aria-hidden="true">#</a> compilerOptions 选项</h3><div class="language-"><pre><code>{
+  &quot;compilerOptions&quot;: {
+
+    /* 基本选项 */
+    &quot;target&quot;: &quot;es5&quot;,                       // 指定 ECMAScript 目标版本: &#39;ES3&#39; (default), &#39;ES5&#39;, &#39;ES6&#39;/&#39;ES2015&#39;, &#39;ES2016&#39;, &#39;ES2017&#39;, or &#39;ESNEXT&#39;
+    &quot;module&quot;: &quot;commonjs&quot;,                  // 指定使用模块: &#39;commonjs&#39;, &#39;amd&#39;, &#39;system&#39;, &#39;umd&#39; or &#39;es2015&#39;
+    &quot;lib&quot;: [],                             // 指定要包含在编译中的库文件
+    &quot;allowJs&quot;: true,                       // 允许编译 javascript 文件
+    &quot;checkJs&quot;: true,                       // 报告 javascript 文件中的错误
+    &quot;jsx&quot;: &quot;preserve&quot;,                     // 指定 jsx 代码的生成: &#39;preserve&#39;, &#39;react-native&#39;, or &#39;react&#39;
+    &quot;declaration&quot;: true,                   // 生成相应的 &#39;.d.ts&#39; 文件
+    &quot;sourceMap&quot;: true,                     // 生成相应的 &#39;.map&#39; 文件
+    &quot;outFile&quot;: &quot;./&quot;,                       // 将输出文件合并为一个文件
+    &quot;outDir&quot;: &quot;./&quot;,                        // 指定输出目录
+    &quot;rootDir&quot;: &quot;./&quot;,                       // 用来控制输出目录结构 --outDir.
+    &quot;removeComments&quot;: true,                // 删除编译后的所有的注释
+    &quot;noEmit&quot;: true,                        // 不生成输出文件
+    &quot;importHelpers&quot;: true,                 // 从 tslib 导入辅助工具函数
+    &quot;isolatedModules&quot;: true,               // 将每个文件做为单独的模块 （与 &#39;ts.transpileModule&#39; 类似）.
+
+    /* 严格的类型检查选项 */
+    &quot;strict&quot;: true,                        // 启用所有严格类型检查选项
+    &quot;noImplicitAny&quot;: true,                 // 在表达式和声明上有隐含的 any类型时报错
+    &quot;strictNullChecks&quot;: true,              // 启用严格的 null 检查
+    &quot;noImplicitThis&quot;: true,                // 当 this 表达式值为 any 类型的时候，生成一个错误
+    &quot;alwaysStrict&quot;: true,                  // 以严格模式检查每个模块，并在每个文件里加入 &#39;use strict&#39;
+
+    /* 额外的检查 */
+    &quot;noUnusedLocals&quot;: true,                // 有未使用的变量时，抛出错误
+    &quot;noUnusedParameters&quot;: true,            // 有未使用的参数时，抛出错误
+    &quot;noImplicitReturns&quot;: true,             // 并不是所有函数里的代码都有返回值时，抛出错误
+    &quot;noFallthroughCasesInSwitch&quot;: true,    // 报告 switch 语句的 fallthrough 错误。（即，不允许 switch 的 case 语句贯穿）
+
+    /* 模块解析选项 */
+    &quot;moduleResolution&quot;: &quot;node&quot;,            // 选择模块解析策略： &#39;node&#39; (Node.js) or &#39;classic&#39; (TypeScript pre-1.6)
+    &quot;baseUrl&quot;: &quot;./&quot;,                       // 用于解析非相对模块名称的基目录
+    &quot;paths&quot;: {},                           // 模块名到基于 baseUrl 的路径映射的列表
+    &quot;rootDirs&quot;: [],                        // 根文件夹列表，其组合内容表示项目运行时的结构内容
+    &quot;typeRoots&quot;: [],                       // 包含类型声明的文件列表
+    &quot;types&quot;: [],                           // 需要包含的类型声明文件名列表
+    &quot;allowSyntheticDefaultImports&quot;: true,  // 允许从没有设置默认导出的模块中默认导入。
+
+    /* Source Map Options */
+    &quot;sourceRoot&quot;: &quot;./&quot;,                    // 指定调试器应该找到 TypeScript 文件而不是源文件的位置
+    &quot;mapRoot&quot;: &quot;./&quot;,                       // 指定调试器应该找到映射文件而不是生成文件的位置
+    &quot;inlineSourceMap&quot;: true,               // 生成单个 soucemaps 文件，而不是将 sourcemaps 生成不同的文件
+    &quot;inlineSources&quot;: true,                 // 将代码与 sourcemaps 生成到一个文件中，要求同时设置了 --inlineSourceMap 或 --sourceMap 属性
+
+    /* 其他选项 */
+    &quot;experimentalDecorators&quot;: true,        // 启用装饰器
+    &quot;emitDecoratorMetadata&quot;: true          // 为装饰器提供元数据的支持
+  }
+}
+</code></pre></div><h2 id="模块和声明文件"><a class="header-anchor" href="#模块和声明文件" aria-hidden="true">#</a> 模块和声明文件</h2><h3 id="全局模块"><a class="header-anchor" href="#全局模块" aria-hidden="true">#</a> 全局模块</h3><p><strong>在默认情况下，当你开始在一个新的 TypeScript 文件中写下代码时，它处于全局命名空间中</strong>，推荐使用文件模块</p><div class="language-"><pre><code># foo.ts
+const foo = 123;
+# bar.ts
+const bar = foo; // allowed
+</code></pre></div><h3 id="文件模块"><a class="header-anchor" href="#文件模块" aria-hidden="true">#</a> 文件模块</h3><ul><li><strong>文件模块也被称为外部模块。如果在<code>你的 TypeScript 文件的根级别位置含有 import 或者 export</code>，那么它会在这个文件中创建一个本地的作用域</strong></li><li>模块是 TS 中外部模块的简称，侧重于代码和复用</li><li>模块在其自身的作用域里执行，而不是在全局作用域里</li><li>一个模块里的变量、函数、类等在外部是不可见的，除非你把它导出</li><li>如果想要使用一个模块里导出的变量，则需要导入</li></ul><div class="language-"><pre><code># foo.ts
+const foo = 123;
+export {};
+# bar.ts
+const bar = foo; // error
+</code></pre></div><h3 id="声明文件"><a class="header-anchor" href="#声明文件" aria-hidden="true">#</a> 声明文件</h3><ul><li>我们可以把类型声明放在一个单独的类型声明文件中</li><li>文件命名规范为*.d.ts</li><li>查看类型声明文件有助于了解库的使用方式</li></ul><p>typings\jquery.d.ts</p><div class="language-"><pre><code>declare const $: (selector: string) =&gt; {
+  click(): void;
+  width(length: number): void;
+};
+</code></pre></div><h3 id="第三方声明文件"><a class="header-anchor" href="#第三方声明文件" aria-hidden="true">#</a> 第三方声明文件</h3><ul><li>可以安装使用第三方的声明文件</li><li><code>@types</code> 是一个约定的前缀，所有的第三方声明的类型库都会带有这样的前缀</li><li>JavaScript 中有很多内置对象，它们可以在 TypeScript 中被当做声明好了的类型</li><li>内置对象是指根据标准在全局作用域（Global）上存在的对象。这里的标准是指 ECMAScript 和其他环境（比如 DOM）的标准</li><li>这些内置对象的类型声明文件，就包含在 TypeScript 核心库的类型声明文件中,具体可以查看<a href="https://github.com/Microsoft/TypeScript/tree/main/src/lib" target="_blank" rel="noopener noreferrer">ts核心声明文件</a></li></ul><h3 id="查找声明文件"><a class="header-anchor" href="#查找声明文件" aria-hidden="true">#</a> 查找声明文件</h3><p>如果是手动写的声明文件，那么需要满足以下条件之一，才能被正确的识别</p><ul><li>给 package.json 中的 types 或 typings 字段指定一个类型声明文件地址</li><li>在项目根目录下，编写一个 index.d.ts 文件</li><li>针对入口文件（package.json 中的 main 字段指定的入口文件），编写一个同名不同后缀的 .d.ts 文件</li></ul><div class="language-"><pre><code>{
+    &quot;name&quot;: &quot;myLib&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
+    &quot;main&quot;: &quot;lib/index.js&quot;,
+    &quot;types&quot;: &quot;myLib.d.ts&quot;,
+}
+</code></pre></div><p>查找过程如下：</p><ol><li>先找 myLib.d.ts</li><li>没有就再找 index.d.ts</li><li>还没有再找 lib/index.d.js</li><li>还找不到就认为没有类型声明了</li></ol></div><div class="links-wrapper"><div class="prev-link"><!----></div><div class="next-link"><!----></div></div><!--[--><!--[--><!--]--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"docs.md\":\"67e0e6a2\",\"index.md\":\"edacb7d2\",\"README.md\":\"4128f4cd\",\"tags.md\":\"9d596c8e\",\"docs_algorithm_array.md\":\"cd37e67d\",\"docs_algorithm_bstTree.md\":\"2c5f112a\",\"docs_algorithm_chain.md\":\"886e6a2a\",\"docs_algorithm_chainCicle.md\":\"19bf3dcc\",\"docs_algorithm_chainHead.md\":\"d919a8ea\",\"docs_algorithm_complexity.md\":\"d90c660d\",\"docs_algorithm_dataStructures.md\":\"69c5d50f\",\"docs_algorithm_DFS.md\":\"6051aa2d\",\"docs_algorithm_dynamic.md\":\"f30f4f64\",\"docs_algorithm_ergodicTree.md\":\"e4ba1bb8\",\"docs_algorithm_queue.md\":\"30ce6b58\",\"docs_algorithm_sort.md\":\"691a9203\",\"docs_algorithm_stack.md\":\"15072771\",\"docs_algorithm_string.md\":\"3a38c3b1\",\"docs_algorithm_thinking.md\":\"4e7b9192\",\"docs_algorithm_tree.md\":\"9837f573\",\"docs_article_index.md\":\"1854e195\",\"docs_babel_start.md\":\"baa6a13e\",\"docs_howReview_start.md\":\"b3790e45\",\"docs_interview_22Ready.md\":\"a75a140a\",\"docs_interview_22StartSum.md\":\"eb76096b\",\"docs_interview_async.md\":\"48585586\",\"docs_interview_boxsizing.md\":\"334115fc\",\"docs_interview_center.md\":\"277dcf15\",\"docs_interview_css.md\":\"b460d1c7\",\"docs_interview_dataType.md\":\"2f121d67\",\"docs_interview_debounce.md\":\"dbe6dfc6\",\"docs_interview_defineProperty.md\":\"ec52fd21\",\"docs_interview_dns.md\":\"741137ec\",\"docs_interview_hashMode.md\":\"c62c4930\",\"docs_interview_httpCode.md\":\"cb81c76b\",\"docs_interview_index.md\":\"4819ed13\",\"docs_interview_jsBaseQuestion.md\":\"8216827e\",\"docs_interview_longList.md\":\"b445de56\",\"docs_interview_networkBaseQuestion.md\":\"d402d840\",\"docs_interview_process.md\":\"ef641a36\",\"docs_interview_promiseCicle.md\":\"07117c4b\",\"docs_interview_reactBaseQuestion.md\":\"a8b76b21\",\"docs_interview_repaint.md\":\"d3e9229b\",\"docs_interview_target.md\":\"598f6eb7\",\"docs_interview_URL.md\":\"26c1195b\",\"docs_interview_vueBaseQuestion.md\":\"a7a7a406\",\"docs_interview_writeQuestion.md\":\"b59b7251\",\"docs_jsAdvanced_changelog.md\":\"233da342\",\"docs_jsAdvanced_cURL.md\":\"5cb3753d\",\"docs_jsAdvanced_gulp.md\":\"958207e2\",\"docs_jsAdvanced_husky.md\":\"fb9e0602\",\"docs_jsAdvanced_index.md\":\"78cfa234\",\"docs_jsAdvanced_jiangVui.md\":\"cee38e52\",\"docs_jsAdvanced_jsAdvanced.md\":\"f4274792\",\"docs_jsAdvanced_loadingHandle.md\":\"adcef2c6\",\"docs_jsAdvanced_mock.md\":\"d1078c95\",\"docs_jsAdvanced_monitor.md\":\"5fcd7e05\",\"docs_jsAdvanced_nvm.md\":\"afb65ddb\",\"docs_jsAdvanced_performance.md\":\"98c310de\",\"docs_jsAdvanced_pureFuntion.md\":\"3031e2a5\",\"docs_jsAdvanced_sentry.md\":\"5bec9037\",\"docs_jsAdvanced_server.md\":\"e3847893\",\"docs_jsAdvanced_standard.md\":\"b3f8225c\",\"docs_jsAdvanced_ts.md\":\"a8705ef7\",\"docs_jsAdvanced_vite.md\":\"d84b2beb\",\"docs_jsAdvanced_vue3.md\":\"989e21ab\",\"docs_jsAdvanced_vueComponent.md\":\"95f40378\",\"docs_jsBase_bind.md\":\"7704be52\",\"docs_jsBase_Cache.md\":\"1a8d3cd4\",\"docs_jsBase_closure.md\":\"af360d78\",\"docs_jsBase_context.md\":\"80535d58\",\"docs_jsBase_copy.md\":\"40d90e39\",\"docs_jsBase_cors.md\":\"82f755c1\",\"docs_jsBase_CSRF.md\":\"0f0814f7\",\"docs_jsBase_css.md\":\"e5d21f2f\",\"docs_jsBase_es6.md\":\"5c049d05\",\"docs_jsBase_eventLoop.md\":\"7a6b0268\",\"docs_jsBase_garbage.md\":\"a125085d\",\"docs_jsBase_git.md\":\"4e8babae\",\"docs_jsBase_https.md\":\"65dd22dc\",\"docs_jsBase_index.md\":\"4b04cb6c\",\"docs_jsBase_jquery.md\":\"f3395bf4\",\"docs_jsBase_memory.md\":\"7c04f972\",\"docs_jsBase_module.md\":\"e5949fb6\",\"docs_jsBase_new.md\":\"bd8308c4\",\"docs_jsBase_prototype.md\":\"9dc246ac\",\"docs_jsBase_storage.md\":\"b3adeaa6\",\"docs_jsBase_this.md\":\"8fc81baa\",\"docs_jsBase_websocket.md\":\"1507f39c\",\"docs_resources_learning.md\":\"af5859f3\",\"docs_resources_tool.md\":\"1ba858f0\",\"docs_reStudy_browser_css.md\":\"b109f4b2\",\"docs_reStudy_browser_cssdom.md\":\"7588bcee\",\"docs_reStudy_browser_dom.md\":\"1645df31\",\"docs_reStudy_browser_domApi.md\":\"878db3e4\",\"docs_reStudy_browser_event.md\":\"133fa540\",\"docs_reStudy_browser_http.md\":\"aefa28ae\",\"docs_reStudy_browser_maker.md\":\"a584a598\",\"docs_reStudy_browser_print.md\":\"6f541cdf\",\"docs_reStudy_css_animation.md\":\"088ce694\",\"docs_reStudy_css_color.md\":\"305a53ea\",\"docs_reStudy_css_compose.md\":\"d7c7cb3f\",\"docs_reStudy_css_link.md\":\"ce8f5523\",\"docs_reStudy_css_rule.md\":\"1a9ef4b3\",\"docs_reStudy_css_select.md\":\"31d9217e\",\"docs_reStudy_html_ARIA.md\":\"ae5860a4\",\"docs_reStudy_html_DTD.md\":\"0f201e28\",\"docs_reStudy_html_head.md\":\"80c79dc2\",\"docs_reStudy_html_standard.md\":\"2a19421f\",\"docs_reStudy_html_tag.md\":\"718974b5\",\"docs_reStudy_html_tramslate.md\":\"b64e0c8d\",\"docs_reStudy_js_closure.md\":\"fa4b9116\",\"docs_reStudy_js_completion.md\":\"a2be3e79\",\"docs_reStudy_js_eventLoop.md\":\"e6c7402c\",\"docs_reStudy_js_function.md\":\"710f7ab3\",\"docs_reStudy_js_grammar.md\":\"8f61f7b4\",\"docs_reStudy_js_object.md\":\"94bc30b9\",\"docs_reStudy_js_prototype.md\":\"3c2eaed0\",\"docs_reStudy_js_semicolon.md\":\"c8ad84a8\",\"docs_reStudy_js_token.md\":\"0213be35\",\"docs_reStudy_js_type.md\":\"80fc2574\",\"docs_reStudy_other_question.md\":\"1ff699d9\",\"docs_reStudy_start.md\":\"9afdd8e6\",\"docs_reStudy_sum_architecture.md\":\"25c6ac11\",\"docs_reStudy_sum_continue.md\":\"2cc6c58f\",\"docs_reStudy_sum_performance.md\":\"8207603c\",\"docs_reStudy_sum_system.md\":\"e90b1975\",\"docs_reStudy_sum_tool.md\":\"5bf127ce\",\"docs_work_h5.md\":\"24bb8ff4\",\"docs_work_vue.md\":\"ed77ade1\"}")</script>
+    <script type="module" async src="/_assets/app.bac4ca22.js"></script>
+  </body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      “遍历三兄弟”的迭代实现 | Jiang's Blog
+    </title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/_assets/style.d3cbd45d.css">
+    <link rel="modulepreload" href="/_assets/common-d6bd45c0.js">
+    <link rel="modulepreload" href="/_assets/docs_algorithm_tree.md.9837f573.lean.js">
+    <link rel="modulepreload" href="/_assets/app.bac4ca22.js">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="Jiang的个人博客">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="navbar"><!--[--><a class="title" aria-label="Jiang&#39;s Blog, back to home" href="/"><!----><span style="color:var(--accent-color);">Jiang&#39;s Blog</span></a><div class="flex-grow"></div><nav class="nav-links hide-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!-- <AlgoliaSearchBox
+              v-if="$site.themeConfig.algolia"
+              :options="$site.themeConfig.algolia"
+            /> --><!--]--><!--]--><!--]--><div class="sidebar-button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div></header><aside class=""><!--[--><nav class="nav-links show-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!--]--><!--]--><ul class="sidebar"><!--[--><li class="sidebar-item"><p class="sidebar-link">算法</p><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/dataStructures">数据结构</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/ergodicTree">遍历二叉树</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/complexity">复杂度</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/array">数组解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/string">字符串解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chain">链表解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chainHead">链表解题-快慢指针与多指针</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chainCicle">链表解题-环形链表</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/stack">栈解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/queue">队列解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/DFS">深度优先&amp;广度优先</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/thinking">递归与回溯思想</a><!----></li><li class="sidebar-item"><a class="sidebar-link active" href="/docs/algorithm/tree">二叉树</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#“遍历三兄弟”的迭代实现">“遍历三兄弟”的迭代实现</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#层序遍历的衍生问题">层序遍历的衍生问题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#翻转二叉树">翻转二叉树</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/bstTree">二叉搜索树</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/sort">排序算法</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/dynamic">动态规划</a><!----></li></ul></li><!--]--></ul><!--[--><!--[--><!--]--><!--]--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main><div class="content"><!--[--><!--[--><!--]--><!--]--><div class="md-header"><!-- <div class="md-title">{{ pageData.title }}</div> --><!-- {{ pageData.frontmatter.date }} --><div class="md-date">今日诗词欣赏</div><span id="jinrishici-sentence">正在加载今日诗词....</span></div><!-- 右边导航 --><!-- <ul class="catalog">
+      <li class="catalog-item" v-for="item in pageData.headers">
+        <a class="level level-2" v-if="item.level == 2" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+        <a class="level level-3" v-if="item.level == 3" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+      </li>
+    </ul> --><!-- md主内容 --><div><p>重点掌握的三个命题：</p><ul><li>迭代法实现二叉树的先、中、后序遍历</li><li>二叉树层序遍历的衍生问题</li><li>翻转二叉树</li></ul><h2 id="“遍历三兄弟”的迭代实现"><a class="header-anchor" href="#“遍历三兄弟”的迭代实现" aria-hidden="true">#</a> “遍历三兄弟”的迭代实现</h2><blockquote><p>题目描述：给定一个二叉树，返回它的前序（先序）遍历序列。</p></blockquote><p>示例:<br> 输入: [1,null,2,3]</p><div class="language-"><pre><code>1   
+ \   
+  2   
+ /  
+3 
+</code></pre></div><p>输出: [1,2,3] <br> 进阶: 递归算法很简单，你可以通过迭代算法完成吗？ <br></p><p>二叉树的格式</p><div class="language-"><pre><code>const root = {
+  val: &quot;A&quot;,
+  left: {
+    val: &quot;B&quot;,
+    left: {
+      val: &quot;D&quot;
+    },
+    right: {
+      val: &quot;E&quot;
+    }
+  },
+  right: {
+    val: &quot;C&quot;,
+    right: {
+      val: &quot;F&quot;
+    }
+  }
+};
+</code></pre></div><p><strong>先序遍历</strong><br> 思路：</p><ul><li>明白前序遍历就是：先遍历<code>根结点</code>、然后<code>遍历左孩子</code>、最后<code>遍历右孩子</code></li><li>定义一个栈用来承接树的内容，我们对树进行入栈，入栈顺序为 <code>右-左</code>，根节点的值直接 push 到结果数组里。</li><li>那么当我们出栈的时候就是按照 <code>左-右</code> 的顺序了，我们每次把结点值 push 到结果数组。</li><li>当栈空时，返回结果</li></ul><p>编码实现</p><div class="language-"><pre><code>const preorderTraversal = function(root) {
+  // 定义结果数组
+  const res = []  
+  // 处理边界条件
+  if(!root) {
+      return res
+  }
+  // 初始化栈结构
+  const stack = [] 
+  // 首先将根结点入栈
+  stack.push(root)  
+  // 若栈不为空，则重复出栈、入栈操作
+  while(stack.length) {
+      // 将栈顶结点记为当前结点
+      const cur = stack.pop() 
+      // 当前结点就是当前子树的根结点，把这个结点放在结果数组的尾部
+      res.push(cur.val)
+      // 若当前子树根结点有右孩子，则将右孩子入栈
+      if(cur.right) {
+          stack.push(cur.right)
+      }
+      // 若当前子树根结点有左孩子，则将左孩子入栈
+      if(cur.left) {
+          stack.push(cur.left)
+      }
+  }
+  // 返回结果数组
+  return res
+};
+</code></pre></div><p><strong>后序遍历</strong><br> 那么如果是后序遍历的话，遍历顺序应该是 <code>左-右-根</code>。<br> 思路</p><ul><li>我们在 push 结果的时候，使用 unshift 置换一下顺序，输出结果本来是 <code>根-左-右</code> 变成了 <code>右-左-根</code></li><li>那么我们再把 <code>右-左</code> 变成 <code>左-右</code> 即可，把左右入栈的顺序调整一下即可</li></ul><p>代码实现</p><div class="language-"><pre><code>const postorderTraversal = function(root) {
+  // 定义结果数组
+  const res = []  
+  // 处理边界条件
+  if(!root) {
+      return res
+  }
+  // 初始化栈结构
+  const stack = [] 
+  // 首先将根结点入栈
+  stack.push(root)  
+  // 若栈不为空，则重复出栈、入栈操作
+  while(stack.length) {
+      // 将栈顶结点记为当前结点
+      const cur = stack.pop() 
+      // 当前结点就是当前子树的根结点，把这个结点放在结果数组的头部
+      res.unshift(cur.val)
+      // 若当前子树根结点有左孩子，则将左孩子入栈
+      if(cur.left) {
+        stack.push(cur.left)
+      }  
+      // 若当前子树根结点有右孩子，则将右孩子入栈
+      if(cur.right) {
+        stack.push(cur.right)
+      }
+  }
+  // 返回结果数组
+  return res
+};
+</code></pre></div><p><strong>中序遍历</strong><br> 思路：<br></p><ul><li>中序遍历的序列规则是 <code>左-中-右</code> ，这意味着我们必须首先定位到最左的叶子结点。在这个定位的过程中，必然会途径目标结点的父结点、爷爷结点和各种辈分的祖宗结点</li><li>途径过的每一个结点，我们都要及时地把它入栈。这样当最左的叶子结点出栈时，第一个回溯到的就是它的父结点，然后就在最左节点处开始左右遍历处理结果</li></ul><div class="language-"><pre><code>const inorderTraversal = function(root) {
+  // 定义结果数组
+  const res = []  
+  // 初始化栈结构
+  const stack = []   
+  // 用一个 cur 结点充当游标
+  let cur = root  
+  // 当 cur 不为空、或者 stack 不为空时，重复以下逻辑
+  while(cur || stack.length) {
+      // 这个 while 的作用是把寻找最左叶子结点的过程中，途径的所有结点都记录下来 
+      while(cur) {
+          // 将途径的结点入栈
+          stack.push(cur)  
+          // 继续搜索当前结点的左孩子
+          cur = cur.left  
+      }
+      // 取出栈顶元素
+      cur = stack.pop()  
+      // 将栈顶元素入栈
+      res.push(cur.val)  
+      // 尝试读取 cur 结点的右孩子
+      cur = cur.right
+  }
+  // 返回结果数组
+  return res
+};
+</code></pre></div><p>代码深度解析</p><ul><li><ol><li>两个 while ：内层的 while 的作用是在寻找最左叶子结点的过程中，把途径的所有结点都记录到 stack 里。记录工作完成后，才会走到外层 while 的剩余逻辑里——这部分逻辑的作用是从最左的叶子结点开始，一层层回溯遍历左孩子的父结点和右侧兄弟结点，进而完成整个中序遍历任务。</li></ol></li><li><ol start="2"><li>外层 while 的两个条件： cur 的存在性和stack.length 的存在性，各自是为了限制什么？</li></ol><ul><li><ol><li>stack.length 的存在性比较好理解， stack 中存储的是没有被推入结果数组 res 的待遍历元素。只要 stack 不为空，就意味着遍历没有结束， 遍历动作需要继续重复。</li></ol></li><li><ol start="2"><li>cur 的存在性就比较有趣了。它对应以下几种情况：</li></ol><ul><li><ol><li>初始态， cur 指向 root 结点，只要 root 不为空， cur 就不为空。此时判断了 cur 存在后，就会开始最左叶子结点的寻找之旅。这趟“一路向左”的旅途中， cur 始终指向当前遍历到的左孩子。</li></ol></li><li><ol start="2"><li>第一波内层 while 循环结束， cur 开始承担中序遍历的遍历游标职责。 cur 始终会指向当前栈的栈顶元素，也就是“一路向左”过程中途径的某个左孩子，然后将这个左孩子作为中序遍历的第一个结果元素纳入结果数组。假如这个左孩子是一个叶子结点，那么尝试取其右孩子时就只能取到 null ，这个 null 的存在，会导致内层循环 while 被跳过，接着就直接回溯到了这个左孩子的父结点，符合 左-&gt;根 的序列规则</li></ol></li><li><ol start="3"><li>假如当前取到的栈顶元素不是叶子结点，同时有一个右孩子，那么尝试取其右孩子时就会取到一个存在的结点。 cur 存在，于是进入内层 while 循环，重复“一路向左”的操作，去寻找这个右孩子对应的子树里最靠左的结点，然后去重复刚刚这个或回溯、或“一路向左”的过程。如果这个右孩子对应的子树里没有左孩子，那么跳出内层 while 循环之后，紧接着被纳入 res 结果数组的就是这个右孩子本身，符合 根-&gt;右 的序列规则</li></ol></li></ul></li></ul></li></ul><h2 id="层序遍历的衍生问题"><a class="header-anchor" href="#层序遍历的衍生问题" aria-hidden="true">#</a> 层序遍历的衍生问题</h2><blockquote><p>题目描述：给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。</p></blockquote><p>示例：<br> 二叉树：[3,9,20,null,null,15,7],</p><div class="language-"><pre><code>  3
+ / \
+9  20
+  /  \
+ 15   7
+</code></pre></div><p>返回其层次遍历结果：</p><div class="language-"><pre><code>[
+[3],
+[9,20],
+[15,7]
+]
+</code></pre></div><p>思路：<br> 我们在对二叉树进行层序遍历时，每一次 while 循环其实都对应着二叉树的某一层。只要我们在进入while循环之初，记录下这一层结点个数，然后将这个数量范围内的元素 push 进同一个数组，就能够实现二叉树的分层。</p><div class="language-"><pre><code>/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+const levelOrder = function(root) {
+    // 初始化结果数组
+    const res = []  
+    // 处理边界条件
+    if(!root) {
+        return res
+    }  
+    // 初始化队列
+    const queue = []   
+    // 队列第一个元素是根结点
+    queue.push(root)  
+    // 当队列不为空时，反复执行以下逻辑
+    while(queue.length) {
+        // level 用来存储当前层的结点
+        const level = []  
+        // 缓存刚进入循环时的队列长度，这一步很关键，因为队列长度后面会发生改变
+        const len = queue.length  
+        // 循环遍历当前层级的结点
+        for(let i=0;i&lt;len;i++) {
+            // 取出队列的头部元素
+            const top = queue.shift()  
+            // 将头部元素的值推入 level 数组
+            level.push(top.val)
+            // 如果当前结点有左孩子，则推入下一层级
+            if(top.left) {
+                queue.push(top.left)
+            }
+            // 如果当前结点有右孩子，则推入下一层级
+            if(top.right) {
+                queue.push(top.right)
+            }
+        }
+        // 将 level 推入结果数组
+        res.push(level)
+    }
+    // 返回结果数组
+    return res
+};
+</code></pre></div><h2 id="翻转二叉树"><a class="header-anchor" href="#翻转二叉树" aria-hidden="true">#</a> 翻转二叉树</h2><blockquote><p>题目描述：翻转一棵二叉树。</p></blockquote><p>示例： 输入：</p><div class="language-"><pre><code>     4
+   /   \
+  2     7
+ / \   / \
+1   3 6   9
+</code></pre></div><p>输出：</p><div class="language-"><pre><code>     4
+   /   \
+  7     2
+ / \   / \
+9   6 3   1
+</code></pre></div><p><strong>思路分析</strong><br> 这道题是一道非常经典的递归应用题。<br> 一棵二叉树，经过翻转后会有什么特点？答案是每一棵子树的左孩子和右孩子都发生了交换。既然是“每一棵子树”，那么就意味着重复，既然涉及了重复，就没有理由不用递归。<br> 于是这道题解题思路就非常明确了：以递归的方式，遍历树中的每一个结点，并将每一个结点的左右孩子进行交换。<br></p><div class="language-"><pre><code>/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+const invertTree = function(root) {
+    // 定义递归边界
+    if(!root) {
+        return root;
+    }
+    // 递归交换右孩子的子结点
+    let right = invertTree(root.right);
+    // 递归交换左孩子的子结点
+    let left = invertTree(root.left);
+    // 交换当前遍历到的两个左右孩子结点
+    root.left = right;
+    root.right = left;
+    return root;
+};
+</code></pre></div></div><div class="links-wrapper"><div class="prev-link"><!----></div><div class="next-link"><!----></div></div><!--[--><!--[--><!--]--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"docs.md\":\"67e0e6a2\",\"index.md\":\"edacb7d2\",\"README.md\":\"4128f4cd\",\"tags.md\":\"9d596c8e\",\"docs_algorithm_array.md\":\"cd37e67d\",\"docs_algorithm_bstTree.md\":\"2c5f112a\",\"docs_algorithm_chain.md\":\"886e6a2a\",\"docs_algorithm_chainCicle.md\":\"19bf3dcc\",\"docs_algorithm_chainHead.md\":\"d919a8ea\",\"docs_algorithm_complexity.md\":\"d90c660d\",\"docs_algorithm_dataStructures.md\":\"69c5d50f\",\"docs_algorithm_DFS.md\":\"6051aa2d\",\"docs_algorithm_dynamic.md\":\"f30f4f64\",\"docs_algorithm_ergodicTree.md\":\"e4ba1bb8\",\"docs_algorithm_queue.md\":\"30ce6b58\",\"docs_algorithm_sort.md\":\"691a9203\",\"docs_algorithm_stack.md\":\"15072771\",\"docs_algorithm_string.md\":\"3a38c3b1\",\"docs_algorithm_thinking.md\":\"4e7b9192\",\"docs_algorithm_tree.md\":\"9837f573\",\"docs_article_index.md\":\"1854e195\",\"docs_babel_start.md\":\"baa6a13e\",\"docs_howReview_start.md\":\"b3790e45\",\"docs_interview_22Ready.md\":\"a75a140a\",\"docs_interview_22StartSum.md\":\"eb76096b\",\"docs_interview_async.md\":\"48585586\",\"docs_interview_boxsizing.md\":\"334115fc\",\"docs_interview_center.md\":\"277dcf15\",\"docs_interview_css.md\":\"b460d1c7\",\"docs_interview_dataType.md\":\"2f121d67\",\"docs_interview_debounce.md\":\"dbe6dfc6\",\"docs_interview_defineProperty.md\":\"ec52fd21\",\"docs_interview_dns.md\":\"741137ec\",\"docs_interview_hashMode.md\":\"c62c4930\",\"docs_interview_httpCode.md\":\"cb81c76b\",\"docs_interview_index.md\":\"4819ed13\",\"docs_interview_jsBaseQuestion.md\":\"8216827e\",\"docs_interview_longList.md\":\"b445de56\",\"docs_interview_networkBaseQuestion.md\":\"d402d840\",\"docs_interview_process.md\":\"ef641a36\",\"docs_interview_promiseCicle.md\":\"07117c4b\",\"docs_interview_reactBaseQuestion.md\":\"a8b76b21\",\"docs_interview_repaint.md\":\"d3e9229b\",\"docs_interview_target.md\":\"598f6eb7\",\"docs_interview_URL.md\":\"26c1195b\",\"docs_interview_vueBaseQuestion.md\":\"a7a7a406\",\"docs_interview_writeQuestion.md\":\"b59b7251\",\"docs_jsAdvanced_changelog.md\":\"233da342\",\"docs_jsAdvanced_cURL.md\":\"5cb3753d\",\"docs_jsAdvanced_gulp.md\":\"958207e2\",\"docs_jsAdvanced_husky.md\":\"fb9e0602\",\"docs_jsAdvanced_index.md\":\"78cfa234\",\"docs_jsAdvanced_jiangVui.md\":\"cee38e52\",\"docs_jsAdvanced_jsAdvanced.md\":\"f4274792\",\"docs_jsAdvanced_loadingHandle.md\":\"adcef2c6\",\"docs_jsAdvanced_mock.md\":\"d1078c95\",\"docs_jsAdvanced_monitor.md\":\"5fcd7e05\",\"docs_jsAdvanced_nvm.md\":\"afb65ddb\",\"docs_jsAdvanced_performance.md\":\"98c310de\",\"docs_jsAdvanced_pureFuntion.md\":\"3031e2a5\",\"docs_jsAdvanced_sentry.md\":\"5bec9037\",\"docs_jsAdvanced_server.md\":\"e3847893\",\"docs_jsAdvanced_standard.md\":\"b3f8225c\",\"docs_jsAdvanced_ts.md\":\"a8705ef7\",\"docs_jsAdvanced_vite.md\":\"d84b2beb\",\"docs_jsAdvanced_vue3.md\":\"989e21ab\",\"docs_jsAdvanced_vueComponent.md\":\"95f40378\",\"docs_jsBase_bind.md\":\"7704be52\",\"docs_jsBase_Cache.md\":\"1a8d3cd4\",\"docs_jsBase_closure.md\":\"af360d78\",\"docs_jsBase_context.md\":\"80535d58\",\"docs_jsBase_copy.md\":\"40d90e39\",\"docs_jsBase_cors.md\":\"82f755c1\",\"docs_jsBase_CSRF.md\":\"0f0814f7\",\"docs_jsBase_css.md\":\"e5d21f2f\",\"docs_jsBase_es6.md\":\"5c049d05\",\"docs_jsBase_eventLoop.md\":\"7a6b0268\",\"docs_jsBase_garbage.md\":\"a125085d\",\"docs_jsBase_git.md\":\"4e8babae\",\"docs_jsBase_https.md\":\"65dd22dc\",\"docs_jsBase_index.md\":\"4b04cb6c\",\"docs_jsBase_jquery.md\":\"f3395bf4\",\"docs_jsBase_memory.md\":\"7c04f972\",\"docs_jsBase_module.md\":\"e5949fb6\",\"docs_jsBase_new.md\":\"bd8308c4\",\"docs_jsBase_prototype.md\":\"9dc246ac\",\"docs_jsBase_storage.md\":\"b3adeaa6\",\"docs_jsBase_this.md\":\"8fc81baa\",\"docs_jsBase_websocket.md\":\"1507f39c\",\"docs_resources_learning.md\":\"af5859f3\",\"docs_resources_tool.md\":\"1ba858f0\",\"docs_reStudy_browser_css.md\":\"b109f4b2\",\"docs_reStudy_browser_cssdom.md\":\"7588bcee\",\"docs_reStudy_browser_dom.md\":\"1645df31\",\"docs_reStudy_browser_domApi.md\":\"878db3e4\",\"docs_reStudy_browser_event.md\":\"133fa540\",\"docs_reStudy_browser_http.md\":\"aefa28ae\",\"docs_reStudy_browser_maker.md\":\"a584a598\",\"docs_reStudy_browser_print.md\":\"6f541cdf\",\"docs_reStudy_css_animation.md\":\"088ce694\",\"docs_reStudy_css_color.md\":\"305a53ea\",\"docs_reStudy_css_compose.md\":\"d7c7cb3f\",\"docs_reStudy_css_link.md\":\"ce8f5523\",\"docs_reStudy_css_rule.md\":\"1a9ef4b3\",\"docs_reStudy_css_select.md\":\"31d9217e\",\"docs_reStudy_html_ARIA.md\":\"ae5860a4\",\"docs_reStudy_html_DTD.md\":\"0f201e28\",\"docs_reStudy_html_head.md\":\"80c79dc2\",\"docs_reStudy_html_standard.md\":\"2a19421f\",\"docs_reStudy_html_tag.md\":\"718974b5\",\"docs_reStudy_html_tramslate.md\":\"b64e0c8d\",\"docs_reStudy_js_closure.md\":\"fa4b9116\",\"docs_reStudy_js_completion.md\":\"a2be3e79\",\"docs_reStudy_js_eventLoop.md\":\"e6c7402c\",\"docs_reStudy_js_function.md\":\"710f7ab3\",\"docs_reStudy_js_grammar.md\":\"8f61f7b4\",\"docs_reStudy_js_object.md\":\"94bc30b9\",\"docs_reStudy_js_prototype.md\":\"3c2eaed0\",\"docs_reStudy_js_semicolon.md\":\"c8ad84a8\",\"docs_reStudy_js_token.md\":\"0213be35\",\"docs_reStudy_js_type.md\":\"80fc2574\",\"docs_reStudy_other_question.md\":\"1ff699d9\",\"docs_reStudy_start.md\":\"9afdd8e6\",\"docs_reStudy_sum_architecture.md\":\"25c6ac11\",\"docs_reStudy_sum_continue.md\":\"2cc6c58f\",\"docs_reStudy_sum_performance.md\":\"8207603c\",\"docs_reStudy_sum_system.md\":\"e90b1975\",\"docs_reStudy_sum_tool.md\":\"5bf127ce\",\"docs_work_h5.md\":\"24bb8ff4\",\"docs_work_vue.md\":\"ed77ade1\"}")</script>
+    <script type="module" async src="/_assets/app.bac4ca22.js"></script>
+  </body>
+</html>

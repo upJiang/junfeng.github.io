@@ -1,0 +1,1 @@
+import{g as t,f as e}from"./common-d6bd45c0.js";const r='{"title":"Home","frontmatter":{"page":true,"home":true,"title":null,"myHome":true},"relativePath":"index.md","lastUpdated":1626796498096.78}';var o={};o.render=function(r,o,a,m,d,n){return e(),t("div")};export default o;export{r as __pageData};

@@ -1,0 +1,1 @@
+import{g as t,f as e}from"./common-d6bd45c0.js";const r='{"title":"js基础篇","frontmatter":{"title":"js基础篇","describe":"整理js基础"},"relativePath":"docs/jsBase/index.md","lastUpdated":1627229627211.8892}';var s={};s.render=function(r,s,d,a,o,i){return e(),t("div")};export default s;export{r as __pageData};

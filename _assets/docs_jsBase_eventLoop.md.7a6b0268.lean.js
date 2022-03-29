@@ -1,0 +1,1 @@
+import{g as e,f as n,E as o}from"./common-d6bd45c0.js";const t='{"title":"执行顺序","frontmatter":{},"headers":[{"level":2,"title":"执行顺序","slug":"执行顺序"}],"relativePath":"docs/jsBase/eventLoop.md","lastUpdated":1643114720048.344}';var s={};const l=o('',13);s.render=function(o,t,s,c,r,i){return n(),e("div",null,[l])};export default s;export{t as __pageData};

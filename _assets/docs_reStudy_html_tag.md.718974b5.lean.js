@@ -1,0 +1,1 @@
+import{g as t,f as e,E as a}from"./common-d6bd45c0.js";const l='{"title":"语义标签","frontmatter":{},"headers":[{"level":2,"title":"语义标签","slug":"语义标签"}],"relativePath":"docs/reStudy/html_tag.md","lastUpdated":1637071417673.5017}';var n={};const d=a('',17);n.render=function(a,l,n,i,r,s){return e(),t("div",null,[d])};export default n;export{l as __pageData};

@@ -1,0 +1,1 @@
+import{g as e,f as t}from"./common-d6bd45c0.js";const r='{"title":"Home","frontmatter":{"page":true,"home":true,"date":"2020-11-13","title":"文章","describe":"文章收录"},"relativePath":"docs/article/index.md","lastUpdated":1648479186549.8264}';var a={};a.render=function(r,a,d,o,i,m){return t(),e("div")};export default a;export{r as __pageData};

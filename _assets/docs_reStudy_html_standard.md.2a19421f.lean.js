@@ -1,0 +1,1 @@
+import{g as e,f as t,E as n}from"./common-d6bd45c0.js";const i='{"title":"HTML 标准","frontmatter":{},"headers":[{"level":2,"title":"HTML 标准","slug":"html-标准"}],"relativePath":"docs/reStudy/html_standard.md","lastUpdated":1639657876287.8896}';var o={};const a=n('',5);o.render=function(n,i,o,r,s,l){return t(),e("div",null,[a])};export default o;export{i as __pageData};

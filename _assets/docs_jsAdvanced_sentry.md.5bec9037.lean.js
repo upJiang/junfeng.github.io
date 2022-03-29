@@ -1,0 +1,1 @@
+import{g as t,f as e,E as n}from"./common-d6bd45c0.js";const r='{"title":"","frontmatter":{},"relativePath":"docs/jsAdvanced/sentry.md","lastUpdated":1639657876217.93}';var o={};const a=n('',10);o.render=function(n,r,o,i,p,c){return e(),t("div",null,[a])};export default o;export{r as __pageData};

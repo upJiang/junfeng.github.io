@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      添加 husky | Jiang's Blog
+    </title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/_assets/style.d3cbd45d.css">
+    <link rel="modulepreload" href="/_assets/common-d6bd45c0.js">
+    <link rel="modulepreload" href="/_assets/docs_jsAdvanced_standard.md.b3f8225c.lean.js">
+    <link rel="modulepreload" href="/_assets/app.bac4ca22.js">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="Jiang的个人博客">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="navbar"><!--[--><a class="title" aria-label="Jiang&#39;s Blog, back to home" href="/"><!----><span style="color:var(--accent-color);">Jiang&#39;s Blog</span></a><div class="flex-grow"></div><nav class="nav-links hide-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!-- <AlgoliaSearchBox
+              v-if="$site.themeConfig.algolia"
+              :options="$site.themeConfig.algolia"
+            /> --><!--]--><!--]--><!--]--><div class="sidebar-button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div></header><aside class=""><!--[--><nav class="nav-links show-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!--]--><!--]--><ul class="sidebar"><!--[--><li class="sidebar-item"><p class="sidebar-link">进阶</p><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/ts">TS</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/vue3">vue3</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/vite">vite</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/pureFuntion">纯函数</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/nvm">nvm管理node</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/cURL">cURL</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/husky">husky</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/jsAdvanced">js原理学习路线</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/sentry">sentry</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/vueComponent">vue3的三种组件封装</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/mock">mock</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/jiangVui">组件库开发</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/loadingHandle">请求loading封装</a><!----></li><li class="sidebar-item"><a class="sidebar-link active" href="/docs/jsAdvanced/standard">前端规范</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#添加-husky">添加 husky</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#添加-eslint、prettier">添加 eslint、prettier</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#添加-stylelint">添加 stylelint</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#添加-tsc-的检查">添加 tsc 的检查</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/changelog">changelog</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/monitor">监控与埋点</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/gulp">gulp</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/performance">性能优化</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/server">服务器知识</a><!----></li></ul></li><!--]--></ul><!--[--><!--[--><!--]--><!--]--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main><div class="content"><!--[--><!--[--><!--]--><!--]--><div class="md-header"><!-- <div class="md-title">{{ pageData.title }}</div> --><!-- {{ pageData.frontmatter.date }} --><div class="md-date">今日诗词欣赏</div><span id="jinrishici-sentence">正在加载今日诗词....</span></div><!-- 右边导航 --><!-- <ul class="catalog">
+      <li class="catalog-item" v-for="item in pageData.headers">
+        <a class="level level-2" v-if="item.level == 2" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+        <a class="level level-3" v-if="item.level == 3" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+      </li>
+    </ul> --><!-- md主内容 --><div><blockquote><p>vscode 插件安装 Eslint Volar (vue3.0) Prettier Stylelint (0.78.6 高版本无法识别，有问题)</p></blockquote><p>目的：</p><ul><li>保存时自动 eslint 修正、prettier 格式化、stylelint 格式化</li><li>暂存区提交时检测 eslint、stylelint</li><li>代码提交时全局检测ts规范</li></ul><h2 id="添加-husky"><a class="header-anchor" href="#添加-husky" aria-hidden="true">#</a> 添加 husky</h2><blockquote><p>这个其实在我前面的文章有写过，现在采取更简单的方法写一遍，直接使用 lint-staged 搭配 .lintstagedrc 去设置暂存区的stylelint、eslint、以及commit信息的校验</p></blockquote><p><strong>1. 安装依赖</strong></p><div class="language-"><pre><code>@commitlint/cli 
+@commitlint/config-conventional
+husky 
+lint-staged
+
+yarn add 以上xxx -D
+</code></pre></div><p><strong>2. 配置 package.json</strong></p><div class="language-"><pre><code> &quot;scripts&quot;: {
+    &quot;lint&quot;: &quot;lint-staged&quot;,  //暂存区 lint 检查，配置文件在 .lintstagedrc
+    &quot;tsc&quot;: &quot;vue-tsc --noEmit --skipLibCheck&quot;,  //ts的检查
+    &quot;prepare&quot;: &quot;husky install&quot;  //安装依赖时下载husky
+  }
+</code></pre></div><p><strong>3. 添加钩子</strong></p><p>pre-commit</p><div class="language-"><pre><code>#!/bin/sh
+. &quot;$(dirname &quot;$0&quot;)/_/husky.sh&quot;
+
+# lint，检查 eslint、stylelint、ts
+yarn lint
+echo &quot;---检查开始---&quot;
+yarn tsc
+echo &quot;---检查结束---&quot;
+
+# 邮箱的检查
+# EMAIL=$(git config user.email)
+# if [[ ! $EMAIL =~ ^[.[:alnum:]]+@qq\.com$ ]];
+# then
+#   echo &quot;Your git information is not valid&quot;;
+#   echo &quot;Please run:&quot;
+#   echo &#39;   git config --local user.name &quot;&lt;Your name in qq&gt;&quot;&#39;
+#   echo &#39;   git config --local user.email &quot;&lt;Your alias&gt;@qq.com&quot;&#39;
+#   exit 1;
+# fi;
+</code></pre></div><p>commit-msg，检查提交信息</p><div class="language-"><pre><code>#!/bin/sh
+. &quot;$(dirname &quot;$0&quot;)/_/husky.sh&quot;
+
+npx --no-install commitlint --edit &quot;$1&quot;
+</code></pre></div><p><strong>4. 添加 commitlint.config.js 配置。使用默认的</strong></p><div class="language-"><pre><code>module.exports = { extends: [&#39;@commitlint/config-conventional&#39;] }
+</code></pre></div><p><strong>5. 添加 .lintstagedrc 配置暂存区检测 eslint、stylelint</strong></p><div class="language-"><pre><code>{
+    &quot;*.{vue,ts,js,jsx}&quot;: &quot;eslint&quot;,
+    &quot;*.{vue,scss,css}&quot;: [
+        &quot;stylelint&quot;
+    ]
+}
+
+//这里不直接 fix ，您也可以加 --fix 参数自动fix
+</code></pre></div><h2 id="添加-eslint、prettier"><a class="header-anchor" href="#添加-eslint、prettier" aria-hidden="true">#</a> 添加 eslint、prettier</h2><p><strong>1. 安装依赖</strong></p><div class="language-"><pre><code>prettier
+babel-eslint
+@typescript-eslint/eslint-plugin 
+@typescript-eslint/parser 
+eslint 
+eslint-plugin-vue 
+eslint-plugin-prettier
+
+//vue专有
+@vue/eslint-config-prettier 
+@vue/eslint-config-typescript
+
+yarn add 以上xxx -D
+</code></pre></div><p><strong>2. 添加配置文件 .eslintrc.js 文件</strong></p><div class="language-"><pre><code>module.exports = {
+  root: true,
+
+  env: {
+    node: true,
+  },
+
+  extends: [&#39;plugin:vue/vue3-essential&#39;, &#39;eslint:recommended&#39;, &#39;@vue/prettier&#39;, &#39;@vue/typescript&#39;],
+
+  parserOptions: {
+    parser: &#39;@typescript-eslint/parser&#39;,
+  },
+  globals: {
+    wx: &#39;readonly&#39;,
+  },
+  rules: {
+    &#39;prettier/prettier&#39;: [
+      &#39;error&#39;,
+      {
+        tabWidth: 2,
+        singleQuote: true,
+        semi: false,
+        trailingComma: &#39;es5&#39;,
+        arrowParens: &#39;avoid&#39;,
+        endOfLine: &#39;auto&#39;,
+        printWidth: 100,
+      },
+    ],
+    &#39;no-debugger&#39;: &#39;error&#39;,
+    &#39;comma-dangle&#39;: [
+      &#39;error&#39;,
+      {
+        arrays: &#39;always-multiline&#39;,
+        objects: &#39;always-multiline&#39;,
+        imports: &#39;always-multiline&#39;,
+        exports: &#39;never&#39;,
+        functions: &#39;never&#39;,
+      },
+    ],
+    &#39;vue/no-use-v-if-with-v-for&#39;: [
+      &#39;error&#39;,
+      {
+        allowUsingIterationVar: true,
+      },
+    ],
+    &#39;@typescript-eslint/no-explicit-any&#39;: [&#39;error&#39;], //禁止使用any
+    eqeqeq: 2, //必须使用全等
+    &#39;max-lines&#39;: [&#39;error&#39;, 1000], //限制行数 请勿修改 请优化你的代码
+    complexity: [&#39;error&#39;, 5], // 限制复杂度
+    &#39;require-await&#39;: &#39;error&#39;,
+  },
+}
+</code></pre></div><p><strong>3. 添加配置文件 .prettierrc 文件，vscode 记得设置默认的格式化程序为prettier</strong></p><div class="language-"><pre><code>{
+  &quot;tabWidth&quot;: 2,
+  &quot;singleQuote&quot;: true,
+  &quot;semi&quot;: false,
+  &quot;trailingComma&quot;: &quot;es5&quot;,
+  &quot;arrowParens&quot;: &quot;avoid&quot;,
+  &quot;endOfLine&quot;: &quot;auto&quot;,
+  &quot;printWidth&quot;: 100
+}
+</code></pre></div><p><strong>4. 添加 vscode 的配置，添加 .Vscode 文件夹，在文件夹下新建 settings.json</strong></p><div class="language-"><pre><code>{
+  &quot;editor.formatOnSave&quot;: true,
+  &quot;editor.codeActionsOnSave&quot;: {
+    &quot;source.fixAll.stylelint&quot;: true
+  }
+}
+
+//保存自动格式化
+//保存自动设置stylelint，stylelint后面会讲到
+</code></pre></div><ol start="5"><li>添加 .editorconfig 定义编码风格</li></ol><div class="language-"><pre><code># top-most EditorConfig file
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = false
+insert_final_newline = false
+</code></pre></div><p>至此，您保存文件的时候应该会自动修正 eslint，并且按照 prettier 格式保存 执行yarn lint 时会检测 暂存区文件的 eslint、stylelint</p><h2 id="添加-stylelint"><a class="header-anchor" href="#添加-stylelint" aria-hidden="true">#</a> 添加 stylelint</h2><p><strong>1. 安装依赖</strong> stylelint 高版本可能会出问题，包括插件版本，我这套目前没问题，Stylelint 插件使用 0.87.6</p><div class="language-"><pre><code>&quot;stylelint&quot;: &quot;^13.13.1&quot;,
+&quot;stylelint-config-prettier&quot;: &quot;^9.0.3&quot;,
+&quot;stylelint-config-standard&quot;: &quot;^22.0.0&quot;,
+&quot;stylelint-order&quot;: &quot;^5.0.0&quot;,
+&quot;stylelint-scss&quot;: &quot;^3.21.0&quot;
+</code></pre></div><p><strong>2. 添加 stylelint.config.js 配置文件</strong></p><div class="language-"><pre><code>module.exports = {
+  root: true,
+  plugins: [&#39;stylelint-order&#39;],
+  extends: [&#39;stylelint-config-standard&#39;, &#39;stylelint-config-prettier&#39;],
+  rules: {
+    &#39;selector-pseudo-class-no-unknown&#39;: [
+      true,
+      {
+        ignorePseudoClasses: [&#39;global&#39;]
+      }
+    ],
+    &#39;selector-pseudo-element-no-unknown&#39;: [
+      true,
+      {
+        ignorePseudoElements: [&#39;v-deep&#39;]
+      }
+    ],
+    &#39;at-rule-no-unknown&#39;: [
+      true,
+      {
+        ignoreAtRules: [
+          &#39;tailwind&#39;,
+          &#39;apply&#39;,
+          &#39;variants&#39;,
+          &#39;responsive&#39;,
+          &#39;screen&#39;,
+          &#39;function&#39;,
+          &#39;if&#39;,
+          &#39;each&#39;,
+          &#39;include&#39;,
+          &#39;mixin&#39;
+        ]
+      }
+    ],
+    &#39;no-empty-source&#39;: null,
+    &#39;named-grid-areas-no-invalid&#39;: null,
+    &#39;unicode-bom&#39;: &#39;never&#39;,
+    &#39;no-descending-specificity&#39;: null,
+    &#39;font-family-no-missing-generic-family-keyword&#39;: null,
+    &#39;declaration-colon-space-after&#39;: &#39;always-single-line&#39;,
+    &#39;declaration-colon-space-before&#39;: &#39;never&#39;,
+    // &#39;declaration-block-trailing-semicolon&#39;: &#39;always&#39;,
+    &#39;rule-empty-line-before&#39;: [
+      &#39;always&#39;,
+      {
+        ignore: [&#39;after-comment&#39;, &#39;first-nested&#39;]
+      }
+    ],
+    &#39;unit-no-unknown&#39;: [
+      true,
+      {
+        ignoreUnits: [&#39;rpx&#39;]
+      }
+    ],
+    &#39;order/order&#39;: [
+      [
+        &#39;dollar-variables&#39;,
+        &#39;custom-properties&#39;,
+        &#39;at-rules&#39;,
+        &#39;declarations&#39;,
+        {
+          type: &#39;at-rule&#39;,
+          name: &#39;supports&#39;
+        },
+        {
+          type: &#39;at-rule&#39;,
+          name: &#39;media&#39;
+        },
+        &#39;rules&#39;
+      ],
+      {
+        severity: &#39;warning&#39;
+      }
+    ],
+    // 按照指定顺序排列
+    &#39;order/properties-order&#39;: [
+      &#39;position&#39;,
+      &#39;content&#39;,
+      &#39;top&#39;,
+      &#39;right&#39;,
+      &#39;bottom&#39;,
+      &#39;left&#39;,
+      &#39;z-index&#39;,
+      &#39;display&#39;,
+      &#39;float&#39;,
+      &#39;width&#39;,
+      &#39;height&#39;,
+      &#39;max-width&#39;,
+      &#39;max-height&#39;,
+      &#39;min-width&#39;,
+      &#39;min-height&#39;,
+      &#39;padding&#39;,
+      &#39;padding-top&#39;,
+      &#39;padding-right&#39;,
+      &#39;padding-bottom&#39;,
+      &#39;padding-left&#39;,
+      &#39;margin&#39;,
+      &#39;margin-top&#39;,
+      &#39;margin-right&#39;,
+      &#39;margin-bottom&#39;,
+      &#39;margin-left&#39;,
+      &#39;margin-collapse&#39;,
+      &#39;margin-top-collapse&#39;,
+      &#39;margin-right-collapse&#39;,
+      &#39;margin-bottom-collapse&#39;,
+      &#39;margin-left-collapse&#39;,
+      &#39;overflow&#39;,
+      &#39;overflow-x&#39;,
+      &#39;overflow-y&#39;,
+      &#39;clip&#39;,
+      &#39;clear&#39;,
+      &#39;font&#39;,
+      &#39;font-family&#39;,
+      &#39;font-size&#39;,
+      &#39;font-smoothing&#39;,
+      &#39;osx-font-smoothing&#39;,
+      &#39;font-style&#39;,
+      &#39;font-weight&#39;,
+      &#39;hyphens&#39;,
+      &#39;src&#39;,
+      &#39;line-height&#39;,
+      &#39;letter-spacing&#39;,
+      &#39;word-spacing&#39;,
+      &#39;color&#39;,
+      &#39;text-align&#39;,
+      &#39;text-decoration&#39;,
+      &#39;text-indent&#39;,
+      &#39;text-overflow&#39;,
+      &#39;text-rendering&#39;,
+      &#39;text-size-adjust&#39;,
+      &#39;text-shadow&#39;,
+      &#39;text-transform&#39;,
+      &#39;word-break&#39;,
+      &#39;word-wrap&#39;,
+      &#39;white-space&#39;,
+      &#39;vertical-align&#39;,
+      &#39;list-style&#39;,
+      &#39;list-style-type&#39;,
+      &#39;list-style-position&#39;,
+      &#39;list-style-image&#39;,
+      &#39;pointer-events&#39;,
+      &#39;cursor&#39;,
+      &#39;background&#39;,
+      &#39;background-attachment&#39;,
+      &#39;background-color&#39;,
+      &#39;background-image&#39;,
+      &#39;background-position&#39;,
+      &#39;background-repeat&#39;,
+      &#39;background-size&#39;,
+      &#39;border&#39;,
+      &#39;border-collapse&#39;,
+      &#39;border-top&#39;,
+      &#39;border-right&#39;,
+      &#39;border-bottom&#39;,
+      &#39;border-left&#39;,
+      &#39;border-color&#39;,
+      &#39;border-image&#39;,
+      &#39;border-top-color&#39;,
+      &#39;border-right-color&#39;,
+      &#39;border-bottom-color&#39;,
+      &#39;border-left-color&#39;,
+      &#39;border-spacing&#39;,
+      &#39;border-style&#39;,
+      &#39;border-top-style&#39;,
+      &#39;border-right-style&#39;,
+      &#39;border-bottom-style&#39;,
+      &#39;border-left-style&#39;,
+      &#39;border-width&#39;,
+      &#39;border-top-width&#39;,
+      &#39;border-right-width&#39;,
+      &#39;border-bottom-width&#39;,
+      &#39;border-left-width&#39;,
+      &#39;border-radius&#39;,
+      &#39;border-top-right-radius&#39;,
+      &#39;border-bottom-right-radius&#39;,
+      &#39;border-bottom-left-radius&#39;,
+      &#39;border-top-left-radius&#39;,
+      &#39;border-radius-topright&#39;,
+      &#39;border-radius-bottomright&#39;,
+      &#39;border-radius-bottomleft&#39;,
+      &#39;border-radius-topleft&#39;,
+      &#39;quotes&#39;,
+      &#39;outline&#39;,
+      &#39;outline-offset&#39;,
+      &#39;opacity&#39;,
+      &#39;filter&#39;,
+      &#39;visibility&#39;,
+      &#39;size&#39;,
+      &#39;zoom&#39;,
+      &#39;transform&#39;,
+      &#39;box-align&#39;,
+      &#39;box-flex&#39;,
+      &#39;box-orient&#39;,
+      &#39;box-pack&#39;,
+      &#39;box-shadow&#39;,
+      &#39;box-sizing&#39;,
+      &#39;table-layout&#39;,
+      &#39;animation&#39;,
+      &#39;animation-delay&#39;,
+      &#39;animation-duration&#39;,
+      &#39;animation-iteration-count&#39;,
+      &#39;animation-name&#39;,
+      &#39;animation-play-state&#39;,
+      &#39;animation-timing-function&#39;,
+      &#39;animation-fill-mode&#39;,
+      &#39;transition&#39;,
+      &#39;transition-delay&#39;,
+      &#39;transition-duration&#39;,
+      &#39;transition-property&#39;,
+      &#39;transition-timing-function&#39;,
+      &#39;background-clip&#39;,
+      &#39;backface-visibility&#39;,
+      &#39;resize&#39;,
+      &#39;appearance&#39;,
+      &#39;user-select&#39;,
+      &#39;interpolation-mode&#39;,
+      &#39;direction&#39;,
+      &#39;marks&#39;,
+      &#39;page&#39;,
+      &#39;set-link-source&#39;,
+      &#39;unicode-bidi&#39;,
+      &#39;speak&#39;
+    ]
+  },
+  ignoreFiles: [&#39;**/*.js&#39;, &#39;**/*.jsx&#39;, &#39;**/*.tsx&#39;, &#39;**/*.ts&#39;]
+}
+</code></pre></div><p><strong>3. 添加 .stylelintignore 忽略文件</strong></p><div class="language-"><pre><code>/dist/*
+/public/*
+public/*
+*.js
+*.ts
+*.png
+*.jpg
+*.webp
+*.ttf
+*.woff
+</code></pre></div><p>至此，当您保存有样式的文件的时候，会自动帮您格式化样式，在提交代码时会检查eslint、stylelint、commit信息了。</p><h2 id="添加-tsc-的检查"><a class="header-anchor" href="#添加-tsc-的检查" aria-hidden="true">#</a> 添加 tsc 的检查</h2><p>前面在 pre-commit 已经设置了 tsc 检查，在代码提交时会自动全局检测，这个我暂时并不知道如何能够只检测暂存区的ts规范，现在做的是全局检测,这里是针对vue项目的。</p><p><strong>1. 安装依赖</strong></p><div class="language-"><pre><code>yarn add vue-tsc -D
+yarn add @vue/cli-plugin-typescript -D
+</code></pre></div><ol start="2"><li>tsconfig.json 配置</li></ol><div class="language-"><pre><code>{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;es5&quot;,
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;strict&quot;: true,
+    &quot;jsx&quot;: &quot;preserve&quot;,
+    &quot;importHelpers&quot;: true,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;allowJs&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;allowSyntheticDefaultImports&quot;: true,
+    &quot;sourceMap&quot;: true,
+    &quot;baseUrl&quot;: &quot;.&quot;,
+    &quot;types&quot;: [&quot;webpack-env&quot;],
+    &quot;paths&quot;: {
+      &quot;@/*&quot;: [&quot;src/*&quot;]
+    },
+    &quot;lib&quot;: [&quot;esnext&quot;, &quot;dom&quot;, &quot;dom.iterable&quot;, &quot;scripthost&quot;]
+  },
+  &quot;include&quot;: [&quot;src/**/*.ts&quot;, &quot;src/**/*.tsx&quot;, &quot;src/**/*.vue&quot;, &quot;tests/**/*.ts&quot;, &quot;tests/**/*.tsx&quot;],
+  &quot;exclude&quot;: [&quot;node_modules&quot;]
+}
+</code></pre></div><p>总结：现在我们已经做到在保存时自动 eslint 修正、prettier 格式化、stylelint 格式化 暂存区提交时检测 eslint、stylelint，全局检测ts规范。 <a href="https://github.com/upJiang/jiangVue3Test" target="_blank" rel="noopener noreferrer">项目地址</a></p></div><div class="links-wrapper"><div class="prev-link"><!----></div><div class="next-link"><!----></div></div><!--[--><!--[--><!--]--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"docs.md\":\"67e0e6a2\",\"index.md\":\"edacb7d2\",\"README.md\":\"4128f4cd\",\"tags.md\":\"9d596c8e\",\"docs_algorithm_array.md\":\"cd37e67d\",\"docs_algorithm_bstTree.md\":\"2c5f112a\",\"docs_algorithm_chain.md\":\"886e6a2a\",\"docs_algorithm_chainCicle.md\":\"19bf3dcc\",\"docs_algorithm_chainHead.md\":\"d919a8ea\",\"docs_algorithm_complexity.md\":\"d90c660d\",\"docs_algorithm_dataStructures.md\":\"69c5d50f\",\"docs_algorithm_DFS.md\":\"6051aa2d\",\"docs_algorithm_dynamic.md\":\"f30f4f64\",\"docs_algorithm_ergodicTree.md\":\"e4ba1bb8\",\"docs_algorithm_queue.md\":\"30ce6b58\",\"docs_algorithm_sort.md\":\"691a9203\",\"docs_algorithm_stack.md\":\"15072771\",\"docs_algorithm_string.md\":\"3a38c3b1\",\"docs_algorithm_thinking.md\":\"4e7b9192\",\"docs_algorithm_tree.md\":\"9837f573\",\"docs_article_index.md\":\"1854e195\",\"docs_babel_start.md\":\"baa6a13e\",\"docs_howReview_start.md\":\"b3790e45\",\"docs_interview_22Ready.md\":\"a75a140a\",\"docs_interview_22StartSum.md\":\"eb76096b\",\"docs_interview_async.md\":\"48585586\",\"docs_interview_boxsizing.md\":\"334115fc\",\"docs_interview_center.md\":\"277dcf15\",\"docs_interview_css.md\":\"b460d1c7\",\"docs_interview_dataType.md\":\"2f121d67\",\"docs_interview_debounce.md\":\"dbe6dfc6\",\"docs_interview_defineProperty.md\":\"ec52fd21\",\"docs_interview_dns.md\":\"741137ec\",\"docs_interview_hashMode.md\":\"c62c4930\",\"docs_interview_httpCode.md\":\"cb81c76b\",\"docs_interview_index.md\":\"4819ed13\",\"docs_interview_jsBaseQuestion.md\":\"8216827e\",\"docs_interview_longList.md\":\"b445de56\",\"docs_interview_networkBaseQuestion.md\":\"d402d840\",\"docs_interview_process.md\":\"ef641a36\",\"docs_interview_promiseCicle.md\":\"07117c4b\",\"docs_interview_reactBaseQuestion.md\":\"a8b76b21\",\"docs_interview_repaint.md\":\"d3e9229b\",\"docs_interview_target.md\":\"598f6eb7\",\"docs_interview_URL.md\":\"26c1195b\",\"docs_interview_vueBaseQuestion.md\":\"a7a7a406\",\"docs_interview_writeQuestion.md\":\"b59b7251\",\"docs_jsAdvanced_changelog.md\":\"233da342\",\"docs_jsAdvanced_cURL.md\":\"5cb3753d\",\"docs_jsAdvanced_gulp.md\":\"958207e2\",\"docs_jsAdvanced_husky.md\":\"fb9e0602\",\"docs_jsAdvanced_index.md\":\"78cfa234\",\"docs_jsAdvanced_jiangVui.md\":\"cee38e52\",\"docs_jsAdvanced_jsAdvanced.md\":\"f4274792\",\"docs_jsAdvanced_loadingHandle.md\":\"adcef2c6\",\"docs_jsAdvanced_mock.md\":\"d1078c95\",\"docs_jsAdvanced_monitor.md\":\"5fcd7e05\",\"docs_jsAdvanced_nvm.md\":\"afb65ddb\",\"docs_jsAdvanced_performance.md\":\"98c310de\",\"docs_jsAdvanced_pureFuntion.md\":\"3031e2a5\",\"docs_jsAdvanced_sentry.md\":\"5bec9037\",\"docs_jsAdvanced_server.md\":\"e3847893\",\"docs_jsAdvanced_standard.md\":\"b3f8225c\",\"docs_jsAdvanced_ts.md\":\"a8705ef7\",\"docs_jsAdvanced_vite.md\":\"d84b2beb\",\"docs_jsAdvanced_vue3.md\":\"989e21ab\",\"docs_jsAdvanced_vueComponent.md\":\"95f40378\",\"docs_jsBase_bind.md\":\"7704be52\",\"docs_jsBase_Cache.md\":\"1a8d3cd4\",\"docs_jsBase_closure.md\":\"af360d78\",\"docs_jsBase_context.md\":\"80535d58\",\"docs_jsBase_copy.md\":\"40d90e39\",\"docs_jsBase_cors.md\":\"82f755c1\",\"docs_jsBase_CSRF.md\":\"0f0814f7\",\"docs_jsBase_css.md\":\"e5d21f2f\",\"docs_jsBase_es6.md\":\"5c049d05\",\"docs_jsBase_eventLoop.md\":\"7a6b0268\",\"docs_jsBase_garbage.md\":\"a125085d\",\"docs_jsBase_git.md\":\"4e8babae\",\"docs_jsBase_https.md\":\"65dd22dc\",\"docs_jsBase_index.md\":\"4b04cb6c\",\"docs_jsBase_jquery.md\":\"f3395bf4\",\"docs_jsBase_memory.md\":\"7c04f972\",\"docs_jsBase_module.md\":\"e5949fb6\",\"docs_jsBase_new.md\":\"bd8308c4\",\"docs_jsBase_prototype.md\":\"9dc246ac\",\"docs_jsBase_storage.md\":\"b3adeaa6\",\"docs_jsBase_this.md\":\"8fc81baa\",\"docs_jsBase_websocket.md\":\"1507f39c\",\"docs_resources_learning.md\":\"af5859f3\",\"docs_resources_tool.md\":\"1ba858f0\",\"docs_reStudy_browser_css.md\":\"b109f4b2\",\"docs_reStudy_browser_cssdom.md\":\"7588bcee\",\"docs_reStudy_browser_dom.md\":\"1645df31\",\"docs_reStudy_browser_domApi.md\":\"878db3e4\",\"docs_reStudy_browser_event.md\":\"133fa540\",\"docs_reStudy_browser_http.md\":\"aefa28ae\",\"docs_reStudy_browser_maker.md\":\"a584a598\",\"docs_reStudy_browser_print.md\":\"6f541cdf\",\"docs_reStudy_css_animation.md\":\"088ce694\",\"docs_reStudy_css_color.md\":\"305a53ea\",\"docs_reStudy_css_compose.md\":\"d7c7cb3f\",\"docs_reStudy_css_link.md\":\"ce8f5523\",\"docs_reStudy_css_rule.md\":\"1a9ef4b3\",\"docs_reStudy_css_select.md\":\"31d9217e\",\"docs_reStudy_html_ARIA.md\":\"ae5860a4\",\"docs_reStudy_html_DTD.md\":\"0f201e28\",\"docs_reStudy_html_head.md\":\"80c79dc2\",\"docs_reStudy_html_standard.md\":\"2a19421f\",\"docs_reStudy_html_tag.md\":\"718974b5\",\"docs_reStudy_html_tramslate.md\":\"b64e0c8d\",\"docs_reStudy_js_closure.md\":\"fa4b9116\",\"docs_reStudy_js_completion.md\":\"a2be3e79\",\"docs_reStudy_js_eventLoop.md\":\"e6c7402c\",\"docs_reStudy_js_function.md\":\"710f7ab3\",\"docs_reStudy_js_grammar.md\":\"8f61f7b4\",\"docs_reStudy_js_object.md\":\"94bc30b9\",\"docs_reStudy_js_prototype.md\":\"3c2eaed0\",\"docs_reStudy_js_semicolon.md\":\"c8ad84a8\",\"docs_reStudy_js_token.md\":\"0213be35\",\"docs_reStudy_js_type.md\":\"80fc2574\",\"docs_reStudy_other_question.md\":\"1ff699d9\",\"docs_reStudy_start.md\":\"9afdd8e6\",\"docs_reStudy_sum_architecture.md\":\"25c6ac11\",\"docs_reStudy_sum_continue.md\":\"2cc6c58f\",\"docs_reStudy_sum_performance.md\":\"8207603c\",\"docs_reStudy_sum_system.md\":\"e90b1975\",\"docs_reStudy_sum_tool.md\":\"5bf127ce\",\"docs_work_h5.md\":\"24bb8ff4\",\"docs_work_vue.md\":\"ed77ade1\"}")</script>
+    <script type="module" async src="/_assets/app.bac4ca22.js"></script>
+  </body>
+</html>

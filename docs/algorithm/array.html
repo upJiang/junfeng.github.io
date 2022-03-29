@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      Map 的妙用——两数求和问题 | Jiang's Blog
+    </title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/_assets/style.d3cbd45d.css">
+    <link rel="modulepreload" href="/_assets/common-d6bd45c0.js">
+    <link rel="modulepreload" href="/_assets/docs_algorithm_array.md.cd37e67d.lean.js">
+    <link rel="modulepreload" href="/_assets/app.bac4ca22.js">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="Jiang的个人博客">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="navbar"><!--[--><a class="title" aria-label="Jiang&#39;s Blog, back to home" href="/"><!----><span style="color:var(--accent-color);">Jiang&#39;s Blog</span></a><div class="flex-grow"></div><nav class="nav-links hide-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!-- <AlgoliaSearchBox
+              v-if="$site.themeConfig.algolia"
+              :options="$site.themeConfig.algolia"
+            /> --><!--]--><!--]--><!--]--><div class="sidebar-button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div></header><aside class=""><!--[--><nav class="nav-links show-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!--]--><!--]--><ul class="sidebar"><!--[--><li class="sidebar-item"><p class="sidebar-link">算法</p><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/dataStructures">数据结构</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/ergodicTree">遍历二叉树</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/complexity">复杂度</a><!----></li><li class="sidebar-item"><a class="sidebar-link active" href="/docs/algorithm/array">数组解题</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#map-的妙用——两数求和问题">Map 的妙用——两数求和问题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#强大的双指针法-数组一定要有序">强大的双指针法(数组一定要有序)</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#三数求和问题-对撞指针法">三数求和问题(对撞指针法)</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#总结">总结</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/string">字符串解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chain">链表解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chainHead">链表解题-快慢指针与多指针</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chainCicle">链表解题-环形链表</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/stack">栈解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/queue">队列解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/DFS">深度优先&amp;广度优先</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/thinking">递归与回溯思想</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/tree">二叉树</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/bstTree">二叉搜索树</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/sort">排序算法</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/dynamic">动态规划</a><!----></li></ul></li><!--]--></ul><!--[--><!--[--><!--]--><!--]--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main><div class="content"><!--[--><!--[--><!--]--><!--]--><div class="md-header"><!-- <div class="md-title">{{ pageData.title }}</div> --><!-- {{ pageData.frontmatter.date }} --><div class="md-date">今日诗词欣赏</div><span id="jinrishici-sentence">正在加载今日诗词....</span></div><!-- 右边导航 --><!-- <ul class="catalog">
+      <li class="catalog-item" v-for="item in pageData.headers">
+        <a class="level level-2" v-if="item.level == 2" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+        <a class="level level-3" v-if="item.level == 3" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+      </li>
+    </ul> --><!-- md主内容 --><div><h2 id="map-的妙用——两数求和问题"><a class="header-anchor" href="#map-的妙用——两数求和问题" aria-hidden="true">#</a> Map 的妙用——两数求和问题</h2><blockquote><p>真题描述： 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p></blockquote><p>给定 nums = [2, 7, 11, 15], target = 9 因为 nums[0] + nums[1] = 2 + 7 = 9 所以返回 [0, 1]</p><p>最淳朴的解法：两层循环来遍历同一个数组；第一层循环遍历的值记为 a，第二层循环时遍历的值记为 b；若 a+b = 目标值，那么 a 和 b 对应的数组下标就是我们想要的答案。但是这样做的时间复杂度是：O(n^2)</p><p>记住一个结论：<strong>几乎所有的求和问题，都可以转化为求差问题</strong>。 这道题就是一个典型的例子，通过把求和问题转化为求差问题，事情会变得更加简单。</p><p>思路：使用 Map 去存储已经遍历过的数字及其对应的索引值，<strong>map 的 key 是遍历的数字，值是索引</strong>。<br> 判断依据：差值就是 taget 值减去遍历的数字，如果差值在 Map 记录中存在，那么答案就出来了，就是当前的数字以及 Map 记录中 key 为差值的那一项</p><p><a data-fancybox title="img" href="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/4/16/171815cf9cc83f3f~tplv-t2oaga2asx-watermark.awebp"><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/4/16/171815cf9cc83f3f~tplv-t2oaga2asx-watermark.awebp" alt="img"></a></p><p>使用 for 循环实现</p><div class="language-"><pre><code>const twoSum = (nums, target)=&gt; {
+    // 这里我用对象来模拟 map 的能力
+    const diffs = {}
+    // 缓存数组长度
+    const len = nums.length
+    // 遍历数组
+    for(let i=0;i&lt;len;i++) {
+        // 判断 target 值减去当前遍历数字是否存在于 Map 中，存在则找到答案啦
+        if(diffs[target-nums[i]] !== undefined) {
+            // 若存在，返回这个差值对应的 Map key值的索引，以及当前索引
+            return [diffs[target - nums[i]], i]
+        }
+        // 若不存在，则记录当前值
+        diffs[nums[i]]=i
+    }
+};
+</code></pre></div><p>使用 map 实现</p><div class="language-"><pre><code>const twoSum = (nums, target)=&gt; {
+    // 这里我用对象来模拟 map 的能力
+    const diffs = new Map()
+    // 缓存数组长度
+    const len = nums.length
+
+    for(let i=0;i&lt;len;i++) {
+        console.log(diffs);
+        // 判断 target 值减去当前遍历数字是否存在于 Map 中，存在则找到答案啦
+        if(diffs.get(target - nums[i]) !== undefined) {
+            // 若存在，返回这个差值对应的 Map key值的索引，以及当前索引
+            return [diffs.get(target - nums[i]), i]
+        }
+        // 若不存在，则记录当前值
+        diffs.set(nums[i],i)
+    }
+};
+</code></pre></div><h2 id="强大的双指针法-数组一定要有序"><a class="header-anchor" href="#强大的双指针法-数组一定要有序" aria-hidden="true">#</a> 强大的双指针法(数组一定要有序)</h2><blockquote><p>合并两个有序数组：给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。</p></blockquote><p>输入:<br> nums1 = [2,3,6,7,8], m = 5 <br> nums2 = [3,4,5], n = 3 <br> 输出: [1,3,3,4,5,6,7,8] <br></p><p>思路：</p><ul><li>将 nums1 的长度变成两数组之和，即：nums1 = [2,3,6,7,8,0,0,0]，nums1 尾部索引 为 k = m + n -1</li><li>定义两个指针，head 分别指向两个数组的尾部, 分别为 m - 1,n - 1</li><li>当两个指针都大于0时，比较对应值的大小，较大的那一方指针向前移动一位，nums1 的指针也向前移动一位，并且 nums1[k] = 较大值</li><li>遍历到最后，如果 m &gt; n，因为我们初始化的时候就是拿的 nums1，所以不需要做任何操作；如果 m &lt; n，那么我们把 nums2 后面那几个没有比较的数据插入到 nums1 即可</li></ul><div class="language-"><pre><code>const merge = function(nums1, m, nums2, n) {
+    // 初始化两个指针的指向，初始化 nums1 尾部索引k
+    let i = m - 1, j = n - 1, k = m + n - 1
+    // 当两个数组都没遍历完时，较大那一方的指针向前移动一位，并且 nums1 的指针 k 也向前移动一位
+    while(i &gt;= 0 &amp;&amp; j &gt;= 0) {
+        // 取较大的值，从末尾往前填补
+        if(nums1[i] &gt;= nums2[j]) {
+            nums1[k] = nums1[i] 
+            i-- 
+        } else {
+            nums1[k] = nums2[j] 
+            j-- 
+        }
+        k--
+    }
+    // nums2 留下的情况，特殊处理一下,把 nums2 后面那几个没有比较的数据插入到 nums1 
+    while(j&gt;=0) {
+        nums1[k] = nums2[j]  
+        k-- 
+        j--
+    }
+    return nums1
+};
+console.log(merge([2,3,6,7,8],5,[3,4,5],3));  // [1,3,3,4,5,6,7,8]
+</code></pre></div><h2 id="三数求和问题-对撞指针法"><a class="header-anchor" href="#三数求和问题-对撞指针法" aria-hidden="true">#</a> 三数求和问题(对撞指针法)</h2><blockquote><p>真题描述：给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且<strong>不重复</strong>的三元组。</p></blockquote><p>给定数组 nums = [-1, 0, 1, 2, -1, -4]， 满足要求的三元组集合为： [ [-1, 0, 1], [-1, -1, 2] ]</p><p><a data-fancybox title="img" href="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/15/170de65ecf8b277f~tplv-t2oaga2asx-watermark.awebp"><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/15/170de65ecf8b277f~tplv-t2oaga2asx-watermark.awebp" alt="img"></a></p><p>思路：</p><ul><li>双指针法只适用有序的数组，通过 sort 对数组先进行排序。定义结果数组 res = []</li><li>循环遍历数组，每次固定当前遍历值 nums[i]，定义两个指针分别位于固定值后面的首尾:j = i+1（首）,k = arr.length - 1。明白 k 肯定大于 j 的，如果遇到相同数据直接跳过 continue</li><li>遍历时，在满足 j &lt; k 的条件下：判断 nums[i] + nums[j] + nums[k] = 0。如果大于0，说明 k 偏大，需要左移，即 k--；如果小于0，说明 j 偏小，需要右移 即 j++。同时如果遇到相同的数据则直接跳过进行移动操作。</li><li>在遍历过程中，遇到满足条件的将 res.push([nums[i],nums[j],nums[k]])，并且两个指针都要移动，并且判断是否遇到相同数据情况</li></ul><div class="language-"><pre><code>const threeSum = function(nums) {
+    // 用于存放结果数组
+    let res = [] 
+    // 给 nums 排序
+    nums = nums.sort((a,b)=&gt;{
+        return a-b
+    })
+    // 缓存数组长度
+    const len = nums.length
+    // 注意我们遍历到倒数第三个数就足够了，因为左右指针会遍历后面两个数
+    for(let i=0;i&lt;len-2;i++) {
+        // 左指针 j
+        let j=i+1 
+        // 右指针k
+        let k=len-1   
+        // 如果遇到重复的数字，则跳过
+        if(i&gt;0&amp;&amp;nums[i]===nums[i-1]) {
+            continue
+        }
+        while(j&lt;k) {
+            // 三数之和小于0，左指针前进
+            if(nums[i]+nums[j]+nums[k]&lt;0){
+                j++
+               // 处理左指针元素重复的情况
+               while(j&lt;k&amp;&amp;nums[j]===nums[j-1]) {
+                    j++
+                }
+            } else if(nums[i]+nums[j]+nums[k]&gt;0){
+                // 三数之和大于0，右指针后退
+                k--
+               
+               // 处理右指针元素重复的情况
+               while(j&lt;k&amp;&amp;nums[k]===nums[k+1]) {
+                    k--
+                }
+            } else {
+                // 得到目标数字组合，推入结果数组
+                res.push([nums[i],nums[j],nums[k]])
+                
+                // 左右指针一起前进
+                j++  
+                k--
+               
+                // 若左指针元素重复，跳过
+                while(j&lt;k&amp;&amp;nums[j]===nums[j-1]) {
+                    j++
+                }  
+               
+               // 若右指针元素重复，跳过
+               while(j&lt;k&amp;&amp;nums[k]===nums[k+1]) {
+                    k--
+                }
+            }
+        }
+    }
+    
+    // 返回结果数组
+    return res
+};
+</code></pre></div><h2 id="总结"><a class="header-anchor" href="#总结" aria-hidden="true">#</a> 总结</h2><p>学到了两个方法：Map保存遍历值（求和转求差）、双指针法（同位置移动、固定值+对撞指针）仅针对有序数组</p><p>当遇到求和的问题，要转换成求差，通过Map去保存遍历数据，达到降低时间复杂度的效果</p><p>当遇到 “有序”和“数组”：立刻把双指针法调度进你的大脑内存。普通双指针走不通，立刻想对撞指针！</p><p>即便数组题目中并没有直接给出“有序”这个关键条件，我们在发觉普通思路走不下去的时候，也应该及时地尝试手动对其进行排序试试看有没有新的切入点——没有条件，创造条件也要上。</p><p>指针法好像就是，在满足条件的情况下，移动的时候比较大小，然后选择移动的目标或者方向，判断条件</p></div><div class="links-wrapper"><div class="prev-link"><!----></div><div class="next-link"><!----></div></div><!--[--><!--[--><!--]--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"docs.md\":\"67e0e6a2\",\"index.md\":\"edacb7d2\",\"README.md\":\"4128f4cd\",\"tags.md\":\"9d596c8e\",\"docs_algorithm_array.md\":\"cd37e67d\",\"docs_algorithm_bstTree.md\":\"2c5f112a\",\"docs_algorithm_chain.md\":\"886e6a2a\",\"docs_algorithm_chainCicle.md\":\"19bf3dcc\",\"docs_algorithm_chainHead.md\":\"d919a8ea\",\"docs_algorithm_complexity.md\":\"d90c660d\",\"docs_algorithm_dataStructures.md\":\"69c5d50f\",\"docs_algorithm_DFS.md\":\"6051aa2d\",\"docs_algorithm_dynamic.md\":\"f30f4f64\",\"docs_algorithm_ergodicTree.md\":\"e4ba1bb8\",\"docs_algorithm_queue.md\":\"30ce6b58\",\"docs_algorithm_sort.md\":\"691a9203\",\"docs_algorithm_stack.md\":\"15072771\",\"docs_algorithm_string.md\":\"3a38c3b1\",\"docs_algorithm_thinking.md\":\"4e7b9192\",\"docs_algorithm_tree.md\":\"9837f573\",\"docs_article_index.md\":\"1854e195\",\"docs_babel_start.md\":\"baa6a13e\",\"docs_howReview_start.md\":\"b3790e45\",\"docs_interview_22Ready.md\":\"a75a140a\",\"docs_interview_22StartSum.md\":\"eb76096b\",\"docs_interview_async.md\":\"48585586\",\"docs_interview_boxsizing.md\":\"334115fc\",\"docs_interview_center.md\":\"277dcf15\",\"docs_interview_css.md\":\"b460d1c7\",\"docs_interview_dataType.md\":\"2f121d67\",\"docs_interview_debounce.md\":\"dbe6dfc6\",\"docs_interview_defineProperty.md\":\"ec52fd21\",\"docs_interview_dns.md\":\"741137ec\",\"docs_interview_hashMode.md\":\"c62c4930\",\"docs_interview_httpCode.md\":\"cb81c76b\",\"docs_interview_index.md\":\"4819ed13\",\"docs_interview_jsBaseQuestion.md\":\"8216827e\",\"docs_interview_longList.md\":\"b445de56\",\"docs_interview_networkBaseQuestion.md\":\"d402d840\",\"docs_interview_process.md\":\"ef641a36\",\"docs_interview_promiseCicle.md\":\"07117c4b\",\"docs_interview_reactBaseQuestion.md\":\"a8b76b21\",\"docs_interview_repaint.md\":\"d3e9229b\",\"docs_interview_target.md\":\"598f6eb7\",\"docs_interview_URL.md\":\"26c1195b\",\"docs_interview_vueBaseQuestion.md\":\"a7a7a406\",\"docs_interview_writeQuestion.md\":\"b59b7251\",\"docs_jsAdvanced_changelog.md\":\"233da342\",\"docs_jsAdvanced_cURL.md\":\"5cb3753d\",\"docs_jsAdvanced_gulp.md\":\"958207e2\",\"docs_jsAdvanced_husky.md\":\"fb9e0602\",\"docs_jsAdvanced_index.md\":\"78cfa234\",\"docs_jsAdvanced_jiangVui.md\":\"cee38e52\",\"docs_jsAdvanced_jsAdvanced.md\":\"f4274792\",\"docs_jsAdvanced_loadingHandle.md\":\"adcef2c6\",\"docs_jsAdvanced_mock.md\":\"d1078c95\",\"docs_jsAdvanced_monitor.md\":\"5fcd7e05\",\"docs_jsAdvanced_nvm.md\":\"afb65ddb\",\"docs_jsAdvanced_performance.md\":\"98c310de\",\"docs_jsAdvanced_pureFuntion.md\":\"3031e2a5\",\"docs_jsAdvanced_sentry.md\":\"5bec9037\",\"docs_jsAdvanced_server.md\":\"e3847893\",\"docs_jsAdvanced_standard.md\":\"b3f8225c\",\"docs_jsAdvanced_ts.md\":\"a8705ef7\",\"docs_jsAdvanced_vite.md\":\"d84b2beb\",\"docs_jsAdvanced_vue3.md\":\"989e21ab\",\"docs_jsAdvanced_vueComponent.md\":\"95f40378\",\"docs_jsBase_bind.md\":\"7704be52\",\"docs_jsBase_Cache.md\":\"1a8d3cd4\",\"docs_jsBase_closure.md\":\"af360d78\",\"docs_jsBase_context.md\":\"80535d58\",\"docs_jsBase_copy.md\":\"40d90e39\",\"docs_jsBase_cors.md\":\"82f755c1\",\"docs_jsBase_CSRF.md\":\"0f0814f7\",\"docs_jsBase_css.md\":\"e5d21f2f\",\"docs_jsBase_es6.md\":\"5c049d05\",\"docs_jsBase_eventLoop.md\":\"7a6b0268\",\"docs_jsBase_garbage.md\":\"a125085d\",\"docs_jsBase_git.md\":\"4e8babae\",\"docs_jsBase_https.md\":\"65dd22dc\",\"docs_jsBase_index.md\":\"4b04cb6c\",\"docs_jsBase_jquery.md\":\"f3395bf4\",\"docs_jsBase_memory.md\":\"7c04f972\",\"docs_jsBase_module.md\":\"e5949fb6\",\"docs_jsBase_new.md\":\"bd8308c4\",\"docs_jsBase_prototype.md\":\"9dc246ac\",\"docs_jsBase_storage.md\":\"b3adeaa6\",\"docs_jsBase_this.md\":\"8fc81baa\",\"docs_jsBase_websocket.md\":\"1507f39c\",\"docs_resources_learning.md\":\"af5859f3\",\"docs_resources_tool.md\":\"1ba858f0\",\"docs_reStudy_browser_css.md\":\"b109f4b2\",\"docs_reStudy_browser_cssdom.md\":\"7588bcee\",\"docs_reStudy_browser_dom.md\":\"1645df31\",\"docs_reStudy_browser_domApi.md\":\"878db3e4\",\"docs_reStudy_browser_event.md\":\"133fa540\",\"docs_reStudy_browser_http.md\":\"aefa28ae\",\"docs_reStudy_browser_maker.md\":\"a584a598\",\"docs_reStudy_browser_print.md\":\"6f541cdf\",\"docs_reStudy_css_animation.md\":\"088ce694\",\"docs_reStudy_css_color.md\":\"305a53ea\",\"docs_reStudy_css_compose.md\":\"d7c7cb3f\",\"docs_reStudy_css_link.md\":\"ce8f5523\",\"docs_reStudy_css_rule.md\":\"1a9ef4b3\",\"docs_reStudy_css_select.md\":\"31d9217e\",\"docs_reStudy_html_ARIA.md\":\"ae5860a4\",\"docs_reStudy_html_DTD.md\":\"0f201e28\",\"docs_reStudy_html_head.md\":\"80c79dc2\",\"docs_reStudy_html_standard.md\":\"2a19421f\",\"docs_reStudy_html_tag.md\":\"718974b5\",\"docs_reStudy_html_tramslate.md\":\"b64e0c8d\",\"docs_reStudy_js_closure.md\":\"fa4b9116\",\"docs_reStudy_js_completion.md\":\"a2be3e79\",\"docs_reStudy_js_eventLoop.md\":\"e6c7402c\",\"docs_reStudy_js_function.md\":\"710f7ab3\",\"docs_reStudy_js_grammar.md\":\"8f61f7b4\",\"docs_reStudy_js_object.md\":\"94bc30b9\",\"docs_reStudy_js_prototype.md\":\"3c2eaed0\",\"docs_reStudy_js_semicolon.md\":\"c8ad84a8\",\"docs_reStudy_js_token.md\":\"0213be35\",\"docs_reStudy_js_type.md\":\"80fc2574\",\"docs_reStudy_other_question.md\":\"1ff699d9\",\"docs_reStudy_start.md\":\"9afdd8e6\",\"docs_reStudy_sum_architecture.md\":\"25c6ac11\",\"docs_reStudy_sum_continue.md\":\"2cc6c58f\",\"docs_reStudy_sum_performance.md\":\"8207603c\",\"docs_reStudy_sum_system.md\":\"e90b1975\",\"docs_reStudy_sum_tool.md\":\"5bf127ce\",\"docs_work_h5.md\":\"24bb8ff4\",\"docs_work_vue.md\":\"ed77ade1\"}")</script>
+    <script type="module" async src="/_assets/app.bac4ca22.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+import{g as t,f as e,E as p}from"./common-d6bd45c0.js";const i='{"title":"","frontmatter":{},"relativePath":"docs/interview/httpCode.md","lastUpdated":1639657876157.9656}';var a={};const c=p('',8);a.render=function(p,i,a,f,r,m){return e(),t("div",null,[c])};export default a;export{i as __pageData};

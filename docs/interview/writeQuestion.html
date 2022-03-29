@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      promise 篇 | Jiang's Blog
+    </title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/_assets/style.d3cbd45d.css">
+    <link rel="modulepreload" href="/_assets/common-d6bd45c0.js">
+    <link rel="modulepreload" href="/_assets/docs_interview_writeQuestion.md.b59b7251.lean.js">
+    <link rel="modulepreload" href="/_assets/app.bac4ca22.js">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="Jiang的个人博客">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="navbar"><!--[--><a class="title" aria-label="Jiang&#39;s Blog, back to home" href="/"><!----><span style="color:var(--accent-color);">Jiang&#39;s Blog</span></a><div class="flex-grow"></div><nav class="nav-links hide-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!-- <AlgoliaSearchBox
+              v-if="$site.themeConfig.algolia"
+              :options="$site.themeConfig.algolia"
+            /> --><!--]--><!--]--><!--]--><div class="sidebar-button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div></header><aside class=""><!--[--><nav class="nav-links show-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!--]--><!--]--><ul class="sidebar"><!--[--><li class="sidebar-item"><p class="sidebar-link">面试</p><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/target">面试指南</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/22Ready">22年初面试准备</a><!----></li><li class="sidebar-item"><a class="sidebar-link active" href="/docs/interview/writeQuestion">手写面试题</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#promise-篇">promise 篇</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#实现-promise">实现 promise</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#实现-promise-all">实现 promise.all</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#实现-promise-finally">实现 promise.finally</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#实现-promise-allsettled">实现 promise.allSettled</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#实现-promise-any">实现 promise.any</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#array-数组篇">array 数组篇</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#实现数组去重">实现数组去重</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#foreach">foreach</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#reduce">reduce</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#节流防抖">节流防抖</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#深拷贝">深拷贝</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#实现-new">实现 new</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#function-篇">Function 篇</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#call">Call</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#apply">Apply</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#bind">Bind</a><!----></li></ul></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/jsBaseQuestion">js问题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/vueBaseQuestion">vue问题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/reactBaseQuestion">react问题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/networkBaseQuestion">计算机网络问题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/center">垂直居中</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/process">进程、线程</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/dataType">判断数据类型</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/boxsizing">盒模型及如何转换</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/repaint">回流、重绘</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/debounce">节流防抖</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/httpCode">HTTP状态码</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/hashMode">vue中的hash跟history</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/promiseCicle">promise链式无限回调</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/async">async</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/defineProperty">proxy/defineProperty</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/dns">dns域名解析做了什么</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/longList">长列表的优化</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/URL">输入URL</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/interview/css">css</a><!----></li></ul></li><!--]--></ul><!--[--><!--[--><!--]--><!--]--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main><div class="content"><!--[--><!--[--><!--]--><!--]--><div class="md-header"><!-- <div class="md-title">{{ pageData.title }}</div> --><!-- {{ pageData.frontmatter.date }} --><div class="md-date">今日诗词欣赏</div><span id="jinrishici-sentence">正在加载今日诗词....</span></div><!-- 右边导航 --><!-- <ul class="catalog">
+      <li class="catalog-item" v-for="item in pageData.headers">
+        <a class="level level-2" v-if="item.level == 2" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+        <a class="level level-3" v-if="item.level == 3" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+      </li>
+    </ul> --><!-- md主内容 --><div><h2 id="promise-篇"><a class="header-anchor" href="#promise-篇" aria-hidden="true">#</a> promise 篇</h2><h3 id="实现-promise"><a class="header-anchor" href="#实现-promise" aria-hidden="true">#</a> 实现 promise</h3><p>分析一下基本原理：</p><ol><li>Promise 是一个类，在执行这个类的时候会传入一个执行器，这个执行器会立即执行</li><li>Promise 会有三种状态 <ul><li>Pending 等待</li><li>Fulfilled 完成</li><li>Rejected 失败</li></ul></li><li>状态只能由 Pending --&gt; Fulfilled 或者 Pending --&gt; Rejected，且一但发生改变便不可二次修改；</li><li>Promise 中使用 resolve 和 reject 两个函数来更改状态；</li><li>then 方法内部做的事情就是状态判断 <ul><li>如果状态是成功，调用成功回调函数</li><li>如果状态是失败，调用失败回调函数</li></ul></li></ol><p>实现代码</p><div class="language-"><pre><code>// MyPromise.js
+
+// 先定义三个常量表示状态
+const PENDING = &quot;pending&quot;;
+const FULFILLED = &quot;fulfilled&quot;;
+const REJECTED = &quot;rejected&quot;;
+
+
+// 新建 MyPromise 类
+class MyPromise {
+    constructor(executor) {
+        // executor 是一个执行器，进入会立即执行
+        // 并传入resolve和reject方法
+        executor(this.resolve, this.reject);
+    }
+
+    // 储存状态的变量，初始值是 pending
+    status = PENDING;
+
+    // resolve和reject为什么要用箭头函数？
+    // 如果直接调用的话，普通函数this指向的是window或者undefined
+    // 用箭头函数就可以让this指向当前实例对象
+    // 成功之后的值
+    value = null;
+    // 失败之后的原因
+    reason = null;
+
+    // 存储成功回调函数
+    // onFulfilledCallback = null;
+    onFulfilledCallbacks = [];
+    // 存储失败回调函数
+    // onRejectedCallback = null;
+    onRejectedCallbacks = [];
+
+    // 更改成功后的状态
+    resolve = (value) =&gt; {
+        // 只有状态是等待，才执行状态修改
+        if (this.status === PENDING) {
+            // 状态修改为成功
+            this.status = FULFILLED;
+            // 保存成功之后的值
+            this.value = value;
+            // ==== 新增 ====
+            // resolve里面将所有成功的回调拿出来执行
+            while (this.onFulfilledCallbacks.length) {
+                // Array.shift() 取出数组第一个元素，然后（）调用，shift不是纯函数，取出后，数组将失去该元素，直到数组为空
+                this.onFulfilledCallbacks.shift()(value);
+            }
+        }
+    };
+
+    // 更改失败后的状态
+    // 更改失败后的状态
+    reject = (reason) =&gt; {
+        // 只有状态是等待，才执行状态修改
+        if (this.status === PENDING) {
+            // 状态成功为失败
+            this.status = REJECTED;
+            // 保存失败后的原因
+            this.reason = reason;
+            // ==== 新增 ====
+            // resolve里面将所有失败的回调拿出来执行
+            while (this.onRejectedCallbacks.length) {
+                this.onRejectedCallbacks.shift()(reason)
+            }
+        }
+    }
+
+
+    then(onFulfilled, onRejected) {
+        // 判断状态
+        if (this.status === FULFILLED) {
+            // 调用成功回调，并且把值返回
+            onFulfilled(this.value);
+        } else if (this.status === REJECTED) {
+            // 调用失败回调，并且把原因返回
+            onRejected(this.reason);
+        } else if (this.status === PENDING) {
+            // ==== 新增 ====
+            // 因为不知道后面状态的变化，这里先将成功回调和失败回调存储起来
+            // 等待后续调用
+            this.onFulfilledCallbacks.push(onFulfilled);
+            this.onRejectedCallbacks.push(onRejected);
+        }
+    }
+}
+
+module.exports = MyPromise;
+</code></pre></div><p>实现结果</p><div class="language-"><pre><code>const MyPromise = require(&#39;./MyPromise&#39;)
+const promise = new MyPromise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+        resolve(&#39;success&#39;)
+    }, 2000);
+})
+
+promise.then(value =&gt; {
+    console.log(1)
+    console.log(&#39;resolve&#39;, value)
+})
+
+promise.then(value =&gt; {
+    console.log(2)
+    console.log(&#39;resolve&#39;, value)
+})
+
+promise.then(value =&gt; {
+    console.log(3)
+    console.log(&#39;resolve&#39;, value)
+})
+
+// 1
+// resolve success
+// 2
+// resolve success
+// 3
+// resolve success
+</code></pre></div><h3 id="实现-promise-all"><a class="header-anchor" href="#实现-promise-all" aria-hidden="true">#</a> 实现 promise.all</h3><p>思路：</p><ol><li>判断传入的是数组类型</li><li>定义数组保存每一个 promise 的返回结果，同时开始计数，当数量等于传入的数组长度，则执行完成</li><li>如果遇到 reject，直接返回 reject 的失败原因，如果全部成功，则返回结果数组</li></ol><p>实现方法</p><div class="language-"><pre><code>function PromiseAll(promises) {
+    return new Promise((resolve, reject) =&gt; {
+        // 判断传入的必须是数组
+        if (!Array.isArray(promises)) {
+            throw new TypeError(&quot;promises must be an array&quot;)
+        }
+        let result = [] // 保存结果
+        let count = 0  // 用于判断是否全部执行完
+        promises.forEach((promise, index) =&gt; {
+            promise.then((res) =&gt; {
+                console.log(&quot;res&quot;, res);
+                result[index] = res
+                count++
+                count === promises.length &amp;&amp; resolve(result)  //全部执行完后输出结果
+            }, (err) =&gt; {
+                reject(err)
+            })
+        })
+    })
+}
+
+module.exports = PromiseAll;
+</code></pre></div><p>实现结果</p><div class="language-"><pre><code>const PromiseAll = require(&#39;./promiseAll&#39;)
+
+const promise1 = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+        resolve(&#39;success1&#39;)
+    }, 5000);
+})
+
+const promise2 = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+        resolve(&#39;success2&#39;)
+    }, 1000);
+})
+
+const promise3 = new Promise((resolve, reject) =&gt; {
+    reject(&#39;error&#39;)
+})
+
+PromiseAll([promise1, promise2, promise3]).then((res) =&gt; {
+    console.log(&quot;全部执行完成&quot;, res);
+}).catch((error) =&gt; {
+    console.log(&quot;执行异常&quot;, error)
+})
+
+//执行结果，如果没有 reject，输出 [&#39;success1&#39;,&#39;success1&#39;]，reject 输出 error
+</code></pre></div><h3 id="实现-promise-finally"><a class="header-anchor" href="#实现-promise-finally" aria-hidden="true">#</a> 实现 promise.finally</h3><p>实现代码</p><div class="language-"><pre><code>// 由于无法知道promise的最终状态，所以finally的回调函数中不接收任何参数，
+// 它仅用于无论最终结果如何都要执行的情况
+// 并且finally之后，还可以继续then。并且会将值原封不动的传递给后面的then
+
+Promise.prototype.myFinally = function (cb) {
+    // 此处的 this 是一个 pending状态的 promise，resolve(cb())会执行 finally 的代码
+    // promise后有可能还是一个promise，finally需要原封不动的返回 return结果
+    return this.then((value) =&gt; {
+        return Promise.resolve(cb()).then(function () {
+            return value
+        })
+    }, (err) =&gt; {
+        return Promise.resolve(cb()).then(function () {
+            throw err
+        })
+    })
+}
+
+const promise = new Promise((resolve, reject) =&gt; {
+    resolve(&#39;success&#39;)
+})
+
+promise.then((res) =&gt; {
+    return new Promise((resolve) =&gt; {
+        resolve(&#39;success1&#39;)
+    })
+}).myFinally(() =&gt; {
+    console.log(&quot;执行finally&quot;);
+}).then((res) =&gt; {
+    console.log(&quot;finally后，原封不动返回值&quot;, res);
+})
+
+// 输出：执行finally finally后，原封不动返回值 success1
+</code></pre></div><h3 id="实现-promise-allsettled"><a class="header-anchor" href="#实现-promise-allsettled" aria-hidden="true">#</a> 实现 promise.allSettled</h3><p>实现代码</p><div class="language-"><pre><code>function allSettled(promises) {
+    if (promises.length === 0) return Promise.resolve([])
+
+    const _promises = promises.map(
+        item =&gt; item instanceof Promise ? item : Promise.resolve(item)
+    )
+    return new Promise((resolve, reject) =&gt; {
+        const result = []
+        let unSettledPromiseCount = _promises.length
+
+        _promises.forEach((promise, index) =&gt; {
+            promise.then((value) =&gt; {
+                result[index] = {
+                    status: &#39;fulfilled&#39;,
+                    value
+                }
+
+                unSettledPromiseCount -= 1
+                // resolve after all are settled
+                if (unSettledPromiseCount === 0) {
+                    resolve(result)
+                }
+            }, (reason) =&gt; {
+                result[index] = {
+                    status: &#39;rejected&#39;,
+                    reason
+                }
+
+                unSettledPromiseCount -= 1
+                // resolve after all are settled
+                if (unSettledPromiseCount === 0) {
+                    resolve(result)
+                }
+            })
+        })
+
+    })
+}
+
+module.exports = allSettled;
+
+// 思路：
+// 当所有的 promise 都执行完了把结果组成数组，包含状态以及 value。
+// 首先判断传入的 promise 数组长度，为0直接返回空数组
+// 如果 promise 中没有 reslove 或 reject 的，我们只处理 reslove 或 reject 的，所以没有会直接跳出不执行，停止
+// 通过计数 -1 ，以及包装结果，返回全部正常结束的最终结果
+</code></pre></div><p>实现结果</p><div class="language-"><pre><code>const promiseAllSettled = require(&#39;./promiseAllSettled&#39;)
+
+const promise1 = new Promise((resolve, reject) =&gt; {
+    resolve(&#39;success1&#39;)
+})
+
+const promise2 = new Promise((resolve, reject) =&gt; {
+    // resolve(&#39;success2&#39;)
+    console.log(&quot;sdf&quot;);
+})
+
+const promise3 = new Promise((resolve, reject) =&gt; {
+    reject(&#39;error&#39;)
+
+})
+
+promiseAllSettled([promise1, promise2, promise3]).then((res) =&gt; {
+    console.log(&quot;AllSettled全部执行完成&quot;, res);
+})
+
+// 执行结果
+//  全部执行完成 [
+//     { status: &#39;fulfilled&#39;, value: &#39;success1&#39; },
+//     { status: &#39;fulfilled&#39;, value: &#39;success2&#39; },
+//     { status: &#39;rejected&#39;, reason: &#39;error&#39; }
+//   ]
+</code></pre></div><h3 id="实现-promise-any"><a class="header-anchor" href="#实现-promise-any" aria-hidden="true">#</a> 实现 promise.any</h3><p>实现方法</p><div class="language-"><pre><code>function promiseAny(promiseArr) {
+    let index = 0
+    return new Promise((resolve, reject) =&gt; {
+        if (promiseArr.length === 0) return
+        promiseArr.forEach((p, i) =&gt; {
+            Promise.resolve(p).then(val =&gt; {
+                resolve(val)
+
+            }, err =&gt; {
+                index++
+                if (index === promiseArr.length) {
+                    reject(new AggregateError(&#39;All promises were rejected&#39;))
+                }
+            })
+        })
+    })
+}
+
+module.exports = promiseAny;
+
+// 思路：
+// 计数，当遇到成功状态，就返回这个结果，当全部都失败，就返回失败信息
+</code></pre></div><p>实现结果</p><div class="language-"><pre><code>// 执行 promise 数组，当遇到一个 成功状态，就返回这个成功结果，如果全部失败，就返回 失败提示// 执行所有的 promise，返回所有的 promise 状态与结果，reject不影响过程
+
+const promiseAny = require(&#39;./promiseAny&#39;)
+
+const promise1 = new Promise((resolve, reject) =&gt; {
+    resolve(&#39;success1&#39;)
+})
+
+const promise2 = new Promise((resolve, reject) =&gt; {
+    resolve(&#39;success2&#39;)
+})
+
+const promise3 = new Promise((resolve, reject) =&gt; {
+    reject(&#39;error&#39;)
+})
+
+promiseAny([promise1, promise2, promise3]).then((res) =&gt; {
+    console.log(&quot;promiseAny结果&quot;, res);
+})
+
+// 执行结果
+// promiseAny结果 success1
+</code></pre></div><h2 id="array-数组篇"><a class="header-anchor" href="#array-数组篇" aria-hidden="true">#</a> array 数组篇</h2><h3 id="实现数组去重"><a class="header-anchor" href="#实现数组去重" aria-hidden="true">#</a> 实现数组去重</h3><div class="language-"><pre><code>//ES6 提供的 Set 去重
+function unique(arr) {
+    const result = new Set(arr);
+    return [...result];
+    // return Array.from(result); //不兼容ie
+    //使用扩展运算符将Set数据结构转为数组
+}
+
+// filter 配合 indexOf，
+//使用 indexOf 获取当前内容的下标，这个下标必须跟当前 index 相等，不想等说明出现在别的地方，是重复的需过滤
+function unique(arr) {
+    return arr.filter(function (item, index, arr) {
+        return arr.indexOf(item) === index;
+    })
+}
+
+// reduce
+let arr = [1, 2, 2, 4, null, null].reduce((accumulator, current) =&gt; {
+    return accumulator.includes(current) ? accumulator : accumulator.concat(current);
+}, []);
+</code></pre></div><h3 id="foreach"><a class="header-anchor" href="#foreach" aria-hidden="true">#</a> foreach</h3><div class="language-"><pre><code>Array.prototype.myForEach = function (callbackFn) {
+    // 判断this是否合法
+    if (this === null || this === undefined) {
+        throw new TypeError(&quot;Cannot read property &#39;myForEach&#39; of null&quot;);
+    }
+    // 判断callbackFn是否合法
+    if (Object.prototype.toString.call(callbackFn) !== &quot;[object Function]&quot;) {
+        throw new TypeError(callbackFn + &#39; is not a function&#39;)
+    }
+    // 取到执行方法的数组对象和传入的this对象
+    var _arr = this, thisArg = arguments[1] || window;
+    for (var i = 0; i &lt; _arr.length; i++) {
+        // 执行回调函数
+        callbackFn.call(thisArg, _arr[i], i, _arr);
+    }
+}
+</code></pre></div><h3 id="reduce"><a class="header-anchor" href="#reduce" aria-hidden="true">#</a> reduce</h3><p>先理解 reduce 的用法：</p><div class="language-"><pre><code>array.reduce(function(accumulator, currentValue, currentIndex, array), initialValue)
+</code></pre></div><p>接受四个参数：</p><ul><li>accumulator 累加器，当前执行的结果</li><li>currentValue 当前执行的值</li><li>currentIndex 当前执行的index</li><li>array 正在被执行的数组</li><li>initialValue 初始值</li></ul><p>必须要 retuen，这样后续才能获取之前的值，继续进行操作</p><p>看例子：</p><div class="language-"><pre><code>// 计数
+// 无初始值
+let total = [1, 2, 3, 4].reduce((accumulator, current) =&gt; accumulator += current); // 10
+
+// 有初始值
+let total = [1, 2, 3, 4].reduce((accumulator, current) =&gt; accumulator += current, 90); // 100
+
+// 数组去重
+let arr = [1, 2, 2, 4, null, null].reduce((accumulator, current) =&gt; {
+    return accumulator.includes(current) ? accumulator : accumulator.concat(current);
+}, []);
+</code></pre></div><p>实现代码</p><div class="language-"><pre><code>Array.prototype.myReduce = function (callbackFn) {
+    var _arr = this, accumulator = arguments[1];
+    var i = 0;
+    // 判断是否传入初始值
+    if (accumulator === undefined) {
+        // 没有初始值的空数组调用reduce会报错
+        if (_arr.length === 0) {
+            throw new Error(&#39;initVal and Array.length&gt;0 need one&#39;)
+        }
+        // 初始值赋值为数组第一个元素
+        accumulator = _arr[i];
+        i++;
+    }
+    for (; i &lt; _arr.length; i++) {
+        // 计算结果赋值给初始值
+        accumulator = callbackFn(accumulator, _arr[i], i, _arr)
+    }
+    return accumulator;
+}
+
+// 思路：
+// 判断是否传入初始值，如果没有传入初始值并且，第一个数组还是空的，就返回异常，否则将数组的第一项作为初始值
+// 开始循环数组，迭代执行传入的方法，传入四个值
+// 接受四个参数：
+// - accumulator 累加器，当前执行的结果
+// - currentValue 当前执行的值
+// - currentIndex 当前执行的index
+// - array 正在被执行的数组
+// - initialValue 初始值
+</code></pre></div><h2 id="节流防抖"><a class="header-anchor" href="#节流防抖" aria-hidden="true">#</a> 节流防抖</h2><p>节流： 多次触发同一个函数，同一段时间内只执行一次，所以节流会稀释函数的执行频率</p><blockquote><p>可以看出节流的主要原理就是利用时间差（当前和上次执行）来过滤中间过程触发的函数执行。控制是否在开始时会立即触发一次，及最后一次触发是否执行,添加取消的功能</p></blockquote><div class="language-"><pre><code>// 节流： 多次触发同一个函数，同一段时间内只执行一次，所以节流会稀释函数的执行频率。触发后只在乎时间，时间到了才执行
+// 如果事件不停的触发，它会在规定的时间内一直触发
+
+// fn：执行的方法，wait：等待的时间，immediate：第一次进入是否执行
+
+// 设置上次执行毫秒数初始值 0 ，设置 当前毫秒数 now，通过 now - previous 是否大于传入的等待毫秒数控制方法执行
+
+// 每次点击进入
+function throttle(fn, wait, immediate = false) {
+    let timer; // 定时器
+    let previous = 0; // 上次执行毫秒数初始化 0
+
+    const throttled = function (...args) {
+        // args 为执行函数传入的参数
+
+        // 清除上一个 timer
+        if (timer) clearTimeout(timer);
+
+        const now = +new Date();
+        // 如果第一次进来：previous === 0 并且不需要立即执行 immediate === false
+        // 设置当当前毫秒数等于上次执行毫秒数，相减等于0，肯定小于等待时间 wait，所以不能立即执行。
+        if (immediate === false &amp;&amp; !previous) previous = now; // 控制不能立即执行
+
+        // now - previous 是否大于传入的等待毫秒数控制方法执行
+        if (now - previous &gt; wait) {
+            fn.apply(this, args);
+            previous = now; // 执行完将上次执行毫秒数设置为当前毫秒数
+        }
+    }
+
+    // 提供马上停止的方法
+    throttled.cancel = () =&gt; {
+        clearTimeout(timer);
+        timer = null;
+        previous = 0;
+    }
+
+    return throttled;
+}
+</code></pre></div><p>防抖： 按最后一次算。比如说“停止输入5s后才发送请求”，防止多次点击 (比较常用)</p><blockquote><p>可以看出debounce函数的实现原理就是通过计时器延迟函数执行，短时间内再次触发时重置并添加新计时器。</p></blockquote><div class="language-"><pre><code>// 防抖： 按最后一次算。比如说“停止输入5s后才发送请求”，防止多次点击  (比较常用)
+// 你尽管触发事件，但是我一定在事件触发 n 秒后才执行，如果你在一个事件触发的 n 秒内又触发了这个事件，那我就以新的事件的时间为准，n 秒后才执行
+// 总之，就是要等你触发完事件 n 秒内不再触发事件，我才执行。
+
+// 关键点就是，进来清除上一次的定时器，重新设置定时器
+
+// 可以看出debounce函数的实现原理就是通过计时器延迟函数执行，短时间内再次触发时重置并添加新计时器。
+
+//第一次触发可以立即执行，并且有取消功能
+function debounce(fn, wait = 1000, immediate = false) {
+    let timer = null;
+
+    function debounced(...args) {
+        // 每次进来都重置计时器，当没有触发了，才真正执行，
+        // 或者是 延迟时间 比 触发间隔短 执行
+        timer &amp;&amp; clearTimeout(timer);
+
+        // 首次立即执行
+        if (immediate &amp;&amp; !timer) {
+            fn.apply(this, ...args);
+            // 立即执行完，再过 wait 就不执行了
+            timer = setTimeout(() =&gt; {
+                timer = null;
+            }, wait);
+            return;
+        }
+
+        // 新计时器
+        timer = setTimeout(() =&gt; {
+            fn.apply(this, ...args);
+            timer = null;
+        }, wait);
+    }
+
+    debounced.cancel = () =&gt; {
+        clearTimeout(timer);
+        timer = null;
+    };
+
+    return debounced;
+}
+</code></pre></div><h2 id="深拷贝"><a class="header-anchor" href="#深拷贝" aria-hidden="true">#</a> 深拷贝</h2><p>深拷贝，只拷贝内容，不拷贝地址，不会造成互相影响</p><div class="language-"><pre><code>const deepClone = (target) =&gt; {
+    // 判断是否是对象并且不为null
+    if (typeof target === &#39;object&#39; &amp;&amp; target !== null) {
+        const cloneTarget = Array.isArray(target) ? [] : {};
+        // 递归克隆
+        for (let prop in target) {
+            if (target.hasOwnProperty(prop)) {
+                cloneTarget[prop] = deepClone(target[prop]);
+            }
+        }
+        return cloneTarget;
+    } else {
+        return target;
+    }
+}
+
+const object1 = {
+    a: 1,
+    b: {
+        c: 2
+    },
+    d: [&#39;1&#39;, &#39;2&#39;]
+}
+
+const object2 = deepClone(object1) // 这里两个的a为1 和 3
+// const object2 = object1 // 这里两个的a都将输出3
+
+object2.a = 3
+console.log(&#39;object1&#39;, object1);
+console.log(&#39;object2&#39;, object2);
+</code></pre></div><h2 id="实现-new"><a class="header-anchor" href="#实现-new" aria-hidden="true">#</a> 实现 new</h2><div class="language-"><pre><code>function createObject(Con) {
+    // 创建新对象obj
+    // var obj = {};也可以
+    var obj = Object.create(null);
+
+    // 将obj.__proto__ -&gt; 构造函数原型
+    // (不推荐)obj.__proto__ = Con.prototype
+    Object.setPrototypeOf(obj, Con.prototype);
+
+    // 执行构造函数，并接受构造函数返回值
+    const ret = Con.apply(obj, [].slice.call(arguments, 1));
+
+    // 若构造函数返回值为对象，直接返回该对象
+    // 否则返回obj
+    return typeof(ret) === &#39;object&#39; ? ret: obj;
+}
+</code></pre></div><h2 id="function-篇"><a class="header-anchor" href="#function-篇" aria-hidden="true">#</a> Function 篇</h2><h3 id="call"><a class="header-anchor" href="#call" aria-hidden="true">#</a> Call</h3><div class="language-"><pre><code>Function.prototype.myCall = function (thisArg) {
+    thisArg = thisArg || window;
+    thisArg.func = this;
+    const args = []
+    for (let i = 1; i&lt;arguments.length; i++) {
+        args.push(&#39;arguments[&#39;+ i + &#39;]&#39;)
+    }
+    const result = eval(&#39;thisArg.func(&#39; + args +&#39;)&#39;)
+    delete thisArg.func;
+    return result;
+}
+</code></pre></div><h3 id="apply"><a class="header-anchor" href="#apply" aria-hidden="true">#</a> Apply</h3><div class="language-"><pre><code>Function.prototype.myApply = function (thisArg, arr) {
+    thisArg = thisArg || window;
+    thisArg.func = this;
+    const args = []
+    for (let i = 0; i&lt;arr.length; i++) {
+        args.push(&#39;arr[&#39;+ i + &#39;]&#39;)
+    }
+    const result = eval(&#39;thisArg.func(&#39; + args +&#39;)&#39;)
+    delete thisArg.func;
+    return result;
+}
+</code></pre></div><h3 id="bind"><a class="header-anchor" href="#bind" aria-hidden="true">#</a> Bind</h3><div class="language-"><pre><code>Function.prototype.sx_bind = function (obj, ...args) {
+    obj = obj || window
+
+    const fn = Symbol()
+    obj[fn] = this
+    const _this = this
+
+    const res = function (...innerArgs) {
+        console.log(this, _this)
+        if (this instanceof _this) {
+            this[fn] = _this
+            this[fn](...[...args, ...innerArgs])
+            delete this[fn]
+        } else {
+            obj[fn](...[...args, ...innerArgs])
+            delete obj[fn]
+        }
+    }
+    res.prototype = Object.create(this.prototype)
+    return res
+}
+</code></pre></div></div><div class="links-wrapper"><div class="prev-link"><!----></div><div class="next-link"><!----></div></div><!--[--><!--[--><!--]--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"docs.md\":\"67e0e6a2\",\"index.md\":\"edacb7d2\",\"README.md\":\"4128f4cd\",\"tags.md\":\"9d596c8e\",\"docs_algorithm_array.md\":\"cd37e67d\",\"docs_algorithm_bstTree.md\":\"2c5f112a\",\"docs_algorithm_chain.md\":\"886e6a2a\",\"docs_algorithm_chainCicle.md\":\"19bf3dcc\",\"docs_algorithm_chainHead.md\":\"d919a8ea\",\"docs_algorithm_complexity.md\":\"d90c660d\",\"docs_algorithm_dataStructures.md\":\"69c5d50f\",\"docs_algorithm_DFS.md\":\"6051aa2d\",\"docs_algorithm_dynamic.md\":\"f30f4f64\",\"docs_algorithm_ergodicTree.md\":\"e4ba1bb8\",\"docs_algorithm_queue.md\":\"30ce6b58\",\"docs_algorithm_sort.md\":\"691a9203\",\"docs_algorithm_stack.md\":\"15072771\",\"docs_algorithm_string.md\":\"3a38c3b1\",\"docs_algorithm_thinking.md\":\"4e7b9192\",\"docs_algorithm_tree.md\":\"9837f573\",\"docs_article_index.md\":\"1854e195\",\"docs_babel_start.md\":\"baa6a13e\",\"docs_howReview_start.md\":\"b3790e45\",\"docs_interview_22Ready.md\":\"a75a140a\",\"docs_interview_22StartSum.md\":\"eb76096b\",\"docs_interview_async.md\":\"48585586\",\"docs_interview_boxsizing.md\":\"334115fc\",\"docs_interview_center.md\":\"277dcf15\",\"docs_interview_css.md\":\"b460d1c7\",\"docs_interview_dataType.md\":\"2f121d67\",\"docs_interview_debounce.md\":\"dbe6dfc6\",\"docs_interview_defineProperty.md\":\"ec52fd21\",\"docs_interview_dns.md\":\"741137ec\",\"docs_interview_hashMode.md\":\"c62c4930\",\"docs_interview_httpCode.md\":\"cb81c76b\",\"docs_interview_index.md\":\"4819ed13\",\"docs_interview_jsBaseQuestion.md\":\"8216827e\",\"docs_interview_longList.md\":\"b445de56\",\"docs_interview_networkBaseQuestion.md\":\"d402d840\",\"docs_interview_process.md\":\"ef641a36\",\"docs_interview_promiseCicle.md\":\"07117c4b\",\"docs_interview_reactBaseQuestion.md\":\"a8b76b21\",\"docs_interview_repaint.md\":\"d3e9229b\",\"docs_interview_target.md\":\"598f6eb7\",\"docs_interview_URL.md\":\"26c1195b\",\"docs_interview_vueBaseQuestion.md\":\"a7a7a406\",\"docs_interview_writeQuestion.md\":\"b59b7251\",\"docs_jsAdvanced_changelog.md\":\"233da342\",\"docs_jsAdvanced_cURL.md\":\"5cb3753d\",\"docs_jsAdvanced_gulp.md\":\"958207e2\",\"docs_jsAdvanced_husky.md\":\"fb9e0602\",\"docs_jsAdvanced_index.md\":\"78cfa234\",\"docs_jsAdvanced_jiangVui.md\":\"cee38e52\",\"docs_jsAdvanced_jsAdvanced.md\":\"f4274792\",\"docs_jsAdvanced_loadingHandle.md\":\"adcef2c6\",\"docs_jsAdvanced_mock.md\":\"d1078c95\",\"docs_jsAdvanced_monitor.md\":\"5fcd7e05\",\"docs_jsAdvanced_nvm.md\":\"afb65ddb\",\"docs_jsAdvanced_performance.md\":\"98c310de\",\"docs_jsAdvanced_pureFuntion.md\":\"3031e2a5\",\"docs_jsAdvanced_sentry.md\":\"5bec9037\",\"docs_jsAdvanced_server.md\":\"e3847893\",\"docs_jsAdvanced_standard.md\":\"b3f8225c\",\"docs_jsAdvanced_ts.md\":\"a8705ef7\",\"docs_jsAdvanced_vite.md\":\"d84b2beb\",\"docs_jsAdvanced_vue3.md\":\"989e21ab\",\"docs_jsAdvanced_vueComponent.md\":\"95f40378\",\"docs_jsBase_bind.md\":\"7704be52\",\"docs_jsBase_Cache.md\":\"1a8d3cd4\",\"docs_jsBase_closure.md\":\"af360d78\",\"docs_jsBase_context.md\":\"80535d58\",\"docs_jsBase_copy.md\":\"40d90e39\",\"docs_jsBase_cors.md\":\"82f755c1\",\"docs_jsBase_CSRF.md\":\"0f0814f7\",\"docs_jsBase_css.md\":\"e5d21f2f\",\"docs_jsBase_es6.md\":\"5c049d05\",\"docs_jsBase_eventLoop.md\":\"7a6b0268\",\"docs_jsBase_garbage.md\":\"a125085d\",\"docs_jsBase_git.md\":\"4e8babae\",\"docs_jsBase_https.md\":\"65dd22dc\",\"docs_jsBase_index.md\":\"4b04cb6c\",\"docs_jsBase_jquery.md\":\"f3395bf4\",\"docs_jsBase_memory.md\":\"7c04f972\",\"docs_jsBase_module.md\":\"e5949fb6\",\"docs_jsBase_new.md\":\"bd8308c4\",\"docs_jsBase_prototype.md\":\"9dc246ac\",\"docs_jsBase_storage.md\":\"b3adeaa6\",\"docs_jsBase_this.md\":\"8fc81baa\",\"docs_jsBase_websocket.md\":\"1507f39c\",\"docs_resources_learning.md\":\"af5859f3\",\"docs_resources_tool.md\":\"1ba858f0\",\"docs_reStudy_browser_css.md\":\"b109f4b2\",\"docs_reStudy_browser_cssdom.md\":\"7588bcee\",\"docs_reStudy_browser_dom.md\":\"1645df31\",\"docs_reStudy_browser_domApi.md\":\"878db3e4\",\"docs_reStudy_browser_event.md\":\"133fa540\",\"docs_reStudy_browser_http.md\":\"aefa28ae\",\"docs_reStudy_browser_maker.md\":\"a584a598\",\"docs_reStudy_browser_print.md\":\"6f541cdf\",\"docs_reStudy_css_animation.md\":\"088ce694\",\"docs_reStudy_css_color.md\":\"305a53ea\",\"docs_reStudy_css_compose.md\":\"d7c7cb3f\",\"docs_reStudy_css_link.md\":\"ce8f5523\",\"docs_reStudy_css_rule.md\":\"1a9ef4b3\",\"docs_reStudy_css_select.md\":\"31d9217e\",\"docs_reStudy_html_ARIA.md\":\"ae5860a4\",\"docs_reStudy_html_DTD.md\":\"0f201e28\",\"docs_reStudy_html_head.md\":\"80c79dc2\",\"docs_reStudy_html_standard.md\":\"2a19421f\",\"docs_reStudy_html_tag.md\":\"718974b5\",\"docs_reStudy_html_tramslate.md\":\"b64e0c8d\",\"docs_reStudy_js_closure.md\":\"fa4b9116\",\"docs_reStudy_js_completion.md\":\"a2be3e79\",\"docs_reStudy_js_eventLoop.md\":\"e6c7402c\",\"docs_reStudy_js_function.md\":\"710f7ab3\",\"docs_reStudy_js_grammar.md\":\"8f61f7b4\",\"docs_reStudy_js_object.md\":\"94bc30b9\",\"docs_reStudy_js_prototype.md\":\"3c2eaed0\",\"docs_reStudy_js_semicolon.md\":\"c8ad84a8\",\"docs_reStudy_js_token.md\":\"0213be35\",\"docs_reStudy_js_type.md\":\"80fc2574\",\"docs_reStudy_other_question.md\":\"1ff699d9\",\"docs_reStudy_start.md\":\"9afdd8e6\",\"docs_reStudy_sum_architecture.md\":\"25c6ac11\",\"docs_reStudy_sum_continue.md\":\"2cc6c58f\",\"docs_reStudy_sum_performance.md\":\"8207603c\",\"docs_reStudy_sum_system.md\":\"e90b1975\",\"docs_reStudy_sum_tool.md\":\"5bf127ce\",\"docs_work_h5.md\":\"24bb8ff4\",\"docs_work_vue.md\":\"ed77ade1\"}")</script>
+    <script type="module" async src="/_assets/app.bac4ca22.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1 @@
+import{g as e,f as t,E as n}from"./common-d6bd45c0.js";const o='{"title":"","frontmatter":{},"relativePath":"docs/jsAdvanced/mock.md","lastUpdated":1648473509583.3616}';var r={};const p=n('',15);r.render=function(n,o,r,a,c,s){return t(),e("div",null,[p])};export default r;export{o as __pageData};

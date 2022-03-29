@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      基本算法技能 | Jiang's Blog
+    </title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/_assets/style.d3cbd45d.css">
+    <link rel="modulepreload" href="/_assets/common-d6bd45c0.js">
+    <link rel="modulepreload" href="/_assets/docs_algorithm_string.md.3a38c3b1.lean.js">
+    <link rel="modulepreload" href="/_assets/app.bac4ca22.js">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="Jiang的个人博客">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="navbar"><!--[--><a class="title" aria-label="Jiang&#39;s Blog, back to home" href="/"><!----><span style="color:var(--accent-color);">Jiang&#39;s Blog</span></a><div class="flex-grow"></div><nav class="nav-links hide-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!-- <AlgoliaSearchBox
+              v-if="$site.themeConfig.algolia"
+              :options="$site.themeConfig.algolia"
+            /> --><!--]--><!--]--><!--]--><div class="sidebar-button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div></header><aside class=""><!--[--><nav class="nav-links show-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!--]--><!--]--><ul class="sidebar"><!--[--><li class="sidebar-item"><p class="sidebar-link">算法</p><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/dataStructures">数据结构</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/ergodicTree">遍历二叉树</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/complexity">复杂度</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/array">数组解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link active" href="/docs/algorithm/string">字符串解题</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#基本算法技能">基本算法技能</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#反转字符串">反转字符串</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="#高频真题解读">高频真题解读</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#回文字符串的衍生问题">回文字符串的衍生问题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#字符串匹配问题——正则表达式初相见">字符串匹配问题——正则表达式初相见</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#正则表达式更进一步——字符串与数字之间的转换问题">正则表达式更进一步——字符串与数字之间的转换问题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#编码实现">编码实现</a><!----></li></ul></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chain">链表解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chainHead">链表解题-快慢指针与多指针</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chainCicle">链表解题-环形链表</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/stack">栈解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/queue">队列解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/DFS">深度优先&amp;广度优先</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/thinking">递归与回溯思想</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/tree">二叉树</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/bstTree">二叉搜索树</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/sort">排序算法</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/dynamic">动态规划</a><!----></li></ul></li><!--]--></ul><!--[--><!--[--><!--]--><!--]--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main><div class="content"><!--[--><!--[--><!--]--><!--]--><div class="md-header"><!-- <div class="md-title">{{ pageData.title }}</div> --><!-- {{ pageData.frontmatter.date }} --><div class="md-date">今日诗词欣赏</div><span id="jinrishici-sentence">正在加载今日诗词....</span></div><!-- 右边导航 --><!-- <ul class="catalog">
+      <li class="catalog-item" v-for="item in pageData.headers">
+        <a class="level level-2" v-if="item.level == 2" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+        <a class="level level-3" v-if="item.level == 3" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+      </li>
+    </ul> --><!-- md主内容 --><div><h2 id="基本算法技能"><a class="header-anchor" href="#基本算法技能" aria-hidden="true">#</a> 基本算法技能</h2><h3 id="反转字符串"><a class="header-anchor" href="#反转字符串" aria-hidden="true">#</a> 反转字符串</h3><p>将字符串通过split方法转换成数组 =》 使用 reverse 反转数组顺序 =》 在通过 join 方法拼接回去</p><div class="language-"><pre><code>const str = &#39;juejin&#39;  
+const res = str.split(&#39;&#39;).reverse().join(&#39;&#39;)
+
+console.log(res) // nijeuj
+</code></pre></div><p>也可以使用这个方法判断一个字符串是否是<code>回文字符串</code>(正着读和倒着读都一样的字符串)<br> 判断回文也可根据：从中间位置“劈开”，那么两边的两个子串在内容上是完全对称的</p><div class="language-"><pre><code>function isPalindrome(str) {
+    // 缓存字符串的长度
+    const len = str.length
+    // 遍历前半部分，判断和后半部分是否对称
+    for(let i=0;i&lt;len/2;i++) {
+        if(str[i]!==str[len-i-1]) {
+            return false
+        }
+    }
+    return true
+}   
+</code></pre></div><h2 id="高频真题解读"><a class="header-anchor" href="#高频真题解读" aria-hidden="true">#</a> 高频真题解读</h2><h3 id="回文字符串的衍生问题"><a class="header-anchor" href="#回文字符串的衍生问题" aria-hidden="true">#</a> 回文字符串的衍生问题</h3><blockquote><p>真题描述：给定一个非空字符串 s，最多删除一个字符。判断是否能成为回文字符串。</p></blockquote><p>示例 1:<br> 输入: &quot;aba&quot;<br> 输出: True<br> 示例 2:<br> 输入: &quot;abca&quot;<br> 输出: True<br> 解释: 你可以删除c字符。<br> 注意: 字符串只包含从 a-z 的小写字母。字符串的最大长度是50000。<br></p><p>常规解法：遍历字符串，每次遍历都删掉当前元素，再判断是否是回文字符串，当有true时则成功返回。</p><p><strong>使用对撞指针解法思路：</strong></p><ul><li>将指针指向首位，i = 0,j = len -1，满足 i &lt; j &amp;&amp; s[i] === s[j] 时两边同时往中间靠,这时候遍历过的双外层一定是互相相等，满足回文的，那么接下来我们只需要判断内层是否满足</li><li>当遇到不相等时 s[i] !== s[j]，我们要分别判断一下 ,如果满足则符合条件 return true <ul><li>1.删掉s[i]，判断内层满不满足回文： s[i +1] 到 s [j]</li><li>2.删掉s[j]，判断内层满不满足回文： s[i] 到 s [j - 1]</li></ul></li></ul><p>简单理解就是，对撞指针往中间靠，判断一下分别删除左右两个值后内层是否满足回文。这样做可以减少循环次数！</p><div class="language-"><pre><code>const validPalindrome = function(s) {
+    // 缓存字符串的长度
+    const len = s.length
+   
+    // i、j分别为左右指针
+    const i = 0,j = len - 1
+    
+    // 当左右指针均满足对称时，一起向中间前进
+    while(i &lt; j&amp;&amp;s[i] === s[j]){
+        i ++
+        j --
+    }
+    
+    // 尝试判断跳过左指针元素后字符串是否回文
+    if(isPalindrome(i+1,j)) {
+      return true
+    }
+  
+    // 尝试判断跳过右指针元素后字符串是否回文
+    if(isPalindrome(i,j-1)) {
+        return true
+    }
+  
+    // 工具方法，用于判断字符串是否回文
+    const isPalindrome = (i,j)=&gt;{
+        while(i &lt; j){
+            if(s[i] !== s[j]){
+                return false
+            }
+            i++
+            j--
+        }
+        return true
+    }
+      
+    // 默认返回 false
+    return false 
+};
+</code></pre></div><h3 id="字符串匹配问题——正则表达式初相见"><a class="header-anchor" href="#字符串匹配问题——正则表达式初相见" aria-hidden="true">#</a> 字符串匹配问题——正则表达式初相见</h3><p>真题描述： 设计一个支持以下两种操作的数据结构：<br> void addWord(word) <br> bool search(word) <br> search(word) 可以搜索文字或正则表达式字符串，字符串只包含字母 . 或 a-z 。 <br> . 可以表示任何一个字母。 <br></p><p>示例:</p><div class="language-"><pre><code>addWord(&quot;bad&quot;)
+addWord(&quot;dad&quot;)
+addWord(&quot;mad&quot;)
+search(&quot;pad&quot;) -&gt; false
+search(&quot;bad&quot;) -&gt; true
+search(&quot;.ad&quot;) -&gt; true
+search(&quot;b..&quot;) -&gt; true
+说明:
+你可以假设所有单词都是由小写字母 a-z 组成的。
+</code></pre></div><p>思路：</p><ul><li>定义一个 Map 去保存所有 add 进来的字符串，我们以字符串的长度作为key，把相同长度的值存到一个数组中，这样能大大降低查询的复杂度。</li><li>查找时，先匹配字符串长度 =》 再判断是否含有. 没有直接判断是否全等即可</li><li>若有., 通过正则判断是否符合 <ul><li><div class="language-"><pre><code>  const reg = new RegExp(word)
+  return this.words[len].some((item) =&gt; {
+       return reg.test(item)
+  })
+</code></pre></div></li></ul></li></ul><p>这里主要学习</p><ul><li>使用 Map 去保存数据，将字符串长度作为 key 降低查询的复杂度</li><li>学习 xx.prototype.addWord 的方式去给构造函数添加方法，后面通过new 对象调用方法</li><li>通过 new RegExp 去匹配正则</li></ul><div class="language-"><pre><code>/**
+ * 构造函数
+ */
+const WordDictionary = function () {
+  // 初始化一个对象字面量，承担 Map 的角色
+  this.words = {}
+};
+
+/**
+  添加字符串的方法
+ */
+WordDictionary.prototype.addWord = function (word) {
+  // 若该字符串对应长度的数组已经存在，则只做添加
+  if (this.words[word.length]) {
+    this.words[word.length].push(word)
+  } else {
+    // 若该字符串对应长度的数组还不存在，则先创建
+    this.words[word.length] = [word]
+  }
+
+};
+
+/**
+  搜索方法
+ */
+WordDictionary.prototype.search = function (word) {
+  // 若该字符串长度在 Map 中对应的数组根本不存在，则可判断该字符串不存在
+  if (!this.words[word.length]) {
+    return false
+  }
+  // 缓存目标字符串的长度
+  const len = word.length
+  // 如果字符串中不包含‘.’，那么一定是普通字符串
+  if (!word.includes(&#39;.&#39;)) {
+    // 定位到和目标字符串长度一致的字符串数组，在其中查找是否存在该字符串
+    return this.words[len].includes(word)
+
+  }
+
+  // 否则是正则表达式，要先创建正则表达式对象
+  const reg = new RegExp(word)
+
+  // 只要数组中有一个匹配正则表达式的字符串，就返回true
+  return this.words[len].some((item) =&gt; {
+    return reg.test(item)
+  })
+ };
+
+ 使用：const WordD = new WordDictionary()
+       WordD.addWord(&#39;asd)
+</code></pre></div><h3 id="正则表达式更进一步——字符串与数字之间的转换问题"><a class="header-anchor" href="#正则表达式更进一步——字符串与数字之间的转换问题" aria-hidden="true">#</a> 正则表达式更进一步——字符串与数字之间的转换问题</h3><blockquote><p>真题描述：请你来实现一个 atoi 函数，使其能将字符串转换成整数。</p></blockquote><h4 id="分析："><a class="header-anchor" href="#分析：" aria-hidden="true">#</a> 分析：</h4><ol><li>该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止——暗示你拿到字符串先去空格；</li></ol><div class="language-"><pre><code>// 去除空格
+let str = &#39;      +10086&#39;
+str.trim() // &#39;+10086&#39;
+</code></pre></div><ol start="2"><li>当我们寻找到的第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字组合起来，作为该整数的正负号——暗示你识别开头的“+”字符和“-”字符；该字符串除了有效的整数部分之后也可能会存在多余的字符，这些字符可以被忽略，它们对于函数不应该造成影响——暗示你见到非整数字符就刹车；</li></ol><div class="language-"><pre><code>// 使用正则匹配
+/\s*([-\+]?[0-9]*).*/
+
+\s 空格
+()里面的保留，[] 里面的满足任何一个都行，
+\+ 转义 +号 
+.* 排除非数字
+</code></pre></div><ul><li>首先，\s 这个符号，意味着空字符，它可以用来匹配回车、空格、换行等空白区域，这里，它用来被匹配空格。<code>*这个符号，跟在其它符号后面，意味着“前面这个符号可以出现0次或多次。\s*</code>，这里的意思就是空格出现0次或多次，都可被匹配到。</li><li>接着 () 出现了。() 圈住的内容，就是我们要捕获起来额外存储的东西。</li><li>[]中的匹配符之间是“或”的关系，也就是说只要能匹配上其中一个就行了。这里[]中包括了-和+，-不必说匹配的是对应字符，这个+之所以加了一个斜杠符，是因为+本身是一个有特殊作用的正则匹配符，这里我们要让它回归+字符的本义，所以要用一个\来完成转义。</li><li>[0-9]*结合咱们前面铺陈的知识，这个就不难理解了，它的意思是 0-9 之间的整数，能匹配到0个或多个就算匹配成功。</li><li>最后的 .这个是任意字符的意思，<code>.*用于字符串尾部匹配非数字的任意字符。我们看到.*是被排除捕获组之外的</code>，所以说这个东西其实也不会被额外存储，它被“摘除”了。</li></ul><ol start="3"><li>说明： 假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−2^31, 2^31 − 1]。如果数值超过这个范围，请返回 INT_MAX (2^31 − 1) 或 INT_MIN (−2^31) ——暗示......这都不是暗示了，这是明示啊！直接告诉你先把这俩边界值算出来，摆在那做卡口就完了。</li></ol><div class="language-"><pre><code>// 计算最大值
+const max = Math.pow(2,31) - 1
+// 计算最小值
+const min = -max - 1    
+</code></pre></div><h4 id="获取捕获结果"><a class="header-anchor" href="#获取捕获结果" aria-hidden="true">#</a> 获取捕获结果</h4><p>JS 的正则相关方法中， <code>test()</code>方法返回的是一个布尔值，单纯判断“是否匹配”。要想获取匹配的结果，我们需要调度<code>match()</code>方法：</p><div class="language-"><pre><code>const reg = /\s*([-\+]?[0-9]*).*/
+const groups = str.match(reg)
+</code></pre></div><p>match() 方法是一个在字符串中执行查找匹配的String方法，它返回一个数组，在未匹配到时会返回 null。<br> 如果我们的正则表达式尾部有 g 标志，match()会返回与完整正则表达式匹配的所有结果，但不会返回捕获组。 <br><strong>这里我们没有使用g标志，match()就会返回第一个完整匹配（作为数组的第0项）及其相关的捕获组（作为数组的第1及第1+项）。</strong> <br> 这里我们只定义了一个捕获组(我们写的()括号就是捕获组)，因此可以从 <code>groups[1]</code> 里拿到我们捕获的结果。<br></p><h3 id="编码实现"><a class="header-anchor" href="#编码实现" aria-hidden="true">#</a> 编码实现</h3><div class="language-"><pre><code>// 入参是一个字符串
+const myAtoi = function(str) {
+    // 编写正则表达式
+    const reg = /\s*([-\+]?[0-9]*).*/
+    // 得到捕获组
+    const groups = str.match(reg)  // 不考虑临界限制，到这里获取 groups[1] 就完成了
+
+
+    // 计算最大值
+    const max = Math.pow(2,31) - 1
+    // 计算最小值
+    const min = -max - 1
+    // targetNum 用于存储转化出来的数字
+    let targetNum = 0
+    // 如果匹配成功
+    if(groups) {
+        // 尝试转化捕获到的结构
+        targetNum = +groups[1]
+        // 注意，即便成功，也可能出现非数字的情况，比如单一个&#39;+&#39;
+        if(isNaN(targetNum)) {
+            // 不能进行有效的转换时，请返回 0
+            targetNum = 0
+        }
+    }
+    // 卡口判断
+    if(targetNum &gt; max) {
+        return max
+    } else if( targetNum &lt; min) {
+        return min
+    }
+    // 返回转换结果
+    return targetNum
+};
+</code></pre></div><p>主要学习到：</p><ul><li>Math.pow 用法获取指数的大小 2^31 ==》 Math.pow(2,31)</li><li>学习正则表达式的基础 <ul><li>\ 转移</li><li>() 捕获组</li><li>[] 满足其一均可返回</li><li>.* 非数字的任意字符</li><li>text() 返回是否匹配，true/false</li><li>match() <ul><li>有g：返回与完整正则表达式匹配的所有结果，但不会返回捕获组</li><li>没有g：返回第一个完整匹配（作为数组的第0项）及其相关的捕获组（作为数组的第1及第1+项），比如上面我们定义了一个()，结果取 arr[1]</li></ul></li></ul></li></ul></div><div class="links-wrapper"><div class="prev-link"><!----></div><div class="next-link"><!----></div></div><!--[--><!--[--><!--]--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"docs.md\":\"67e0e6a2\",\"index.md\":\"edacb7d2\",\"README.md\":\"4128f4cd\",\"tags.md\":\"9d596c8e\",\"docs_algorithm_array.md\":\"cd37e67d\",\"docs_algorithm_bstTree.md\":\"2c5f112a\",\"docs_algorithm_chain.md\":\"886e6a2a\",\"docs_algorithm_chainCicle.md\":\"19bf3dcc\",\"docs_algorithm_chainHead.md\":\"d919a8ea\",\"docs_algorithm_complexity.md\":\"d90c660d\",\"docs_algorithm_dataStructures.md\":\"69c5d50f\",\"docs_algorithm_DFS.md\":\"6051aa2d\",\"docs_algorithm_dynamic.md\":\"f30f4f64\",\"docs_algorithm_ergodicTree.md\":\"e4ba1bb8\",\"docs_algorithm_queue.md\":\"30ce6b58\",\"docs_algorithm_sort.md\":\"691a9203\",\"docs_algorithm_stack.md\":\"15072771\",\"docs_algorithm_string.md\":\"3a38c3b1\",\"docs_algorithm_thinking.md\":\"4e7b9192\",\"docs_algorithm_tree.md\":\"9837f573\",\"docs_article_index.md\":\"1854e195\",\"docs_babel_start.md\":\"baa6a13e\",\"docs_howReview_start.md\":\"b3790e45\",\"docs_interview_22Ready.md\":\"a75a140a\",\"docs_interview_22StartSum.md\":\"eb76096b\",\"docs_interview_async.md\":\"48585586\",\"docs_interview_boxsizing.md\":\"334115fc\",\"docs_interview_center.md\":\"277dcf15\",\"docs_interview_css.md\":\"b460d1c7\",\"docs_interview_dataType.md\":\"2f121d67\",\"docs_interview_debounce.md\":\"dbe6dfc6\",\"docs_interview_defineProperty.md\":\"ec52fd21\",\"docs_interview_dns.md\":\"741137ec\",\"docs_interview_hashMode.md\":\"c62c4930\",\"docs_interview_httpCode.md\":\"cb81c76b\",\"docs_interview_index.md\":\"4819ed13\",\"docs_interview_jsBaseQuestion.md\":\"8216827e\",\"docs_interview_longList.md\":\"b445de56\",\"docs_interview_networkBaseQuestion.md\":\"d402d840\",\"docs_interview_process.md\":\"ef641a36\",\"docs_interview_promiseCicle.md\":\"07117c4b\",\"docs_interview_reactBaseQuestion.md\":\"a8b76b21\",\"docs_interview_repaint.md\":\"d3e9229b\",\"docs_interview_target.md\":\"598f6eb7\",\"docs_interview_URL.md\":\"26c1195b\",\"docs_interview_vueBaseQuestion.md\":\"a7a7a406\",\"docs_interview_writeQuestion.md\":\"b59b7251\",\"docs_jsAdvanced_changelog.md\":\"233da342\",\"docs_jsAdvanced_cURL.md\":\"5cb3753d\",\"docs_jsAdvanced_gulp.md\":\"958207e2\",\"docs_jsAdvanced_husky.md\":\"fb9e0602\",\"docs_jsAdvanced_index.md\":\"78cfa234\",\"docs_jsAdvanced_jiangVui.md\":\"cee38e52\",\"docs_jsAdvanced_jsAdvanced.md\":\"f4274792\",\"docs_jsAdvanced_loadingHandle.md\":\"adcef2c6\",\"docs_jsAdvanced_mock.md\":\"d1078c95\",\"docs_jsAdvanced_monitor.md\":\"5fcd7e05\",\"docs_jsAdvanced_nvm.md\":\"afb65ddb\",\"docs_jsAdvanced_performance.md\":\"98c310de\",\"docs_jsAdvanced_pureFuntion.md\":\"3031e2a5\",\"docs_jsAdvanced_sentry.md\":\"5bec9037\",\"docs_jsAdvanced_server.md\":\"e3847893\",\"docs_jsAdvanced_standard.md\":\"b3f8225c\",\"docs_jsAdvanced_ts.md\":\"a8705ef7\",\"docs_jsAdvanced_vite.md\":\"d84b2beb\",\"docs_jsAdvanced_vue3.md\":\"989e21ab\",\"docs_jsAdvanced_vueComponent.md\":\"95f40378\",\"docs_jsBase_bind.md\":\"7704be52\",\"docs_jsBase_Cache.md\":\"1a8d3cd4\",\"docs_jsBase_closure.md\":\"af360d78\",\"docs_jsBase_context.md\":\"80535d58\",\"docs_jsBase_copy.md\":\"40d90e39\",\"docs_jsBase_cors.md\":\"82f755c1\",\"docs_jsBase_CSRF.md\":\"0f0814f7\",\"docs_jsBase_css.md\":\"e5d21f2f\",\"docs_jsBase_es6.md\":\"5c049d05\",\"docs_jsBase_eventLoop.md\":\"7a6b0268\",\"docs_jsBase_garbage.md\":\"a125085d\",\"docs_jsBase_git.md\":\"4e8babae\",\"docs_jsBase_https.md\":\"65dd22dc\",\"docs_jsBase_index.md\":\"4b04cb6c\",\"docs_jsBase_jquery.md\":\"f3395bf4\",\"docs_jsBase_memory.md\":\"7c04f972\",\"docs_jsBase_module.md\":\"e5949fb6\",\"docs_jsBase_new.md\":\"bd8308c4\",\"docs_jsBase_prototype.md\":\"9dc246ac\",\"docs_jsBase_storage.md\":\"b3adeaa6\",\"docs_jsBase_this.md\":\"8fc81baa\",\"docs_jsBase_websocket.md\":\"1507f39c\",\"docs_resources_learning.md\":\"af5859f3\",\"docs_resources_tool.md\":\"1ba858f0\",\"docs_reStudy_browser_css.md\":\"b109f4b2\",\"docs_reStudy_browser_cssdom.md\":\"7588bcee\",\"docs_reStudy_browser_dom.md\":\"1645df31\",\"docs_reStudy_browser_domApi.md\":\"878db3e4\",\"docs_reStudy_browser_event.md\":\"133fa540\",\"docs_reStudy_browser_http.md\":\"aefa28ae\",\"docs_reStudy_browser_maker.md\":\"a584a598\",\"docs_reStudy_browser_print.md\":\"6f541cdf\",\"docs_reStudy_css_animation.md\":\"088ce694\",\"docs_reStudy_css_color.md\":\"305a53ea\",\"docs_reStudy_css_compose.md\":\"d7c7cb3f\",\"docs_reStudy_css_link.md\":\"ce8f5523\",\"docs_reStudy_css_rule.md\":\"1a9ef4b3\",\"docs_reStudy_css_select.md\":\"31d9217e\",\"docs_reStudy_html_ARIA.md\":\"ae5860a4\",\"docs_reStudy_html_DTD.md\":\"0f201e28\",\"docs_reStudy_html_head.md\":\"80c79dc2\",\"docs_reStudy_html_standard.md\":\"2a19421f\",\"docs_reStudy_html_tag.md\":\"718974b5\",\"docs_reStudy_html_tramslate.md\":\"b64e0c8d\",\"docs_reStudy_js_closure.md\":\"fa4b9116\",\"docs_reStudy_js_completion.md\":\"a2be3e79\",\"docs_reStudy_js_eventLoop.md\":\"e6c7402c\",\"docs_reStudy_js_function.md\":\"710f7ab3\",\"docs_reStudy_js_grammar.md\":\"8f61f7b4\",\"docs_reStudy_js_object.md\":\"94bc30b9\",\"docs_reStudy_js_prototype.md\":\"3c2eaed0\",\"docs_reStudy_js_semicolon.md\":\"c8ad84a8\",\"docs_reStudy_js_token.md\":\"0213be35\",\"docs_reStudy_js_type.md\":\"80fc2574\",\"docs_reStudy_other_question.md\":\"1ff699d9\",\"docs_reStudy_start.md\":\"9afdd8e6\",\"docs_reStudy_sum_architecture.md\":\"25c6ac11\",\"docs_reStudy_sum_continue.md\":\"2cc6c58f\",\"docs_reStudy_sum_performance.md\":\"8207603c\",\"docs_reStudy_sum_system.md\":\"e90b1975\",\"docs_reStudy_sum_tool.md\":\"5bf127ce\",\"docs_work_h5.md\":\"24bb8ff4\",\"docs_work_vue.md\":\"ed77ade1\"}")</script>
+    <script type="module" async src="/_assets/app.bac4ca22.js"></script>
+  </body>
+</html>

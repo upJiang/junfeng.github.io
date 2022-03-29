@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      概念 | Jiang's Blog
+    </title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/_assets/style.d3cbd45d.css">
+    <link rel="modulepreload" href="/_assets/common-d6bd45c0.js">
+    <link rel="modulepreload" href="/_assets/docs_jsAdvanced_vite.md.d84b2beb.lean.js">
+    <link rel="modulepreload" href="/_assets/app.bac4ca22.js">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="Jiang的个人博客">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="navbar"><!--[--><a class="title" aria-label="Jiang&#39;s Blog, back to home" href="/"><!----><span style="color:var(--accent-color);">Jiang&#39;s Blog</span></a><div class="flex-grow"></div><nav class="nav-links hide-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!-- <AlgoliaSearchBox
+              v-if="$site.themeConfig.algolia"
+              :options="$site.themeConfig.algolia"
+            /> --><!--]--><!--]--><!--]--><div class="sidebar-button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div></header><aside class=""><!--[--><nav class="nav-links show-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!--]--><!--]--><ul class="sidebar"><!--[--><li class="sidebar-item"><p class="sidebar-link">进阶</p><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/ts">TS</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/vue3">vue3</a><!----></li><li class="sidebar-item"><a class="sidebar-link active" href="/docs/jsAdvanced/vite">vite</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#概念">概念</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#实现步骤">实现步骤</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#在vue中的文件执行顺序">在vue中的文件执行顺序</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#热更新原理">热更新原理</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#服务端原理">服务端原理</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#客户端原理">客户端原理</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#简单vite代码实现">简单vite代码实现</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#vite在使用中的问题">vite在使用中的问题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#vite插件">vite插件</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/pureFuntion">纯函数</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/nvm">nvm管理node</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/cURL">cURL</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/husky">husky</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/jsAdvanced">js原理学习路线</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/sentry">sentry</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/vueComponent">vue3的三种组件封装</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/mock">mock</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/jiangVui">组件库开发</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/loadingHandle">请求loading封装</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/standard">前端规范</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/changelog">changelog</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/monitor">监控与埋点</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/gulp">gulp</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/performance">性能优化</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/server">服务器知识</a><!----></li></ul></li><!--]--></ul><!--[--><!--[--><!--]--><!--]--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main><div class="content"><!--[--><!--[--><!--]--><!--]--><div class="md-header"><!-- <div class="md-title">{{ pageData.title }}</div> --><!-- {{ pageData.frontmatter.date }} --><div class="md-date">今日诗词欣赏</div><span id="jinrishici-sentence">正在加载今日诗词....</span></div><!-- 右边导航 --><!-- <ul class="catalog">
+      <li class="catalog-item" v-for="item in pageData.headers">
+        <a class="level level-2" v-if="item.level == 2" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+        <a class="level level-3" v-if="item.level == 3" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+      </li>
+    </ul> --><!-- md主内容 --><div><h2 id="概念"><a class="header-anchor" href="#概念" aria-hidden="true">#</a> 概念</h2><blockquote><p>基于esm（浏览器原生es Module的支持）</p></blockquote><ol><li>Vite，一个基于浏览器原生ES模块的开发服务器。利用浏览器去解析模块，在服务器端按需编译返回，完全跳过了打包这个概念，服务器随起随用。同时另有有Vue文件支持，还搞定了热更新，而且热更新的速度不会随着模块增加而变慢。</li><li>Vite要求项目完全由ES模块模块组成，common.js模块不能直接在Vite上使用。因此不能直接在生产环境中使用。在打包上依旧还是使用rollup等传统打包工具。</li><li>Vite的基本实现原理，就是启动一个koa服务器拦截浏览器请求ES模块的请求。通过路径查找目录下对应文件的文件做一定的处理最终以ES模块格式返回给客户端</li></ol><h2 id="实现步骤"><a class="header-anchor" href="#实现步骤" aria-hidden="true">#</a> 实现步骤</h2><p>首先启动一个koa服务器，对首页(index.html)、js文件、裸模块比如&quot;vue&quot;、vue文件等进行分别处理<br></p><ol><li>先返回index.html,然后再index.html中去加载main.js,在main.js中再去加载其它文件</li><li>加载main.js中的裸模块，比如&quot;vue&quot;,vite会通过预打包，将vue模块的内容打包到node_modules中，然后替换路径 <br> import {createApp} from &#39;vue&#39; 转换成 import {createApp} from &#39;/@modules/vue&#39;<br> 通过 /@modules标识去node_module中查找并返回相对地址<br></li><li>加载vue文件，当Vite遇到一个.vue后缀的文件时使用vue中的compiler方法进行解析并返回。<br> 由于.vue模板文件的特殊性，它被分割成三个模块（template，css，脚本模块）进行分别处理。最后放入script，template，css发送多个请求获取。</li></ol><h2 id="在vue中的文件执行顺序"><a class="header-anchor" href="#在vue中的文件执行顺序" aria-hidden="true">#</a> 在vue中的文件执行顺序</h2><p>localhost ==》 client(websocket) ==&gt; main.js ==&gt; env.js ==&gt; vue.js(裸模块vue) ==&gt; app.vue ==&gt; 最后就是执行里面的路由，组件，ui库等</p><h2 id="热更新原理"><a class="header-anchor" href="#热更新原理" aria-hidden="true">#</a> 热更新原理</h2><p>Vite的热加载原理，实际上就是在客户端与服务端建立了一个websocket链接，当代码被修改时，服务端发送消息通知客户端去请求修改模块的代码，完成热更新。<br> 查看network,在localhost后会执行client文件，就是在这里建立webcocket实现热更新，然后再进入main.js</p><h2 id="服务端原理"><a class="header-anchor" href="#服务端原理" aria-hidden="true">#</a> 服务端原理</h2><p>服务端做的就是监听代码文件的更改，在适当的时机向客户端发送websocket信息通知客户端去请求新的模块代码。</p><h2 id="客户端原理"><a class="header-anchor" href="#客户端原理" aria-hidden="true">#</a> 客户端原理</h2><p>Vite的websocket相关代码在处理html中时被编写代码中</p><h2 id="简单vite代码实现"><a class="header-anchor" href="#简单vite代码实现" aria-hidden="true">#</a> 简单vite代码实现</h2><p>/src/app.vue</p><div class="language-"><pre><code>&lt;template&gt;
+  &lt;div&gt;{{ title }}&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref } from &quot;vue&quot;;
+export default {
+  setup() {
+    const title = ref(&quot;hello, kvite!&quot;);
+    return { title };
+  },
+};
+&lt;/script&gt;
+</code></pre></div><p>src/main.js</p><div class="language-"><pre><code>import {createApp} from &#39;vue&#39;
+import App from &quot;./app.vue&quot;
+
+createApp(App).mount(&#39;#app&#39;)
+</code></pre></div><p>index.html</p><div class="language-"><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;kvite&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+    &lt;script&gt;
+        window.process = {
+            env:{
+                NODE_ENV:&#39;dev&#39;
+            }
+        }
+    &lt;/script&gt;
+    &lt;script type=&quot;module&quot; src=&quot;/src/main.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre></div><p>kvite.js</p><div class="language-"><pre><code>const Koa = require(&#39;koa&#39;)
+const app = new Koa()
+
+const opn = require(&#39;opn&#39;);
+const fs = require(&quot;fs&quot;)
+const path = require(&quot;path&quot;)
+const complierSFC = require(&#39;@vue/compiler-sfc&#39;) //引入vue文件的解析
+const complierDOM = require(&#39;@vue/compiler-dom&#39;) //引入template的解析
+
+// 中间件配置
+// 处理路由
+app.use(async (ctx) =&gt; {
+  const {
+    url,
+    query
+  } = ctx.request
+
+  // 首页请求
+  if (url === &#39;/&#39;) {
+    //加载index.html
+    ctx.type = &quot;text/html&quot;;
+    ctx.body = fs.readFileSync(path.join(__dirname, &quot;./index.html&quot;), &quot;utf8&quot;);
+  } else if (url.endsWith(&#39;.js&#39;)) {
+    // js文件加载处理
+    const p = path.join(__dirname, url)
+    ctx.type = &#39;application/javascript&#39;
+    ctx.body = rewriteImport(fs.readFileSync(p, &#39;utf8&#39;))
+  } else if (url.startsWith(&quot;/@modules/&quot;)) {
+    //裸模块名称
+    const moduleName = url.replace(&quot;/@modules/&quot;, &quot;&quot;);
+    //去node_modules目录中找
+    const prefix = path.join(__dirname, &quot;./node_modules&quot;, moduleName);
+    //package.json中获取module字段
+    const module = require(prefix + &quot;/package.json&quot;).module;
+    const filePath = path.join(prefix, module);
+    const ret = fs.readFileSync(filePath, &quot;utf8&quot;);
+    ctx.type = &#39;application/javascript&#39;
+    ctx.body = rewriteImport(ret)
+  } else if (url.indexOf(&#39;.vue&#39;) &gt; -1) {
+    //获取加载文件路径
+    const p = path.join(__dirname, url.split(&quot;?&quot;)[0]);
+    const ret = complierSFC.parse(fs.readFileSync(p, &#39;utf8&#39;)); // console.log(ret)  可以看到是一颗ast树，可以在终端中查看
+    if (!query.type) {
+      //SFC请求，读取vue文件，解析为js
+      //获取脚本部分的内容
+      const scriptContent = ret.descriptor.script.content;
+      //替换默认导出为一个常量，方便后续修改
+      const script = scriptContent.replace(
+        &quot;export default &quot;,
+        &quot;const __script = &quot;
+      );
+      ctx.type = &#39;application/javascript&#39;
+      ctx.body = `
+        ${rewriteImport(script)}
+        // 解析template
+        import {render as __render} from &#39;${url}?type=template&#39;
+        __script.render = __render
+        export default __script
+        `;
+    } else if (query.type === &quot;template&quot;) {
+      const tpl = ret.descriptor.template.content;
+      //编译为render
+      const render = complierDOM.compile(tpl, {
+        mode: &quot;module&quot;
+      }).code;
+      ctx.type = &#39;application/javascript&#39;
+      ctx.body = rewriteImport(render)
+    }
+  }
+})
+
+// 裸模块地址的重写
+//在vite中对于vue这种裸模块是无法识别的，它通过预编译把需要的模块打包到node_modules中，再通过相对地址找到并加载，
+//这里我们通过识别 /@modules 这种地址标识，去找寻模块，进行地址的替换
+//import xx from &quot;vue&quot;  ==&gt; import xx from &quot;/@modules/vue&quot;
+function rewriteImport(content) {
+  return content.replace(/ from [&#39;&quot;](.*)[&#39;&quot;]/g, function (s1, s2) {
+    if (s2.startsWith(&quot;./&quot;) || s2.startsWith(&quot;/&quot;) || s2.startsWith(&quot;../&quot;)) {
+      return s1
+    } else {
+      //裸模块替换
+      return ` from &#39;/@modules/${s2}&#39;`
+    }
+  })
+}
+
+app.listen(6666, () =&gt; {
+  console.log(&#39;kvite start&#39;);
+  opn(`http://localhost:6666/`);
+})
+</code></pre></div><p><a href="https://github.com/upJiang/kvite" target="_blank" rel="noopener noreferrer">代码地址</a></p><p><a href="https://www.bilibili.com/video/BV1dh411S7Vz" target="_blank" rel="noopener noreferrer">vite工作原理和手写实现视频地址</a></p><h2 id="vite在使用中的问题"><a class="header-anchor" href="#vite在使用中的问题" aria-hidden="true">#</a> vite在使用中的问题</h2><p>qs对vite打包后好像不兼容 ，最后使用qs-stringfy</p><p>require模块不能使用，需要使用import.meta.glob</p><h2 id="vite插件"><a class="header-anchor" href="#vite插件" aria-hidden="true">#</a> vite插件</h2><p><a data-fancybox title="image.png" href="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c0f005acb754a7eb2e8caaaabb145d9~tplv-k3u1fbpfcp-watermark.image?"><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c0f005acb754a7eb2e8caaaabb145d9~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></a></p><p><a data-fancybox title="image.png" href="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa4aedf1a52749c19fa7f08575896218~tplv-k3u1fbpfcp-watermark.image?"><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa4aedf1a52749c19fa7f08575896218~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></a></p><p>插件案例</p><div class="language-"><pre><code>/plugins/vite-plugin-my-example.ts
+
+export default function myExample () {
+    // 返回的是插件对象
+    return {
+      name: &#39;my-example&#39;, // 名称用于警告和错误展示
+      // enforce: &#39;pre&#39;|&#39;post&#39;
+      // 初始化hooks，只走一次
+      options(opts) {
+        console.log(&#39;options&#39;, opts);
+      },
+      buildStart() {
+        console.log(&#39;buildStart&#39;);
+      },
+      config(config) {
+        console.log(&#39;config&#39;, config);
+        return {}
+      },
+      configResolved(resolvedCofnig) {
+        console.log(&#39;configResolved&#39;);
+      },
+      configureServer(server) {
+        console.log(&#39;configureServer&#39;);
+        // server.app.use((req, res, next) =&gt; {
+        //   // custom handle request...
+        // })
+      },
+      transformIndexHtml(html) {
+        console.log(&#39;transformIndexHtml&#39;);
+        return html
+        // return html.replace(
+        //   /&lt;title&gt;(.*?)&lt;\/title&gt;/,
+        //   `&lt;title&gt;Title replaced!&lt;/title&gt;`
+        // )
+      },
+      // id确认
+      resolveId ( source ) {
+        if (source === &#39;virtual-module&#39;) {
+          console.log(&#39;resolvedId&#39;, source);
+          return source; // 返回source表明命中，vite不再询问其他插件处理该id请求
+        }
+        return null; // 返回null表明是其他id要继续处理
+      },
+      // 加载模块代码
+      load ( id ) {
+        if (id === &#39;virtual-module&#39;) {
+          console.log(&#39;load&#39;);
+          return &#39;export default &quot;This is virtual!&quot;&#39;; // 返回&quot;virtual-module&quot;模块源码
+        }
+        return null; // 其他id继续处理
+      },
+      // 转换
+      transform(code, id) {
+        if (id === &#39;virtual-module&#39;) {
+          console.log(&#39;transform&#39;);
+        }
+        return code
+      },
+    };
+  }
+</code></pre></div><div class="language-"><pre><code>vite.config.ts
+
+import myExample from &#39;./plugins/vite-plugin-my-example&#39;  //自定义插件
+
+export default defineConfig({
+  plugins: [vue(),
+  myExample()
+  ], //插件
+})
+
+//在项目运行时，可以看到插件钩子的执行
+</code></pre></div><p><a href="https://www.bilibili.com/video/BV1jb4y1R7UV" target="_blank" rel="noopener noreferrer">vite插件开发指南视频地址</a></p><p><a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">vitejs官网地址</a></p></div><div class="links-wrapper"><div class="prev-link"><!----></div><div class="next-link"><!----></div></div><!--[--><!--[--><!--]--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"docs.md\":\"67e0e6a2\",\"index.md\":\"edacb7d2\",\"README.md\":\"4128f4cd\",\"tags.md\":\"9d596c8e\",\"docs_algorithm_array.md\":\"cd37e67d\",\"docs_algorithm_bstTree.md\":\"2c5f112a\",\"docs_algorithm_chain.md\":\"886e6a2a\",\"docs_algorithm_chainCicle.md\":\"19bf3dcc\",\"docs_algorithm_chainHead.md\":\"d919a8ea\",\"docs_algorithm_complexity.md\":\"d90c660d\",\"docs_algorithm_dataStructures.md\":\"69c5d50f\",\"docs_algorithm_DFS.md\":\"6051aa2d\",\"docs_algorithm_dynamic.md\":\"f30f4f64\",\"docs_algorithm_ergodicTree.md\":\"e4ba1bb8\",\"docs_algorithm_queue.md\":\"30ce6b58\",\"docs_algorithm_sort.md\":\"691a9203\",\"docs_algorithm_stack.md\":\"15072771\",\"docs_algorithm_string.md\":\"3a38c3b1\",\"docs_algorithm_thinking.md\":\"4e7b9192\",\"docs_algorithm_tree.md\":\"9837f573\",\"docs_article_index.md\":\"1854e195\",\"docs_babel_start.md\":\"baa6a13e\",\"docs_howReview_start.md\":\"b3790e45\",\"docs_interview_22Ready.md\":\"a75a140a\",\"docs_interview_22StartSum.md\":\"eb76096b\",\"docs_interview_async.md\":\"48585586\",\"docs_interview_boxsizing.md\":\"334115fc\",\"docs_interview_center.md\":\"277dcf15\",\"docs_interview_css.md\":\"b460d1c7\",\"docs_interview_dataType.md\":\"2f121d67\",\"docs_interview_debounce.md\":\"dbe6dfc6\",\"docs_interview_defineProperty.md\":\"ec52fd21\",\"docs_interview_dns.md\":\"741137ec\",\"docs_interview_hashMode.md\":\"c62c4930\",\"docs_interview_httpCode.md\":\"cb81c76b\",\"docs_interview_index.md\":\"4819ed13\",\"docs_interview_jsBaseQuestion.md\":\"8216827e\",\"docs_interview_longList.md\":\"b445de56\",\"docs_interview_networkBaseQuestion.md\":\"d402d840\",\"docs_interview_process.md\":\"ef641a36\",\"docs_interview_promiseCicle.md\":\"07117c4b\",\"docs_interview_reactBaseQuestion.md\":\"a8b76b21\",\"docs_interview_repaint.md\":\"d3e9229b\",\"docs_interview_target.md\":\"598f6eb7\",\"docs_interview_URL.md\":\"26c1195b\",\"docs_interview_vueBaseQuestion.md\":\"a7a7a406\",\"docs_interview_writeQuestion.md\":\"b59b7251\",\"docs_jsAdvanced_changelog.md\":\"233da342\",\"docs_jsAdvanced_cURL.md\":\"5cb3753d\",\"docs_jsAdvanced_gulp.md\":\"958207e2\",\"docs_jsAdvanced_husky.md\":\"fb9e0602\",\"docs_jsAdvanced_index.md\":\"78cfa234\",\"docs_jsAdvanced_jiangVui.md\":\"cee38e52\",\"docs_jsAdvanced_jsAdvanced.md\":\"f4274792\",\"docs_jsAdvanced_loadingHandle.md\":\"adcef2c6\",\"docs_jsAdvanced_mock.md\":\"d1078c95\",\"docs_jsAdvanced_monitor.md\":\"5fcd7e05\",\"docs_jsAdvanced_nvm.md\":\"afb65ddb\",\"docs_jsAdvanced_performance.md\":\"98c310de\",\"docs_jsAdvanced_pureFuntion.md\":\"3031e2a5\",\"docs_jsAdvanced_sentry.md\":\"5bec9037\",\"docs_jsAdvanced_server.md\":\"e3847893\",\"docs_jsAdvanced_standard.md\":\"b3f8225c\",\"docs_jsAdvanced_ts.md\":\"a8705ef7\",\"docs_jsAdvanced_vite.md\":\"d84b2beb\",\"docs_jsAdvanced_vue3.md\":\"989e21ab\",\"docs_jsAdvanced_vueComponent.md\":\"95f40378\",\"docs_jsBase_bind.md\":\"7704be52\",\"docs_jsBase_Cache.md\":\"1a8d3cd4\",\"docs_jsBase_closure.md\":\"af360d78\",\"docs_jsBase_context.md\":\"80535d58\",\"docs_jsBase_copy.md\":\"40d90e39\",\"docs_jsBase_cors.md\":\"82f755c1\",\"docs_jsBase_CSRF.md\":\"0f0814f7\",\"docs_jsBase_css.md\":\"e5d21f2f\",\"docs_jsBase_es6.md\":\"5c049d05\",\"docs_jsBase_eventLoop.md\":\"7a6b0268\",\"docs_jsBase_garbage.md\":\"a125085d\",\"docs_jsBase_git.md\":\"4e8babae\",\"docs_jsBase_https.md\":\"65dd22dc\",\"docs_jsBase_index.md\":\"4b04cb6c\",\"docs_jsBase_jquery.md\":\"f3395bf4\",\"docs_jsBase_memory.md\":\"7c04f972\",\"docs_jsBase_module.md\":\"e5949fb6\",\"docs_jsBase_new.md\":\"bd8308c4\",\"docs_jsBase_prototype.md\":\"9dc246ac\",\"docs_jsBase_storage.md\":\"b3adeaa6\",\"docs_jsBase_this.md\":\"8fc81baa\",\"docs_jsBase_websocket.md\":\"1507f39c\",\"docs_resources_learning.md\":\"af5859f3\",\"docs_resources_tool.md\":\"1ba858f0\",\"docs_reStudy_browser_css.md\":\"b109f4b2\",\"docs_reStudy_browser_cssdom.md\":\"7588bcee\",\"docs_reStudy_browser_dom.md\":\"1645df31\",\"docs_reStudy_browser_domApi.md\":\"878db3e4\",\"docs_reStudy_browser_event.md\":\"133fa540\",\"docs_reStudy_browser_http.md\":\"aefa28ae\",\"docs_reStudy_browser_maker.md\":\"a584a598\",\"docs_reStudy_browser_print.md\":\"6f541cdf\",\"docs_reStudy_css_animation.md\":\"088ce694\",\"docs_reStudy_css_color.md\":\"305a53ea\",\"docs_reStudy_css_compose.md\":\"d7c7cb3f\",\"docs_reStudy_css_link.md\":\"ce8f5523\",\"docs_reStudy_css_rule.md\":\"1a9ef4b3\",\"docs_reStudy_css_select.md\":\"31d9217e\",\"docs_reStudy_html_ARIA.md\":\"ae5860a4\",\"docs_reStudy_html_DTD.md\":\"0f201e28\",\"docs_reStudy_html_head.md\":\"80c79dc2\",\"docs_reStudy_html_standard.md\":\"2a19421f\",\"docs_reStudy_html_tag.md\":\"718974b5\",\"docs_reStudy_html_tramslate.md\":\"b64e0c8d\",\"docs_reStudy_js_closure.md\":\"fa4b9116\",\"docs_reStudy_js_completion.md\":\"a2be3e79\",\"docs_reStudy_js_eventLoop.md\":\"e6c7402c\",\"docs_reStudy_js_function.md\":\"710f7ab3\",\"docs_reStudy_js_grammar.md\":\"8f61f7b4\",\"docs_reStudy_js_object.md\":\"94bc30b9\",\"docs_reStudy_js_prototype.md\":\"3c2eaed0\",\"docs_reStudy_js_semicolon.md\":\"c8ad84a8\",\"docs_reStudy_js_token.md\":\"0213be35\",\"docs_reStudy_js_type.md\":\"80fc2574\",\"docs_reStudy_other_question.md\":\"1ff699d9\",\"docs_reStudy_start.md\":\"9afdd8e6\",\"docs_reStudy_sum_architecture.md\":\"25c6ac11\",\"docs_reStudy_sum_continue.md\":\"2cc6c58f\",\"docs_reStudy_sum_performance.md\":\"8207603c\",\"docs_reStudy_sum_system.md\":\"e90b1975\",\"docs_reStudy_sum_tool.md\":\"5bf127ce\",\"docs_work_h5.md\":\"24bb8ff4\",\"docs_work_vue.md\":\"ed77ade1\"}")</script>
+    <script type="module" async src="/_assets/app.bac4ca22.js"></script>
+  </body>
+</html>

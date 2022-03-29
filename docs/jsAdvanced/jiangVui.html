@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      初始化项目 | Jiang's Blog
+    </title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/_assets/style.d3cbd45d.css">
+    <link rel="modulepreload" href="/_assets/common-d6bd45c0.js">
+    <link rel="modulepreload" href="/_assets/docs_jsAdvanced_jiangVui.md.cee38e52.lean.js">
+    <link rel="modulepreload" href="/_assets/app.bac4ca22.js">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="Jiang的个人博客">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="navbar"><!--[--><a class="title" aria-label="Jiang&#39;s Blog, back to home" href="/"><!----><span style="color:var(--accent-color);">Jiang&#39;s Blog</span></a><div class="flex-grow"></div><nav class="nav-links hide-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!-- <AlgoliaSearchBox
+              v-if="$site.themeConfig.algolia"
+              :options="$site.themeConfig.algolia"
+            /> --><!--]--><!--]--><!--]--><div class="sidebar-button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div></header><aside class=""><!--[--><nav class="nav-links show-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!--]--><!--]--><ul class="sidebar"><!--[--><li class="sidebar-item"><p class="sidebar-link">进阶</p><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/ts">TS</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/vue3">vue3</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/vite">vite</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/pureFuntion">纯函数</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/nvm">nvm管理node</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/cURL">cURL</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/husky">husky</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/jsAdvanced">js原理学习路线</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/sentry">sentry</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/vueComponent">vue3的三种组件封装</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/mock">mock</a><!----></li><li class="sidebar-item"><a class="sidebar-link active" href="/docs/jsAdvanced/jiangVui">组件库开发</a><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="#初始化项目">初始化项目</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#编写组件">编写组件</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#集成vtu">集成VTU</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#集成babel跟rollup">集成babel跟rollup</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#使用rollup打包组件">使用rollup打包组件</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#测试组件">测试组件</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#集成gulp">集成gulp</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#打包样式">打包样式</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#发布组件库">发布组件库</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#在真实环境下使用">在真实环境下使用</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#集成eslint">集成eslint</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#集成husky">集成husky</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#编写组件库文档项目">编写组件库文档项目</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#编写组件库测试项目">编写组件库测试项目</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="#总结">总结</a><!----></li></ul></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/loadingHandle">请求loading封装</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/standard">前端规范</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/changelog">changelog</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/monitor">监控与埋点</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/gulp">gulp</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/performance">性能优化</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/jsAdvanced/server">服务器知识</a><!----></li></ul></li><!--]--></ul><!--[--><!--[--><!--]--><!--]--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main><div class="content"><!--[--><!--[--><!--]--><!--]--><div class="md-header"><!-- <div class="md-title">{{ pageData.title }}</div> --><!-- {{ pageData.frontmatter.date }} --><div class="md-date">今日诗词欣赏</div><span id="jinrishici-sentence">正在加载今日诗词....</span></div><!-- 右边导航 --><!-- <ul class="catalog">
+      <li class="catalog-item" v-for="item in pageData.headers">
+        <a class="level level-2" v-if="item.level == 2" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+        <a class="level level-3" v-if="item.level == 3" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+      </li>
+    </ul> --><!-- md主内容 --><div><blockquote><p>在我们平时开发中，我们都会用到组件库，比如vant、element、ant-design等，那我们是否有想过这个东西是怎么做出来的，自己能否也整一个。这篇文章将带大家详细的介绍组件库的开发，这里以vue3组件为例，建议跟着文章内容自己实现一遍。如果觉得文章太长不想现在看，不如先收藏起来，以后想弄的时候再整，作为前端开发，我认为组件库的封装还是非常有必要掌握的~嘿嘿</p></blockquote><p>其实总结起来就是使用rollup打包组件，使用rulp打包样式，引入jest自动化测试，然后引入eslint，husky这些规范等，最后发布使用。其实任何框架的组件库封装都是一个道理，这里其实也不仅限于vue3，改改也可以成为其它框架的组件库的。想了解vue3封装组件形式的可以参考我另一篇文章<a href="https://juejin.cn/post/7000032012488671269" target="_blank" rel="noopener noreferrer">vue3如何封装一个在js中也能使用的全局组件？vue3的三种组件封装形式（导入式组件、全局组件、函数式组件）</a></p><h2 id="初始化项目"><a class="header-anchor" href="#初始化项目" aria-hidden="true">#</a> 初始化项目</h2><p>创建文件夹jiang-vui，初始化</p><div class="language-"><pre><code>npm init -y
+</code></pre></div><p>.gitignore</p><div class="language-"><pre><code>node_modules
+lib
+play/node_modules
+docs/node_modules
+</code></pre></div><p>.npmignore</p><div class="language-"><pre><code>只需要保留lib目录以及package.json即可
+
+packages/
+node_modules/    
+scripts/        
+docs/            
+play/            
+scripts/         
+.babelrc         
+.eslintignore    
+.eslintrc.js     
+.gitignore       
+.npmignore       
+.prettierrc.js   
+jest.config.js   
+rollup.config.js 
+yarn.lock        
+test.html        
+gulpfile.js      
+README.md
+</code></pre></div><p>package.json</p><div class="language-"><pre><code>{
+  &quot;name&quot;: &quot;jiang-vui&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;description&quot;: &quot;jiangUI组件库&quot;,
+  &quot;main&quot;: &quot;lib/jiang-ui.esm-browser.prod.js&quot;,  //入口
+  &quot;author&quot;: &quot;shaonian&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;private&quot;: false
+  ...
+}
+</code></pre></div><h2 id="编写组件"><a class="header-anchor" href="#编写组件" aria-hidden="true">#</a> 编写组件</h2><p>创建一个文件夹packages，该文件夹用于组件以及样式的编写，还有jest测试，每一个组件都是一个文件夹，组件文件夹下有src/xxx.vue，以及index.js用于注册组件，test用于jest测试(测试可以没有，我也不是很熟这玩意)</p><p>目录结构：<br><a data-fancybox title="image.png" href="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/48a40c3b01c441f48e37ce705912ad4a~tplv-k3u1fbpfcp-watermark.image"><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/48a40c3b01c441f48e37ce705912ad4a~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></a></p><p>依赖</p><div class="language-"><pre><code>选择vue版本的时候，要注意组件封装的方式，比如说defineEmits是不适用3.0版本的，我这里选的是3.1.4版本
+
+yarn add vue@3.1.4    
+yarn add @vue/compiler-sfc@3.1.4 -D
+</code></pre></div><p>我们以button组件为例:</p><p>/packages/compoents/button/src/Button.vue</p><div class="language-"><pre><code>&lt;template&gt;
+  &lt;div class=&quot;main-container&quot;&gt;
+    &lt;button class=&quot;button-container&quot; @click=&quot;clickBack&quot;&gt;{{ text }}&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+const emit = defineEmits([&#39;submitCallback&#39;])
+
+const props = defineProps({
+  text: { type: String, default: &#39;提交&#39; },
+})
+
+const clickBack = () =&gt; {
+  console.log(&#39;点击提交&#39;)
+  emit(&#39;submitCallback&#39;)
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.main-container {
+  .button-container {
+    padding: 8px 15px;
+
+    background-color: #36c96d;
+    border-width: 0px;
+    border-radius: 2px;
+    box-shadow: none;
+
+    font-size: 14px;
+    color: #fff;
+
+    cursor: pointer;
+  }
+}
+&lt;/style&gt;
+</code></pre></div><p>/packages/compoents/button/index.js 注册并导出组件</p><div class="language-"><pre><code>import MyButton from &quot;./src/Button.vue&quot;;
+MyButton.install = (app) =&gt; app.component(&quot;MyButton&quot;, MyButton);
+export default MyButton;
+</code></pre></div><p>/packages/compoents/index.js 将所有的组件install并导出</p><div class="language-"><pre><code>import MyButton from &quot;./button/index&quot;
+import { version } from &quot;../../package.json&quot;;
+
+const components = [MyButton];
+
+const install = (app, opts = {}) =&gt; {
+    app.use(setupGlobalOptions(opts));
+    components.forEach((component) =&gt; {
+        app.use(component);
+    });
+};
+
+const setupGlobalOptions = (opts = {}) =&gt; {
+    return (app) =&gt; {
+        app.config.globalProperties.$JIANG = {
+            size: opts.size || &quot;&quot;,
+            zIndex: opts.zIndex || 2000,
+        };
+    };
+};
+
+const Jiang = {
+    version,
+    install,
+};
+
+export { MyButton, install };
+export default Jiang;
+</code></pre></div><h2 id="集成vtu"><a class="header-anchor" href="#集成vtu" aria-hidden="true">#</a> 集成VTU</h2><p>安装依赖</p><div class="language-"><pre><code>yarn add jest -D
+# 此版本这个⽀持Vue3.0
+yarn add vue-jest@5.0.0-alpha.5 -D
+yarn add babel-jest -D
+yarn add @vue/test-utils@next -D
+yarn add typescript -D
+</code></pre></div><p>/jest.config.js</p><div class="language-"><pre><code>module.exports = {
+  testEnvironment: &quot;jsdom&quot;, // 默认JSdom
+  roots: [&quot;&lt;rootDir&gt;/packages&quot;], //
+  transform: {
+    &quot;^.+\\.vue$&quot;: &quot;vue-jest&quot;, // vue单⽂件
+    &quot;^.+\\js$&quot;: &quot;babel-jest&quot;, // esm最新语法 import
+  },
+  moduleFileExtensions: [&quot;vue&quot;, &quot;js&quot;, &quot;json&quot;, &quot;jsx&quot;, &quot;ts&quot;, &quot;tsx&quot;, &quot;node&quot;],
+  testMatch: [&quot;**/__tests__/**/*.spec.js&quot;],
+  // 别名
+  moduleNameMapper: {
+    &quot;^jiang-ui(.*)$&quot;: &quot;&lt;rootDir&gt;$1&quot;,
+  },
+};
+</code></pre></div><p>/packages/button/<strong>tests</strong>/Button.spec.js</p><div class="language-"><pre><code>此处是借鉴的，，测试用例懂的可以自己写，本人对这个还不是很会
+
+import Button from &quot;../Button.vue&quot;;
+import { mount } from &quot;@vue/test-utils&quot;;
+it(&quot;content&quot;, () =&gt; {
+    const Comp = {
+        template: `&lt;div&gt;&lt;Button&gt;默认按钮&lt;/Button&gt;&lt;/div&gt;`,
+    };
+    const wrapper = mount(Comp, {
+        global: {
+            components: {
+                Button,
+            },
+        },
+    });
+    expect(wrapper.findComponent({ name: &quot;ElButton&quot; }).text()).toContain(
+        &quot;默认按钮&quot;
+    );
+});
+</code></pre></div><p>/package.json</p><div class="language-"><pre><code>&quot;test&quot;: &quot;jest --runInBand&quot;, # 序列化执⾏   可以自己执行试试
+</code></pre></div><h2 id="集成babel跟rollup"><a class="header-anchor" href="#集成babel跟rollup" aria-hidden="true">#</a> 集成babel跟rollup</h2><p>为了打包组件，我们需要集成babel跟rollup</p><div class="language-"><pre><code>yarn add babel -D
+yarn add babel-plugin-syntax-dynamic-import -D
+yarn add babel-plugin-syntax-jsx -D
+yarn add babel-preset-env -D
+yarn add @babel/plugin-proposal-optional-chaining -D
+yarn add @babel/preset-env -D
+yarn add @vue/babel-plugin-jsx -D
+
+yarn add rollup -D
+yarn add rollup-plugin-peer-deps-external -D
+yarn add rollup-plugin-scss -D
+yarn add rollup-plugin-terser -D
+yarn add rollup-plugin-vue -D
+yarn add @rollup/plugin-node-resolve -D
+yarn add @rollup/plugin-commonjs -D
+yarn add @rollup/plugin-json -D
+yarn add @rollup/plugin-replace -D
+yarn add @rollup/plugin-babel -D
+yarn add rollup-plugin-vue -D
+</code></pre></div><p>/.babelrc</p><div class="language-"><pre><code>{
+  &quot;presets&quot;: [[&quot;@babel/preset-env&quot;, { &quot;targets&quot;: { &quot;node&quot;: &quot;current&quot; } }]],
+  &quot;plugins&quot;: [
+    &quot;syntax-dynamic-import&quot;,
+    [&quot;@vue/babel-plugin-jsx&quot;],
+    &quot;@babel/plugin-proposal-optional-chaining&quot;,
+    &quot;@babel/plugin-proposal-nullish-coalescing-operator&quot;
+  ],
+  &quot;env&quot;: {
+    &quot;utils&quot;: {
+      &quot;presets&quot;: [
+        [
+          &quot;env&quot;,
+          {
+            &quot;loose&quot;: true,
+            &quot;modules&quot;: &quot;commonjs&quot;,
+            &quot;targets&quot;: {
+              &quot;browsers&quot;: [&quot;&gt; 1%&quot;, &quot;last 2 versions&quot;, &quot;not ie &lt;= 8&quot;]
+            }
+          }
+        ]
+      ],
+      &quot;plugins&quot;: [
+        [
+          &quot;module-resolver&quot;,
+          {
+            &quot;root&quot;: [&quot;jiang-ui&quot;],
+            &quot;alias&quot;: {
+              &quot;jiang-ui/src&quot;: &quot;jiang-ui/lib&quot;
+            }
+          }
+        ]
+      ]
+    },
+    &quot;test&quot;: {
+      &quot;plugins&quot;: [&quot;istanbul&quot;],
+      &quot;presets&quot;: [[&quot;env&quot;, { &quot;targets&quot;: { &quot;node&quot;: &quot;current&quot; } }]]
+    },
+    &quot;esm&quot;: {
+      &quot;presets&quot;: [[&quot;@babel/preset-env&quot;, { &quot;modules&quot;: false }]]
+    }
+  }
+}
+</code></pre></div><h2 id="使用rollup打包组件"><a class="header-anchor" href="#使用rollup打包组件" aria-hidden="true">#</a> 使用rollup打包组件</h2><p>/rollup.config.js 配置打包信息</p><div class="language-"><pre><code>import pkg from &#39;./package.json&#39;
+import vuePlugin from &#39;rollup-plugin-vue&#39;
+import scss from &#39;rollup-plugin-scss&#39;
+import peerDepsExternal from &#39;rollup-plugin-peer-deps-external&#39;
+import resolve from &#39;@rollup/plugin-node-resolve&#39;
+import commonjs from &#39;@rollup/plugin-commonjs&#39;
+import json from &#39;@rollup/plugin-json&#39;
+import replace from &#39;@rollup/plugin-replace&#39;
+import babel from &#39;@rollup/plugin-babel&#39;
+import { terser } from &#39;rollup-plugin-terser&#39;
+const name = &#39;Jiang&#39;
+const createBanner = () =&gt; {
+  return `/*!
+  * ${pkg.name} v${pkg.version}
+  * (c) ${new Date().getFullYear()} kkb
+  * @license MIT
+  */`
+}
+const createBaseConfig = () =&gt; {
+  return {
+    input: &quot;packages/compoents/index.js&quot;,
+    external: [&#39;vue&#39;],
+    plugins: [
+      vuePlugin({
+        css: true
+      }),
+      peerDepsExternal(),
+      babel(),
+      resolve({
+        extensions: [&#39;.vue&#39;, &#39;.jsx&#39;]
+      }),
+      commonjs(),
+      json(),
+      scss()
+    ],
+    output: {
+      sourcemap: false,
+      banner: createBanner(),
+      externalLiveBindings: false,
+      globals: {
+        vue: &#39;Vue&#39;
+      }
+    }
+  }
+}
+function mergeConfig(baseConfig, configB) {
+  const config = Object.assign({}, baseConfig)
+  // plugin
+  if (configB.plugins) {
+    baseConfig.plugins.push(...configB.plugins)
+  }
+  // output
+  config.output = Object.assign({}, baseConfig.output, configB.output)
+  return config
+} function createFileName(formatName) {
+  return `lib/jiang-ui.${formatName}.js`
+}
+//上面这个是设置打包后的输出目录
+// es-bundle
+const esBundleConfig = {
+  plugins: [
+    replace({
+      __DEV__: `(process.env.NODE_ENV !== &#39;production&#39;)`
+    })
+  ],
+  output: {
+    file: createFileName(&#39;esm-bundler&#39;),
+    format: &#39;es&#39;
+  }
+}
+// es-browser
+const esBrowserConfig = {
+  plugins: [
+    replace({
+      __DEV__: true
+    })
+  ],
+  output: {
+    file: createFileName(&#39;esm-browser&#39;),
+    format: &#39;es&#39;
+  }
+}
+// es-browser.prod
+const esBrowserProdConfig = {
+  plugins: [
+    terser(),
+    replace({
+      __DEV__: false
+    })
+  ],
+  output: {
+    file: createFileName(&#39;esm-browser.prod&#39;),
+    format: &#39;es&#39;
+  }
+}
+// cjs
+const cjsConfig = {
+  plugins: [
+    replace({
+      __DEV__: true
+    })
+  ],
+  output: {
+    file: createFileName(&#39;cjs&#39;),
+    format: &#39;cjs&#39;
+  }
+}
+// cjs.prod
+const cjsProdConfig = {
+  plugins: [
+    terser(),
+    replace({
+      __DEV__: false
+    })
+  ],
+  output: {
+    file: createFileName(&#39;cjs.prod&#39;),
+    format: &#39;cjs&#39;
+  }
+}
+// global
+const globalConfig = {
+  plugins: [
+    replace({
+      __DEV__: true,
+      &#39;process.env.NODE_ENV&#39;: true
+    })
+  ],
+  output: {
+    file: createFileName(&#39;global&#39;),
+    format: &#39;iife&#39;,
+    name
+  }
+}
+// global.prod
+const globalProdConfig = {
+  plugins: [
+    terser(),
+    replace({
+      __DEV__: false
+    })
+  ],
+  output: {
+    file: createFileName(&#39;global.prod&#39;),
+    format: &#39;iife&#39;,
+    name
+  }
+}
+// const formatConfigs = [
+//   esBundleConfig,
+//   esBrowserProdConfig,
+//   esBrowserConfig,
+//   cjsConfig,
+//   cjsProdConfig,
+//   globalConfig,
+//   globalProdConfig
+// ]
+
+const formatConfigs = [
+  globalConfig,
+  esBrowserProdConfig
+]
+function createPackageConfigs() {
+  return formatConfigs.map((formatConfig) =&gt; {
+    return mergeConfig(createBaseConfig(), formatConfig)
+  })
+}
+export default createPackageConfigs()
+</code></pre></div><p>/package.json</p><div class="language-"><pre><code>&quot;build&quot;: &quot;rollup -c&quot;
+</code></pre></div><p>这个时候我们已经可以打包组件库啦！！！ 执行命令后，自动在根目录下生成文件夹lib,并且已经有我们的组件代码了。</p><p><a data-fancybox title="image.png" href="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/daaa605fbb3b4ab7889aa3d62ce69267~tplv-k3u1fbpfcp-watermark.image"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/daaa605fbb3b4ab7889aa3d62ce69267~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></a></p><h2 id="测试组件"><a class="header-anchor" href="#测试组件" aria-hidden="true">#</a> 测试组件</h2><p>我们编写一个test.html来检查一下我们的组件是否能行吧</p><p>/test.html</p><div class="language-"><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot; /&gt;
+    &lt;title&gt;组件测试界面&lt;/title&gt;
+    &lt;script src=&quot;https://unpkg.com/vue@next&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;lib/jiang-ui.global.prod.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+    &lt;script&gt;
+      const { createApp } = Vue
+      const MyComponent = {
+        template: `
+          &lt;my-button /&gt;
+        `,
+      }
+      createApp(MyComponent).use(Jiang).mount(&#39;#app&#39;)
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><p>运行结果：<br><a data-fancybox title="image.png" href="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7689c5fac60b46ad9c30a5a0b42293b0~tplv-k3u1fbpfcp-watermark.image"><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7689c5fac60b46ad9c30a5a0b42293b0~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></a></p><p>因为没有引入样式，所以没有样式效果哦。那么接下来我们来打包样式！</p><h2 id="集成gulp"><a class="header-anchor" href="#集成gulp" aria-hidden="true">#</a> 集成gulp</h2><div class="language-"><pre><code>yarn add gulp -D 
+yarn add gulp-autoprefixer -D 
+yarn add gulp-sass -D 
+yarn add gulp-cssmin -D 
+yarn add cp-cli -D 
+yarn add tslib -D 
+
+添加sass
+yarn add sass -D
+yarn add sass-loader -D
+</code></pre></div><h2 id="打包样式"><a class="header-anchor" href="#打包样式" aria-hidden="true">#</a> 打包样式</h2><p>/gulpfile.js</p><div class="language-"><pre><code>const { series, src, dest } = require(&quot;gulp&quot;);
+const sass = require(&quot;gulp-sass&quot;);
+const autoprefixer = require(&quot;gulp-autoprefixer&quot;);
+const cssmin = require(&quot;gulp-cssmin&quot;);
+
+function compile() {
+  return src(&quot;./packages/styles/*.scss&quot;)
+    .pipe(sass.sync())
+    .pipe(
+      autoprefixer({
+        browsers: [&quot;ie &gt; 9&quot;, &quot;last 2 versions&quot;],
+        cascade: false,
+      })
+    )
+    .pipe(cssmin())
+    .pipe(dest(&quot;./lib/styles&quot;));
+}
+
+function copyfont() {
+  return src(&quot;./packages/fonts/**&quot;).pipe(cssmin()).pipe(dest(&quot;./lib/fonts&quot;));
+}
+
+exports.build = series(compile, copyfont);
+</code></pre></div><p>这个时候我们回到/packages/styles,在这里写的样式，我们将进行打包输出，其实还有fonts，在这里不做演示</p><p>/packages/styles/compoents/Button.sass</p><div class="language-"><pre><code>.main-container {
+  .button-container {
+    padding: 8px 15px;
+
+    background-color: #36c96d;
+    border-width: 0px;
+    border-radius: 2px;
+    box-shadow: none;
+
+    font-size: 14px;
+    color: #fff;
+
+    cursor: pointer;
+  }
+}
+</code></pre></div><p>pagckage.json</p><div class="language-"><pre><code>&quot;build:theme&quot;: &quot;gulp build --gulpfile gulpfile.js&quot;
+</code></pre></div><p>执行命令后我们在lib目录可以看到：</p><p><a data-fancybox title="image.png" href="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9fc3f74bef9d4cfcbecf35d494fa3c26~tplv-k3u1fbpfcp-watermark.image"><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9fc3f74bef9d4cfcbecf35d494fa3c26~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></a></p><h2 id="发布组件库"><a class="header-anchor" href="#发布组件库" aria-hidden="true">#</a> 发布组件库</h2><p>/scripts/publish.sh</p><div class="language-"><pre><code>#!/usr/bin/env bash
+npm config get registry # 检查仓库镜像库
+npm config set registry=http://registry.npmjs.org
+echo &#39;请进行登录相关操作：&#39;
+npm login # 登陆
+echo &quot;-------publishing-------&quot;
+npm publish # 发布
+npm config set registry=https://registry.npm.taobao.org # 设置为淘宝镜像
+echo &quot;发布完成&quot;
+exit
+</code></pre></div><p>package.json</p><div class="language-"><pre><code>&quot;pub&quot;: &quot;sh ./scripts/publish.sh&quot;
+</code></pre></div><p>当然你也可以手动操作发布流程，因为登录过一次之后，之后是不需要重新登录的，可以直接npm publish, 每次发布之前记得改下版本号，以及build &amp;&amp; build:theme打包一哈</p><h2 id="在真实环境下使用"><a class="header-anchor" href="#在真实环境下使用" aria-hidden="true">#</a> 在真实环境下使用</h2><p>现在我们在vue3项目引入使用试试吧</p><div class="language-"><pre><code>yarn add jiang-vui
+</code></pre></div><p>在main.ts中导入样式，或者在vue文件中导入也行</p><div class="language-"><pre><code>import  &quot;jiang-vui/lib/styles/index.css&quot;;
+</code></pre></div><p>在页面中使用</p><div class="language-"><pre><code> &lt;my-button @submitCallback=&quot;submitCallback&quot;&gt;&lt;/my-button&gt;
+ 
+ import { MyButton } from &quot;jiang-vui&quot;;
+ const submitCallback = ()=&gt;{
+  console.log(&quot;组件库点击回调&quot;);
+}
+</code></pre></div><p>成功使用，并且样式，交互都没毛病，good!<br><a data-fancybox title="image.png" href="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/723064023eea426cb0d42a95f48dc794~tplv-k3u1fbpfcp-watermark.image"><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/723064023eea426cb0d42a95f48dc794~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></a></p><p>到此为止，其实最基础的组件库架子已经算是差不多做完了，后面会继续进行优化，添加组件！</p><h2 id="集成eslint"><a class="header-anchor" href="#集成eslint" aria-hidden="true">#</a> 集成eslint</h2><div class="language-"><pre><code>yarn add eslint -D
+yarn add eslint-formatter-pretty -D
+yarn add eslint-plugin-json -D
+yarn add eslint-plugin-prettier -D
+yarn add eslint-plugin-vue -D
+yarn add @vue/eslint-config-prettier -D
+yarn add babel-eslint -D
+yarn add prettier -D
+</code></pre></div><p>/.eslintrc.js</p><div class="language-"><pre><code>module.exports = {
+  &quot;endOfLine&quot;:&quot;auto&quot;,
+  root: true,
+  env: {
+    browser: true,
+    es2020: true,
+    node: true,
+    jest: true,
+  },
+  globals: {
+    ga: true,
+    chrome: true,
+    __DEV__: true,
+  },
+  extends: [
+    &quot;plugin:json/recommended&quot;,
+    &quot;plugin:vue/vue3-essential&quot;,
+    &quot;eslint:recommended&quot;,
+    &quot;@vue/prettier&quot;,
+  ],
+  parserOptions: {
+    parser: &quot;babel-eslint&quot;,
+  },
+  rules: {
+    &quot;no-console&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;warn&quot; : &quot;off&quot;,
+    &quot;no-debugger&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;warn&quot; : &quot;off&quot;,
+    &quot;prettier/prettier&quot;: &quot;error&quot;,
+  },
+};
+</code></pre></div><p>/.eslintignore</p><div class="language-"><pre><code>src/utils/popper.js
+src/utils/date.js
+examples/play
+*.sh
+node_modules
+lib
+coverage
+*.md
+*.scss
+*.woff
+*.ttf
+src/index.js
+dist
+</code></pre></div><p>/.prettierrc.js</p><div class="language-"><pre><code>module.exports = {
+  semi: false,
+  trailingComma: &#39;all&#39;,
+  singleQuote: true,
+  printWidth: 80,
+  tabWidth: 2,
+  endOfLine: &#39;auto&#39;,
+  overrides: [
+    {
+      files: &#39;*.scss&#39;,
+      options: {
+        parser: &#39;scss&#39;,
+      },
+    },
+  ],
+}
+</code></pre></div><p>/package.json</p><div class="language-"><pre><code>&quot;lint&quot;: &quot;eslint --no-error-on-unmatched-pattern --ext .vue --ext .js --ext .jsx packages/**/ src/**/ --fix&quot;,
+</code></pre></div><h2 id="集成husky"><a class="header-anchor" href="#集成husky" aria-hidden="true">#</a> 集成husky</h2><p>/package.json</p><div class="language-"><pre><code>添加命令
+&quot;prepare&quot;: &quot;husky install&quot;,
+&quot;commitlint&quot;: &quot;commitlint --config commitlint.config.js -e -V&quot;
+
+下载依赖
+yarn add @commitlint/cli -D
+yarn add @commitlint/config-conventional -D
+yarn add husky -D
+
+添加husky
+&quot;husky&quot;: {
+    &quot;hooks&quot;: {
+      &quot;pre-commit&quot;: &quot;lint-staged&quot;,
+      &quot;commit-msg&quot;: &quot;commitlint -E $HUSKY_GIT_PARAMS&quot;
+    }
+}
+</code></pre></div><p>执行yarn add husky 因为添加了prepare，所以会自动生成husky文件夹</p><p>添加pre-commit钩子</p><div class="language-"><pre><code>npx husky add .husky/pre-commit &quot;npm run test&quot;
+
+并在pre-commit中写入邮箱的限制代码
+#!/bin/sh
+. &quot;$(dirname &quot;$0&quot;)/_/husky.sh&quot;
+
+EMAIL=$(git config user.email)
+if [[ ! $EMAIL =~ ^[.[:alnum:]]+@qq\.com$ ]];
+then
+  echo &quot;Your git information is not valid&quot;;
+  echo &quot;Please run:&quot;
+  echo &#39;   git config --local user.name &quot;&lt;Your name in qq&gt;&quot;&#39;
+  echo &#39;   git config --local user.email &quot;&lt;Your alias&gt;@qq.com&quot;&#39;
+  exit 1;
+fi;
+</code></pre></div><p>添加commit-msg钩子</p><div class="language-"><pre><code>npx husky add .husky/commit-msg &#39;npx --no-install commitlint --edit &quot;$1&quot;&#39;
+
+并在commit-msg写入commit代码时的规范限制
+#!/bin/sh
+. &quot;$(dirname &quot;$0&quot;)/_/husky.sh&quot;
+
+npm run commitlint
+</code></pre></div><p>commitlint.config.js</p><div class="language-"><pre><code>module.exports = {
+  extends: [&#39;@commitlint/config-conventional&#39;],
+  // 检测规则
+  rules: {
+    &#39;type-enum&#39;: [
+      2,
+      &#39;always&#39;,
+      [
+        &#39;feat&#39;,
+        &#39;fix&#39;,
+        &#39;docs&#39;,
+        &#39;style&#39;,
+        &#39;refactor&#39;,
+        &#39;perf&#39;,
+        &#39;test&#39;,
+        &#39;chore&#39;,
+        &#39;revert&#39;,
+        &#39;build&#39;
+      ]
+    ],
+    &#39;type-case&#39;: [0],
+    &#39;type-empty&#39;: [0],
+    &#39;scope-empty&#39;: [0],
+    &#39;scope-case&#39;: [0],
+    &#39;subject-full-stop&#39;: [0, &#39;never&#39;],
+    &#39;subject-case&#39;: [0, &#39;never&#39;],
+    &#39;header-max-length&#39;: [0, &#39;always&#39;, 72]
+  }
+}
+</code></pre></div><p>这样在提交代码的时候，commit信息就必须遵循规范才能够提交，提交邮箱也是有限制的。</p><h2 id="编写组件库文档项目"><a class="header-anchor" href="#编写组件库文档项目" aria-hidden="true">#</a> 编写组件库文档项目</h2><blockquote><p>我们组件库是有了，但是也得有个文档吧，这里重点是使用markdown编写我们的文档项目。在根目录下新建docs文件夹</p></blockquote><p><a data-fancybox title="image.png" href="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7da58f3a53334c6f8df6feb87f68b5f4~tplv-k3u1fbpfcp-watermark.image"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7da58f3a53334c6f8df6feb87f68b5f4~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></a></p><p>/package.json</p><div class="language-"><pre><code>{
+    &quot;name&quot;: &quot;@jiang/docs&quot;,
+    &quot;version&quot;: &quot;0.0.1&quot;,
+    &quot;private&quot;: true,
+    &quot;scripts&quot;: {
+        &quot;dev&quot;: &quot;vite&quot;,
+        &quot;build&quot;: &quot;vite build&quot;
+    },
+    &quot;dependencies&quot;: {
+        &quot;vue&quot;: &quot;^3.2.8&quot;,
+        &quot;vue-router&quot;: &quot;4&quot;
+    },
+    &quot;devDependencies&quot;: {
+        &quot;@vitejs/plugin-vue&quot;: &quot;^1.6.0&quot;,
+        &quot;node-sass&quot;: &quot;^6.0.1&quot;,
+        &quot;sass&quot;: &quot;^1.39.0&quot;,
+        &quot;sass-loader&quot;: &quot;^12.1.0&quot;,
+        &quot;vite&quot;: &quot;^2.5.3&quot;,
+        &quot;vite-plugin-vuedoc&quot;: &quot;^3.1.3&quot;,
+        &quot;@vue/compiler-sfc&quot;: &quot;^3.0.5&quot;
+    }
+}
+</code></pre></div><p>/shims.d.ts</p><div class="language-"><pre><code>declare module &#39;*.vue&#39; {
+    import type { DefineComponent } from &#39;vue&#39;
+    const component: DefineComponent&lt;{}, {}, any&gt;
+    export default component
+  }
+  
+  declare module &#39;*.md&#39; {
+    import { DefineComponent } from &#39;vue&#39;
+    const component: DefineComponent&lt;{}, {}, any&gt;
+    export default component
+  }
+</code></pre></div><p>/tsconfig.json</p><div class="language-"><pre><code>{
+    &quot;compilerOptions&quot;: {
+      &quot;target&quot;: &quot;esnext&quot;,
+      &quot;module&quot;: &quot;esnext&quot;,
+      &quot;moduleResolution&quot;: &quot;node&quot;,
+      &quot;strict&quot;: true,
+      &quot;jsx&quot;: &quot;preserve&quot;,
+      &quot;sourceMap&quot;: true,
+      &quot;lib&quot;: [&quot;esnext&quot;, &quot;dom&quot;],
+      &quot;types&quot;: [&quot;vite/client&quot;],
+      &quot;baseUrl&quot;: &quot;.&quot;
+    },
+    &quot;include&quot;: [&quot;./shims.d.ts&quot;, &quot;src/**/*&quot;],
+    &quot;exclude&quot;: [&quot;node_modules&quot;, &quot;dist&quot;]
+}
+</code></pre></div><p>/index.html</p><div class="language-"><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;link rel=&quot;icon&quot; href=&quot;/jiang.png&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;组件库文档&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+    &lt;script type=&quot;module&quot; src=&quot;/src/main.ts&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><p>/scripts/vitePluginSyncmd.ts</p><div class="language-"><pre><code>import { Plugin } from &quot;vite&quot;;
+import chokidar from &quot;chokidar&quot;;
+import path from &quot;path&quot;;
+import fs from &quot;fs-extra&quot;;
+
+function docFileName(path: string) {
+  const ret = path.split(&quot;/__docs__/&quot;);
+  if (ret.length === 2) {
+    return ret;
+  }
+  return [null, null];
+}
+
+function syncdocServer({ root }) {
+  const componentsDir = path.join(root, &quot;../src/components&quot;);
+  const docsPath = (file) =&gt; path.join(root, &quot;src/__docs__&quot;, file);
+  const watcher = chokidar.watch(`${componentsDir}/**/__docs__/*.md`);
+  watcher
+    .on(&quot;add&quot;, async (path) =&gt; {
+      const [, file] = docFileName(path);
+      if (file) {
+        try {
+          await fs.copy(path, docsPath(file));
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    })
+    .on(&quot;change&quot;, async (path) =&gt; {
+      const [, file] = docFileName(path);
+      if (file) {
+        try {
+          await fs.copy(path, docsPath(file));
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    })
+    .on(&quot;unlink&quot;, async (path) =&gt; {
+      const [, file] = docFileName(path);
+      if (file) {
+        try {
+          await fs.remove(docsPath(file));
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    });
+}
+
+function vitePluginSyncmd(): Plugin {
+  return {
+    name: &quot;Syncmd&quot;,
+    configureServer(server) {
+      syncdocServer({ root: server.config.root });
+    },
+  };
+}
+
+export default vitePluginSyncmd;
+</code></pre></div><p>/src/main.ts</p><div class="language-"><pre><code>import &#39;vite-plugin-vuedoc/style.css&#39;;
+import { createApp } from &#39;vue&#39;;
+
+import { router } from &#39;./router&#39;;
+import App from &#39;./App.vue&#39;;
+
+const app = createApp(App);
+
+app.use(router);
+app.mount(&#39;#app&#39;);
+</code></pre></div><p>/src/router.ts</p><div class="language-"><pre><code>import { createRouter, createWebHistory, RouteRecordRaw } from &#39;vue-router&#39;
+import AppLayout from &#39;./components/AppLayout.vue&#39;
+import menus from &#39;./menus&#39;
+
+export const router = createRouter({
+  history: createWebHistory(),
+  strict: true,
+  routes: [
+    {
+      path: &#39;/&#39;,
+      name: &#39;Layout&#39;,
+      component: AppLayout,
+      redirect: &#39;/button&#39;,
+      children: menus.reduce((prev, item) =&gt; {
+        const _routes = item.items.map((i) =&gt; {
+          console.log(i.component)
+          return {
+            path: `/${i.name.toLowerCase()}`,
+            name: i.name,
+            component: i.component,
+          }
+        })
+        prev.push(..._routes)
+        return prev
+      }, [] as RouteRecordRaw[]),
+    },
+  ],
+})
+</code></pre></div><p>/src/menus.ts</p><div class="language-"><pre><code>import { Component } from &#39;vue&#39;
+import Button from &#39;./__docs__/Button.md&#39;
+
+type MenuItemType = {
+  name: string
+  component: (() =&gt; Promise&lt;Component&gt;) | Component
+}
+type MenuType = {
+  title: string
+  items: MenuItemType[]
+}
+
+export default [
+  {
+    title: &#39;Basic&#39;,
+    items: [
+      { name: &#39;Button&#39;, component: Button },
+    ]
+  }
+] as MenuType[]
+</code></pre></div><p>/src/App.vue</p><div class="language-"><pre><code>&lt;template&gt;
+  &lt;router-view /&gt;
+&lt;/template&gt;
+
+&lt;script lang=&quot;ts&quot;&gt;
+import { defineComponent } from &#39;vue&#39;
+
+export default defineComponent({
+  name: &#39;App&#39;,
+  components: {}
+})
+&lt;/script&gt;
+</code></pre></div><p>/src/compoents/AppLayout.vue</p><div class="language-"><pre><code>&lt;template&gt;
+  &lt;div class=&quot;demo-layout&quot;&gt;
+    &lt;div&gt;
+      &lt;div class=&quot;demo-header&quot;&gt;
+        &lt;div class=&quot;layout-center&quot;&gt;
+          &lt;div align=&quot;middle&quot;&gt;
+            &lt;div :flex=&quot;1&quot;&gt;
+              &lt;!-- &lt;Logo /&gt; --&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+              &lt;div mode=&quot;vertical&quot;&gt;
+                &lt;div&gt;
+                  &lt;a href=&quot;https://github.com/upJiang&quot; target=&quot;__blank&quot;&gt;GitHub&lt;/a&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;div class=&quot;layout-center&quot;&gt;
+          &lt;div align=&quot;top&quot; :wrap=&quot;false&quot;&gt;
+            &lt;div :flex=&quot;&#39;200px&#39;&quot;&gt;
+              &lt;div style=&quot;padding-top: 40px&quot;&gt;
+                &lt;div mode=&quot;vertical&quot; :current-path=&quot;route.path&quot;&gt;
+                  &lt;template v-for=&quot;menu in menus&quot; :key=&quot;menu.title&quot;&gt;
+                    &lt;div :title=&quot;menu.title&quot;&gt;
+                      &lt;div v-for=&quot;item in menu.items&quot; :key=&quot;item&quot; :path=&quot;`/${item.name.toLowerCase()}`&quot;&gt;
+                        {{ `${item.name}-jiang` }}
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/template&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div :flex=&quot;1&quot;&gt;
+              &lt;div class=&quot;site-content&quot;&gt;
+                &lt;router-view /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script lang=&quot;ts&quot;&gt;
+import { defineComponent, reactive } from &#39;vue&#39;
+import { useRoute } from &#39;vue-router&#39;
+import menus from &#39;../menus&#39;
+
+export default defineComponent({
+  name: &#39;AppLayout&#39;,
+  setup() {
+    const route = useRoute()
+    const data = reactive({
+
+    })
+
+    return {
+      route,
+      menus,
+      data,
+    }
+  },
+})
+&lt;/script&gt;
+&lt;style lang=&quot;scss&quot;&gt;
+.demo-layout {
+  height: 100vh;
+}
+.layout-center {
+  max-width: 1200px;
+  width: 100vw;
+  margin: 0 auto;
+}
+.site-content {
+  width: 100%;
+  padding: 20px;
+  // max-width: 900px;
+  margin: 0 auto;
+}
+
+.demo-aside {
+  border-right: solid 1px #e6e6e6;
+}
+.demo-header {
+  border-bottom: solid 1px #e6e6e6;
+  // box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
+&lt;/style&gt;
+</code></pre></div><p>使用markdown语法编写文档 /src/<strong>docs</strong>/Button.md</p><div class="language-"><pre><code>---
+title: Button
+wrapperClass: md-button
+---
+
+文档内容，可使用markdown语法~
+</code></pre></div><p>packge.json</p><div class="language-"><pre><code>&quot;docs:init&quot;: &quot;cd ./docs &amp;&amp; yarn &quot;,
+&quot;docs&quot;: &quot;cd ./docs &amp;&amp; yarn dev&quot;
+</code></pre></div><p>项目启动后就可以看到使用md编写的页面效果（项目挺常规不想赘述太多）</p><h2 id="编写组件库测试项目"><a class="header-anchor" href="#编写组件库测试项目" aria-hidden="true">#</a> 编写组件库测试项目</h2><blockquote><p>组件库编写完，其实我们直接打包之前，是可以直接引入组件路径来看看效果的，我们来加一个测试项目吧。在根目录下新增play文件夹</p></blockquote><p><a data-fancybox title="image.png" href="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/89fbfc9fd80c4094bc30966c8b58896b~tplv-k3u1fbpfcp-watermark.image"><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/89fbfc9fd80c4094bc30966c8b58896b~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></a></p><p>项目其实就是一个vue3.0 + vite的项目，没啥好说的，只是我们在页面中使用相对路径去测试我们编写的组件</p><p>/src/views/ButtonTest.vue</p><div class="language-"><pre><code>&lt;template&gt;
+    &lt;my-button&gt;&lt;/my-button&gt;
+&lt;/template&gt;
+&lt;script lang=&quot;ts&quot; setup&gt;
+import MyButton from &#39;../../../packages/compoents/button/src/Button.vue&#39;
+&lt;/script&gt;
+</code></pre></div><p>/package.json</p><div class="language-"><pre><code>&quot;play:init&quot;: &quot;cd ./play &amp;&amp; yarn&quot;,
+&quot;play&quot;: &quot;cd ./play &amp;&amp; yarn dev&quot;
+</code></pre></div><h2 id="总结"><a class="header-anchor" href="#总结" aria-hidden="true">#</a> 总结</h2><p>最近也是一直在学习工程化的东西，一直都想尝试做个组件库，在开课吧里看了<a href="https://juejin.cn/user/1978776660216136" target="_blank" rel="noopener noreferrer">全栈然叔</a>的工程化课程后，就动手跟着做了一遍，但是发布啥的都没介绍，样式打包也有问题。然后又借鉴了<a href="https://segmentfault.com/a/1190000039920691" target="_blank" rel="noopener noreferrer">手握手教你搭建组件库环境</a>这篇文章，中间也踩了不少坑，其实项目中有些东西我也不是很懂，如果跟着文章没做出来，那就下载一下我的项目代码对比一下。</p><p>项目以及文章我都会持续更新的，如果你都看到这里了，觉得有收获，写的还行的话，就点个赞收藏一下吧，如果你也是一个爱学习的前端，不妨点个关注！嘿嘿，谢谢！！！</p><p><a href="https://github.com/upJiang/jiangUI" target="_blank" rel="noopener noreferrer">项目代码地址</a></p></div><div class="links-wrapper"><div class="prev-link"><!----></div><div class="next-link"><!----></div></div><!--[--><!--[--><!--]--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"docs.md\":\"67e0e6a2\",\"index.md\":\"edacb7d2\",\"README.md\":\"4128f4cd\",\"tags.md\":\"9d596c8e\",\"docs_algorithm_array.md\":\"cd37e67d\",\"docs_algorithm_bstTree.md\":\"2c5f112a\",\"docs_algorithm_chain.md\":\"886e6a2a\",\"docs_algorithm_chainCicle.md\":\"19bf3dcc\",\"docs_algorithm_chainHead.md\":\"d919a8ea\",\"docs_algorithm_complexity.md\":\"d90c660d\",\"docs_algorithm_dataStructures.md\":\"69c5d50f\",\"docs_algorithm_DFS.md\":\"6051aa2d\",\"docs_algorithm_dynamic.md\":\"f30f4f64\",\"docs_algorithm_ergodicTree.md\":\"e4ba1bb8\",\"docs_algorithm_queue.md\":\"30ce6b58\",\"docs_algorithm_sort.md\":\"691a9203\",\"docs_algorithm_stack.md\":\"15072771\",\"docs_algorithm_string.md\":\"3a38c3b1\",\"docs_algorithm_thinking.md\":\"4e7b9192\",\"docs_algorithm_tree.md\":\"9837f573\",\"docs_article_index.md\":\"1854e195\",\"docs_babel_start.md\":\"baa6a13e\",\"docs_howReview_start.md\":\"b3790e45\",\"docs_interview_22Ready.md\":\"a75a140a\",\"docs_interview_22StartSum.md\":\"eb76096b\",\"docs_interview_async.md\":\"48585586\",\"docs_interview_boxsizing.md\":\"334115fc\",\"docs_interview_center.md\":\"277dcf15\",\"docs_interview_css.md\":\"b460d1c7\",\"docs_interview_dataType.md\":\"2f121d67\",\"docs_interview_debounce.md\":\"dbe6dfc6\",\"docs_interview_defineProperty.md\":\"ec52fd21\",\"docs_interview_dns.md\":\"741137ec\",\"docs_interview_hashMode.md\":\"c62c4930\",\"docs_interview_httpCode.md\":\"cb81c76b\",\"docs_interview_index.md\":\"4819ed13\",\"docs_interview_jsBaseQuestion.md\":\"8216827e\",\"docs_interview_longList.md\":\"b445de56\",\"docs_interview_networkBaseQuestion.md\":\"d402d840\",\"docs_interview_process.md\":\"ef641a36\",\"docs_interview_promiseCicle.md\":\"07117c4b\",\"docs_interview_reactBaseQuestion.md\":\"a8b76b21\",\"docs_interview_repaint.md\":\"d3e9229b\",\"docs_interview_target.md\":\"598f6eb7\",\"docs_interview_URL.md\":\"26c1195b\",\"docs_interview_vueBaseQuestion.md\":\"a7a7a406\",\"docs_interview_writeQuestion.md\":\"b59b7251\",\"docs_jsAdvanced_changelog.md\":\"233da342\",\"docs_jsAdvanced_cURL.md\":\"5cb3753d\",\"docs_jsAdvanced_gulp.md\":\"958207e2\",\"docs_jsAdvanced_husky.md\":\"fb9e0602\",\"docs_jsAdvanced_index.md\":\"78cfa234\",\"docs_jsAdvanced_jiangVui.md\":\"cee38e52\",\"docs_jsAdvanced_jsAdvanced.md\":\"f4274792\",\"docs_jsAdvanced_loadingHandle.md\":\"adcef2c6\",\"docs_jsAdvanced_mock.md\":\"d1078c95\",\"docs_jsAdvanced_monitor.md\":\"5fcd7e05\",\"docs_jsAdvanced_nvm.md\":\"afb65ddb\",\"docs_jsAdvanced_performance.md\":\"98c310de\",\"docs_jsAdvanced_pureFuntion.md\":\"3031e2a5\",\"docs_jsAdvanced_sentry.md\":\"5bec9037\",\"docs_jsAdvanced_server.md\":\"e3847893\",\"docs_jsAdvanced_standard.md\":\"b3f8225c\",\"docs_jsAdvanced_ts.md\":\"a8705ef7\",\"docs_jsAdvanced_vite.md\":\"d84b2beb\",\"docs_jsAdvanced_vue3.md\":\"989e21ab\",\"docs_jsAdvanced_vueComponent.md\":\"95f40378\",\"docs_jsBase_bind.md\":\"7704be52\",\"docs_jsBase_Cache.md\":\"1a8d3cd4\",\"docs_jsBase_closure.md\":\"af360d78\",\"docs_jsBase_context.md\":\"80535d58\",\"docs_jsBase_copy.md\":\"40d90e39\",\"docs_jsBase_cors.md\":\"82f755c1\",\"docs_jsBase_CSRF.md\":\"0f0814f7\",\"docs_jsBase_css.md\":\"e5d21f2f\",\"docs_jsBase_es6.md\":\"5c049d05\",\"docs_jsBase_eventLoop.md\":\"7a6b0268\",\"docs_jsBase_garbage.md\":\"a125085d\",\"docs_jsBase_git.md\":\"4e8babae\",\"docs_jsBase_https.md\":\"65dd22dc\",\"docs_jsBase_index.md\":\"4b04cb6c\",\"docs_jsBase_jquery.md\":\"f3395bf4\",\"docs_jsBase_memory.md\":\"7c04f972\",\"docs_jsBase_module.md\":\"e5949fb6\",\"docs_jsBase_new.md\":\"bd8308c4\",\"docs_jsBase_prototype.md\":\"9dc246ac\",\"docs_jsBase_storage.md\":\"b3adeaa6\",\"docs_jsBase_this.md\":\"8fc81baa\",\"docs_jsBase_websocket.md\":\"1507f39c\",\"docs_resources_learning.md\":\"af5859f3\",\"docs_resources_tool.md\":\"1ba858f0\",\"docs_reStudy_browser_css.md\":\"b109f4b2\",\"docs_reStudy_browser_cssdom.md\":\"7588bcee\",\"docs_reStudy_browser_dom.md\":\"1645df31\",\"docs_reStudy_browser_domApi.md\":\"878db3e4\",\"docs_reStudy_browser_event.md\":\"133fa540\",\"docs_reStudy_browser_http.md\":\"aefa28ae\",\"docs_reStudy_browser_maker.md\":\"a584a598\",\"docs_reStudy_browser_print.md\":\"6f541cdf\",\"docs_reStudy_css_animation.md\":\"088ce694\",\"docs_reStudy_css_color.md\":\"305a53ea\",\"docs_reStudy_css_compose.md\":\"d7c7cb3f\",\"docs_reStudy_css_link.md\":\"ce8f5523\",\"docs_reStudy_css_rule.md\":\"1a9ef4b3\",\"docs_reStudy_css_select.md\":\"31d9217e\",\"docs_reStudy_html_ARIA.md\":\"ae5860a4\",\"docs_reStudy_html_DTD.md\":\"0f201e28\",\"docs_reStudy_html_head.md\":\"80c79dc2\",\"docs_reStudy_html_standard.md\":\"2a19421f\",\"docs_reStudy_html_tag.md\":\"718974b5\",\"docs_reStudy_html_tramslate.md\":\"b64e0c8d\",\"docs_reStudy_js_closure.md\":\"fa4b9116\",\"docs_reStudy_js_completion.md\":\"a2be3e79\",\"docs_reStudy_js_eventLoop.md\":\"e6c7402c\",\"docs_reStudy_js_function.md\":\"710f7ab3\",\"docs_reStudy_js_grammar.md\":\"8f61f7b4\",\"docs_reStudy_js_object.md\":\"94bc30b9\",\"docs_reStudy_js_prototype.md\":\"3c2eaed0\",\"docs_reStudy_js_semicolon.md\":\"c8ad84a8\",\"docs_reStudy_js_token.md\":\"0213be35\",\"docs_reStudy_js_type.md\":\"80fc2574\",\"docs_reStudy_other_question.md\":\"1ff699d9\",\"docs_reStudy_start.md\":\"9afdd8e6\",\"docs_reStudy_sum_architecture.md\":\"25c6ac11\",\"docs_reStudy_sum_continue.md\":\"2cc6c58f\",\"docs_reStudy_sum_performance.md\":\"8207603c\",\"docs_reStudy_sum_system.md\":\"e90b1975\",\"docs_reStudy_sum_tool.md\":\"5bf127ce\",\"docs_work_h5.md\":\"24bb8ff4\",\"docs_work_vue.md\":\"ed77ade1\"}")</script>
+    <script type="module" async src="/_assets/app.bac4ca22.js"></script>
+  </body>
+</html>

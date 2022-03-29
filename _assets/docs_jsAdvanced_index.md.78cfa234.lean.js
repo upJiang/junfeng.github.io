@@ -1,0 +1,1 @@
+import{g as t,f as e}from"./common-d6bd45c0.js";const d='{"title":"js进阶篇","frontmatter":{"title":"js进阶篇","describe":"整理js进阶"},"relativePath":"docs/jsAdvanced/index.md","lastUpdated":1626623566155.8186}';var r={};r.render=function(d,r,s,a,o,n){return e(),t("div")};export default r;export{d as __pageData};

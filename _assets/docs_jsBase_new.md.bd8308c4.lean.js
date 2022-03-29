@@ -1,0 +1,1 @@
+import{g as e,f as n,E as t}from"./common-d6bd45c0.js";const o='{"title":"js中new做了什么","frontmatter":{},"headers":[{"level":2,"title":"js中new做了什么","slug":"js中new做了什么"}],"relativePath":"docs/jsBase/new.md","lastUpdated":1627826001298.8733}';var s={};const r=t('',4);s.render=function(t,o,s,a,i,l){return n(),e("div",null,[r])};export default s;export{o as __pageData};

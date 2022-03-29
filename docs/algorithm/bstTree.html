@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      查找数据域为某一特定值的结点 | Jiang's Blog
+    </title>
+    <meta name="description" content="A VitePress site">
+    <link rel="stylesheet" href="/_assets/style.d3cbd45d.css">
+    <link rel="modulepreload" href="/_assets/common-d6bd45c0.js">
+    <link rel="modulepreload" href="/_assets/docs_algorithm_bstTree.md.2c5f112a.lean.js">
+    <link rel="modulepreload" href="/_assets/app.bac4ca22.js">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="keywords" content="Jiang的个人博客">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="navbar"><!--[--><a class="title" aria-label="Jiang&#39;s Blog, back to home" href="/"><!----><span style="color:var(--accent-color);">Jiang&#39;s Blog</span></a><div class="flex-grow"></div><nav class="nav-links hide-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!-- <AlgoliaSearchBox
+              v-if="$site.themeConfig.algolia"
+              :options="$site.themeConfig.algolia"
+            /> --><!--]--><!--]--><!--]--><div class="sidebar-button"><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div></header><aside class=""><!--[--><nav class="nav-links show-mobile"><!--[--><!--[--><div class="nav-item"><a class="nav-link" href="/" target="" rel="">🏡首页 <!----></a></div><!--]--><!--[--><div class="dropdown-wrapper"><button class="dropdown-title" type="button"><span>📑学习之旅</span><span class="right arrow"></span></button><ul class="nav-dropdown"><!--[--><li key="/docs/reStudy/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/reStudy/start" target="" rel="">😘 重学前端 <!----></a></div></li><li key="/docs/algorithm/dataStructures" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/algorithm/dataStructures" target="" rel="">🤣 前端算法 <!----></a></div></li><li key="/docs/babel/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/babel/start" target="" rel="">😊 babel通关秘籍 <!----></a></div></li><li key="/docs/howReview/start" class="dropdown-item"><!----><div class="nav-item"><a class="nav-link" href="/docs/howReview/start" target="" rel="">😇 前端面试之道 <!----></a></div></li><!--]--></ul></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsBase/git" target="" rel="">📚基础 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/interview/center" target="" rel="">🤵面试 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/jsAdvanced/vue3" target="" rel="">🙇进阶 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/resources/learning" target="" rel="">🤭资源&amp;工具 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="nav-link" href="/docs/work/h5" target="" rel="">🍉工作问题 <!----></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://github.com/upJiang" target="_blank" rel="noopener noreferrer">🧾github <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--[--><div class="nav-item"><a class="external nav-link" href="https://juejin.cn/user/862487522314366" target="_blank" rel="noopener noreferrer">👍掘金 <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><!--]--><!--]--><!----><!----></nav><!--[--><!--[--><!--]--><!--]--><ul class="sidebar"><!--[--><li class="sidebar-item"><p class="sidebar-link">算法</p><ul class="sidebar-items"><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/dataStructures">数据结构</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/ergodicTree">遍历二叉树</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/complexity">复杂度</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/array">数组解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/string">字符串解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chain">链表解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chainHead">链表解题-快慢指针与多指针</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/chainCicle">链表解题-环形链表</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/stack">栈解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/queue">队列解题</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/DFS">深度优先&amp;广度优先</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/thinking">递归与回溯思想</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/tree">二叉树</a><!----></li><li class="sidebar-item"><a class="sidebar-link active" href="/docs/algorithm/bstTree">二叉搜索树</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/sort">排序算法</a><!----></li><li class="sidebar-item"><a class="sidebar-link" href="/docs/algorithm/dynamic">动态规划</a><!----></li></ul></li><!--]--></ul><!--[--><!--[--><!--]--><!--]--><!--]--></aside><!-- TODO: make this button accessible --><div class="sidebar-mask"></div><main><div class="content"><!--[--><!--[--><!--]--><!--]--><div class="md-header"><!-- <div class="md-title">{{ pageData.title }}</div> --><!-- {{ pageData.frontmatter.date }} --><div class="md-date">今日诗词欣赏</div><span id="jinrishici-sentence">正在加载今日诗词....</span></div><!-- 右边导航 --><!-- <ul class="catalog">
+      <li class="catalog-item" v-for="item in pageData.headers">
+        <a class="level level-2" v-if="item.level == 2" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+        <a class="level level-3" v-if="item.level == 3" :href="'#' + item.slug">
+          {{ item.title }}
+        </a>
+      </li>
+    </ul> --><!-- md主内容 --><div><p>二叉搜索树定义：</p><ul><li>是一棵空树</li><li>是一棵由根结点、左子树、右子树组成的树，同时左子树和右子树都是二叉搜索树，且<code>左子树</code>上所有结点的数据域都<code>小于等于</code>根结点的数据域，<code>右子树</code>上所有结点的数据域都<code>大于等于</code>根结点的数据域</li></ul><p>简单来说就是树的左边数据都要比根数据的小，右边的都要比根数据的大，，，即从左到右递增的感觉</p><p><a data-fancybox title="img" href="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/81507c52878942b08f5f5a781ee8944c~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/81507c52878942b08f5f5a781ee8944c~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp" alt="img"></a></p><p>关于二叉搜索树，高频操作：</p><ul><li>查找数据域为某一特定值的结点</li><li>插入新结点</li><li>删除指定结点</li></ul><h3 id="查找数据域为某一特定值的结点"><a class="header-anchor" href="#查找数据域为某一特定值的结点" aria-hidden="true">#</a> 查找数据域为某一特定值的结点</h3><p>假设这个目标结点的数据域值为 <code>n</code>，我们借助二叉搜索树数据域的有序性，可以有以下查找思路：</p><ul><li><ol><li>假设这个目标结点的数据域值为 n，我们借助二叉搜索树数据域的有序性，可以有以下查找思路：</li></ol></li><li><ol start="2"><li>若当前遍历到的结点对应的数据域值刚好等于n，则查找成功，返回。</li></ol></li><li><ol start="3"><li>若当前遍历到的结点对应的数据域值大于目标值n，则应该在左子树里进一步查找，设置下一步的遍历范围为 <code>root.left</code> 后，继续递归。</li></ol></li><li><ol start="4"><li>若当前遍历到的结点对应的数据域值小于目标值n，则应该在右子树里进一步查找，设置下一步的遍历范围为 <code>root.right</code> 后，继续递归。</li></ol></li></ul><p>编码实现</p><div class="language-"><pre><code>function search(root, n) {
+    // 若 root 为空，查找失败，直接返回
+    if(!root) {
+        return 
+    }
+    // 找到目标结点，输出结点对象
+    if(root.val === n) {
+        console.log(&#39;目标结点是：&#39;, root)
+    } else if(root.val &gt; n) {
+        // 当前结点数据域大于n，向左查找
+        search(root.left, n)
+    } else {
+        // 当前结点数据域小于n，向右查找
+        search(root.right, n)
+    }
+}
+</code></pre></div><h3 id="插入新结点"><a class="header-anchor" href="#插入新结点" aria-hidden="true">#</a> 插入新结点</h3><p>思路：<br> 其实跟查找数据域是一样的，从根结点开始，把我们希望插入的数据值和每一个结点作比较。若大于当前结点，则向右子树探索；若小于当前结点，则向左子树探索。最后找到的那个空位，就是它合理的栖身之所。</p><div class="language-"><pre><code>function insertIntoBST(root, n) {
+    // 若 root 为空，说明当前是一个可以插入的空位
+    if(!root) { 
+        // 用一个值为n的结点占据这个空位
+        root = new TreeNode(n)
+        return root
+    }
+    
+    if(root.val &gt; n) {
+        // 当前结点数据域大于n，向左查找
+        root.left = insertIntoBST(root.left, n)
+    } else {
+        // 当前结点数据域小于n，向右查找
+        root.right = insertIntoBST(root.right, n)
+    }
+
+    // 返回插入后二叉搜索树的根结点
+    return root
+}
+</code></pre></div><h3 id="删除指定结点"><a class="header-anchor" href="#删除指定结点" aria-hidden="true">#</a> 删除指定结点</h3><p>思路：<br></p><ul><li><ol><li>结点不存在，定位到了空结点。直接返回即可。</li></ol></li><li><ol start="2"><li>需要删除的目标结点没有左孩子也没有右孩子——它是一个叶子结点，删掉它不会对其它结点造成任何影响，直接删除即可。</li></ol></li><li><ol start="3"><li>需要删除的目标结点存在左子树，那么就去左子树里寻找小于目标结点值的最大结点，用这个结点覆盖掉目标结点</li></ol></li><li><ol start="4"><li>需要删除的目标结点存在右子树，那么就去右子树里寻找大于目标结点值的最小结点，用这个结点覆盖掉目标结点</li></ol></li><li><ol start="5"><li>需要删除的目标结点既有左子树、又有右子树，这时就有两种做法了：要么取左子树中值最大的结点，要么取右子树中取值最小的结点。两个结点中任取一个覆盖掉目标结点，都可以维持二叉搜索树的数据有序性</li></ol></li></ul><div class="language-"><pre><code>function deleteNode(root, n) {
+    // 如果没找到目标结点，则直接返回
+    if(!root) {
+        return root
+    }
+    // 定位到目标结点，开始分情况处理删除动作
+    if(root.val === n) {
+        // 若是叶子结点，则不需要想太多，直接删除
+        if(!root.left &amp;&amp; !root.right) {
+            root = null
+        } else if(root.left) {
+            // 寻找左子树里值最大的结点
+            const maxLeft = findMax(root.left)
+            // 用这个 maxLeft 覆盖掉需要删除的当前结点  
+            root.val = maxLeft.val
+            // 覆盖动作会消耗掉原有的 maxLeft 结点
+            root.left = deleteNode(root.left, maxLeft.val)
+        } else {
+            // 寻找右子树里值最小的结点
+            const minRight = findMin(root.right)
+            // 用这个 minRight 覆盖掉需要删除的当前结点  
+            root.val = minRight.val
+            // 覆盖动作会消耗掉原有的 minRight 结点
+            root.right = deleteNode(root.right, minRight.val)
+        }
+    } else if(root.val &gt; n) {
+        // 若当前结点的值比 n 大，则在左子树中继续寻找目标结点
+        root.left = deleteNode(root.left, n)
+    } else  {
+        // 若当前结点的值比 n 小，则在右子树中继续寻找目标结点
+        root.right = deleteNode(root.right, n)
+    }
+    return root
+}
+
+// 寻找左子树最大值
+function findMax(root) {
+    while(root.right) {
+        root = root.right
+    }
+    return root 
+}
+
+// 寻找右子树的最小值
+function findMin(root) {
+    while(root.left) {
+        root = root.left
+    }
+    return root
+}
+</code></pre></div><h3 id="二叉搜索树的特性"><a class="header-anchor" href="#二叉搜索树的特性" aria-hidden="true">#</a> 二叉搜索树的特性</h3><p><strong>二叉搜索树的中序遍历序列是有序的！</strong></p><h3 id="真题实战"><a class="header-anchor" href="#真题实战" aria-hidden="true">#</a> 真题实战</h3><blockquote><p>题目描述：给定一个二叉树，判断其是否是一个有效的二叉搜索树。</p></blockquote><p>例：</p><div class="language-"><pre><code>    2
+   / \
+  1   3
+true
+
+    5
+   / \
+  1   4
+     / \
+    3   6
+false
+解释: 输入为: [5,1,4,null,null,3,6]。
+根节点的值为 5 ，但是其右子节点值为 4 。
+</code></pre></div><p>思路： 空树的判定比较简单，关键在于非空树的判定：需要递归地对非空树中的左右子树进行遍历，检验每棵子树中是否都满足 <code>左 &lt; 根 &lt; 右</code> 这样的关系（注意题中声明了不需要考虑相等情况）。</p><div class="language-"><pre><code>/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+const isValidBST = function(root) {
+  // 定义递归函数
+  function dfs(root, minValue, maxValue) {
+      // 若是空树，则合法
+      if(!root) {
+          return true
+      }
+      // 若右孩子不大于根结点值，或者左孩子不小于根结点值，则不合法
+      if(root.val &lt;= minValue || root.val &gt;= maxValue) return false
+      // 左右子树必须都符合二叉搜索树的数据域大小关系
+      return dfs(root.left, minValue,root.val) &amp;&amp; dfs(root.right, root.val, maxValue)
+  }
+  // 初始化最小值和最大值为极小或极大
+  return dfs(root, -Infinity, Infinity)
+};
+</code></pre></div><p>编码复盘:</p><p>递归过程中，起到决定性作用的是这两个判定条件：</p><ul><li>左孩子的值是否小于根结点值</li><li>右孩子的值是否大于根结点值</li></ul><p>在递归式中，如果单独维护一段逻辑，用于判定当前是左孩子还是右孩子，进而决定是进行大于判定还是小于判定，也是没问题的。但是在上面的编码中我们采取了一种更简洁的手法，通过设置 <code>minValue</code> 和 <code>maxValue</code> 为极小和极大值，来确保 <code>root.val &lt;= minValue || root.val &gt;= maxValue</code> 这两个条件中有一个是一定为 <code>false</code> 的。</p><p>比如当前我需要检查的是 <code>root</code> 的左孩子，那么就会进入 <code>dfs(root.left, minValue,root.val)</code> 这段逻辑。这个<code>dfs</code>调用将最大值更新为了<code>root</code>根结点的值，将当前<code>root</code>结点更新为了左孩子结点，同时保持最小值为 <code>-Infinity</code> 不变。进入 dfs逻辑后，<code>root.val &lt;= minValue || root.val &gt;= maxValue</code> 中的 <code>root.val &lt;= minValue</code> 一定为 <code>false</code> ，起决定性作用的条件实际是 <code>root.val &gt;= maxValue</code>（这里这个 maxValue 正是根结点的数据域值)。若<code>root.val &gt;= maxValue</code>返回 <code>true</code>，就意味着左孩子的值大于等于（也就是不小于）根结点的数据域值，这显然是不合法的。此时整个或语句都会返回<code>true</code>，递归式返回<code>false</code>，二叉搜索树进而会被判定为不合法。</p><h3 id="将排序数组转化为二叉搜索树"><a class="header-anchor" href="#将排序数组转化为二叉搜索树" aria-hidden="true">#</a> 将排序数组转化为二叉搜索树</h3><blockquote><p>题目描述：将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。</p></blockquote><p>本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1。<br> 示例:<br> 给定有序数组: [-10,-3,0,5,9],<br> 一个可能的答案是：[0,-3,9,-10,null,5]，它可以表示下面这个高度平衡二叉搜索树：<br></p><div class="language-"><pre><code>      0
+     / \
+   -3   9
+   /   /
+ -10  5
+</code></pre></div><p>思路：<br></p><p>可以看到答案好像是在数组中间把中间值拿出来，然后形成一棵树。如果是偶数个数，那么我们提取中间的左边或者右边都能保证两个子树的高度差不超过1。</p><p>**“以中间元素为根结点，将数组提成树”**这种操作，可以保证根结点左右两侧的子树高度绝对值不大于1。要想保证每一棵子树都满足这个条件，我们只需要对有序数组的每一个对半分出来的子序列都递归地执行这个操作即可。</p><p>编码实现</p><div class="language-"><pre><code>/**
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
+const sortedArrayToBST = function(nums) {
+    // 处理边界条件
+    if(!nums.length) {
+        return null
+    }
+    
+    // root 结点是递归“提”起数组的结果
+    const root = buildBST(0, nums.length-1)
+
+    // 定义二叉树构建函数，入参是子序列的索引范围
+    function buildBST(low, high) {
+        // 当 low &gt; high 时，意味着当前范围的数字已经被递归处理完全了
+        if(low &gt; high) {
+            return null
+        }
+        // 二分一下，取出当前子序列的中间元素，Math.floor( 45.95) = 45 向下取整;
+        const mid = Math.floor(low + (high - low)/2)  
+        // 将中间元素的值作为当前子树的根结点值
+        const cur = new TreeNode(nums[mid]) 
+        // 递归构建左子树，范围二分为[low,mid)
+        cur.left = buildBST(low,mid-1)
+        // 递归构建右子树，范围二分为为(mid,high]
+        cur.right = buildBST(mid+1, high)
+        // 返回当前结点
+        return cur
+    }
+    // 返回根结点
+    return root
+};
+</code></pre></div><h3 id="什么是平衡二叉树"><a class="header-anchor" href="#什么是平衡二叉树" aria-hidden="true">#</a> 什么是平衡二叉树</h3><blockquote><p>平衡二叉树（又称 AVL Tree）指的是任意结点的左右子树高度差绝对值都不大于1的二叉搜索树。</p></blockquote><h4 id="为什么要有平衡二叉树"><a class="header-anchor" href="#为什么要有平衡二叉树" aria-hidden="true">#</a> 为什么要有平衡二叉树</h4><p>平衡二叉树的出现，是为了降低二叉搜索树的查找时间复杂度。</p><p><strong>二叉搜索树的妙处就在于它把“二分”这种思想以数据结构的形式表达了出来</strong>。在一个构造合理的二叉搜索树里，我们可以通过对比当前结点和目标值之间的大小关系，缩小下一步的搜索范围（比如只搜索左子树或者只搜索右子树），进而规避掉不必要的查找步骤，降低搜索过程的时间复杂度。</p><p>为了保证二叉搜索树能够确实为查找操作带来效率上的提升，我们有必要在构造二叉搜索树的过程中维持其平衡度，这就是平衡二叉树的来由。</p><p>平衡二叉树和二叉搜索树一样，都被归类为“特殊”的二叉树。对于这样的数据结构来说，其“特殊”之处也正是其考点所在，因此真题往往稳定地分布在以下两个方向：</p><ul><li>对特性的考察（以平衡二叉树的判定为例）</li><li>对操作的考察（以平衡二叉树的构造为例）</li></ul><h4 id="平衡二叉树的判定"><a class="header-anchor" href="#平衡二叉树的判定" aria-hidden="true">#</a> 平衡二叉树的判定</h4><blockquote><p>平衡二叉树的判定</p></blockquote><p>示例 1: <br> 给定二叉树 [3,9,20,null,null,15,7]</p><div class="language-"><pre><code>    3
+   / \
+  9  20
+    /  \
+   15   7
+返回 true 。
+</code></pre></div><p>示例 2: <br> 给定二叉树 [1,2,2,3,3,null,null,4,4]</p><div class="language-"><pre><code>       1
+      / \
+     2   2
+    / \
+   3   3
+  / \
+ 4   4
+返回 false 。
+</code></pre></div><p>思路分析<br> 二叉树的定义：平衡二叉树是任意结点的左右子树高度差绝对值都不大于1的二叉搜索树。<br> 抓住其中的三个关键字：</p><ul><li>任意结点</li><li>左右子树高度差绝对值都不大于1</li><li>二叉搜索树</li></ul><p>解题思路：<br><strong>从下往上递归遍历树中的每一个结点，计算其左右子树的高度并进行对比，只要有一个高度差的绝对值大于1，那么整棵树都会被判为不平衡。</strong></p><p>编码实现</p><div class="language-"><pre><code>const isBalanced = function(root) {
+  // 立一个flag，只要有一个高度差绝对值大于1，这个flag就会被置为false
+  let flag = true
+  // 定义递归逻辑
+  function dfs(root) {
+      // 如果是空树，高度记为0；如果flag已经false了，那么就没必要往下走了，直接return
+      if(!root || !flag) {
+          return 0 
+      }
+      // 计算左子树的高度
+      const left = dfs(root.left)  
+      // 计算右子树的高度
+      const right = dfs(root.right)  
+      // 如果左右子树的高度差绝对值大于1，flag就破功了
+      if(Math.abs(left-right) &gt; 1) {
+          flag = false
+          // 后面再发生什么已经不重要了，返回一个不影响回溯计算的值
+          return 0
+      }
+      // 返回当前子树的高度
+      return Math.max(left, right) + 1
+  }
+  
+  // 递归入口
+  dfs(root) 
+  // 返回flag的值
+  return flag
+};
+</code></pre></div><h4 id="平衡二叉树的构造"><a class="header-anchor" href="#平衡二叉树的构造" aria-hidden="true">#</a> 平衡二叉树的构造</h4><blockquote><p>题目描述：给你一棵二叉搜索树，请你返回一棵平衡后的二叉搜索树，新生成的树应该与原来的树有着相同的节点值。</p></blockquote><p><a data-fancybox title="img" href="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/5/4/171e046bc8287d8b~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp"><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/5/4/171e046bc8287d8b~tplv-t2oaga2asx-zoom-in-crop-mark:1304:0:0:0.awebp" alt="img"></a></p><p>输入：root = [1,null,2,null,3,null,4,null,null] <br> 输出：[2,1,3,null,null,null,4] <br> 解释：这不是唯一的正确答案，[3,1,4,null,2,null,null] 也是一个可行的构造方案。 <br></p><p>思路：</p><ul><li>中序遍历求出有序数组</li><li>逐个将二分出来的数组子序列“提”起来变成二叉搜索树</li></ul><div class="language-"><pre><code>/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+const balanceBST = function(root) {
+    // 初始化中序遍历序列数组
+    const nums = []
+    // 定义中序遍历二叉树，得到有序数组
+    function inorder(root) {
+        if(!root) {
+            return 
+        }
+        inorder(root.left)  
+        nums.push(root.val)  
+        inorder(root.right)
+    }
+    
+    // 这坨代码的逻辑和上一节最后一题的代码一模一样
+    function buildAVL(low, high) {
+        // 若 low &gt; high，则越界，说明当前索引范围对应的子树已经构建完毕
+        if(low&gt;high) {
+            return null
+        }
+        // 取数组的中间值作为根结点值
+        const mid = Math.floor(low + (high -low)/2)
+        // 创造当前树的根结点
+        const cur = new TreeNode(nums[mid])  
+        // 构建左子树
+        cur.left = buildAVL(low, mid-1) 
+        // 构建右子树
+        cur.right = buildAVL(mid+1, high)  
+        // 返回当前树的根结点 
+        return cur
+    }
+    // 调用中序遍历方法，求出 nums
+    inorder(root)
+    // 基于 nums，构造平衡二叉树
+    return buildAVL(0, nums.length-1)
+};
+</code></pre></div></div><div class="links-wrapper"><div class="prev-link"><!----></div><div class="next-link"><!----></div></div><!--[--><!--[--><!--]--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"docs.md\":\"67e0e6a2\",\"index.md\":\"edacb7d2\",\"README.md\":\"4128f4cd\",\"tags.md\":\"9d596c8e\",\"docs_algorithm_array.md\":\"cd37e67d\",\"docs_algorithm_bstTree.md\":\"2c5f112a\",\"docs_algorithm_chain.md\":\"886e6a2a\",\"docs_algorithm_chainCicle.md\":\"19bf3dcc\",\"docs_algorithm_chainHead.md\":\"d919a8ea\",\"docs_algorithm_complexity.md\":\"d90c660d\",\"docs_algorithm_dataStructures.md\":\"69c5d50f\",\"docs_algorithm_DFS.md\":\"6051aa2d\",\"docs_algorithm_dynamic.md\":\"f30f4f64\",\"docs_algorithm_ergodicTree.md\":\"e4ba1bb8\",\"docs_algorithm_queue.md\":\"30ce6b58\",\"docs_algorithm_sort.md\":\"691a9203\",\"docs_algorithm_stack.md\":\"15072771\",\"docs_algorithm_string.md\":\"3a38c3b1\",\"docs_algorithm_thinking.md\":\"4e7b9192\",\"docs_algorithm_tree.md\":\"9837f573\",\"docs_article_index.md\":\"1854e195\",\"docs_babel_start.md\":\"baa6a13e\",\"docs_howReview_start.md\":\"b3790e45\",\"docs_interview_22Ready.md\":\"a75a140a\",\"docs_interview_22StartSum.md\":\"eb76096b\",\"docs_interview_async.md\":\"48585586\",\"docs_interview_boxsizing.md\":\"334115fc\",\"docs_interview_center.md\":\"277dcf15\",\"docs_interview_css.md\":\"b460d1c7\",\"docs_interview_dataType.md\":\"2f121d67\",\"docs_interview_debounce.md\":\"dbe6dfc6\",\"docs_interview_defineProperty.md\":\"ec52fd21\",\"docs_interview_dns.md\":\"741137ec\",\"docs_interview_hashMode.md\":\"c62c4930\",\"docs_interview_httpCode.md\":\"cb81c76b\",\"docs_interview_index.md\":\"4819ed13\",\"docs_interview_jsBaseQuestion.md\":\"8216827e\",\"docs_interview_longList.md\":\"b445de56\",\"docs_interview_networkBaseQuestion.md\":\"d402d840\",\"docs_interview_process.md\":\"ef641a36\",\"docs_interview_promiseCicle.md\":\"07117c4b\",\"docs_interview_reactBaseQuestion.md\":\"a8b76b21\",\"docs_interview_repaint.md\":\"d3e9229b\",\"docs_interview_target.md\":\"598f6eb7\",\"docs_interview_URL.md\":\"26c1195b\",\"docs_interview_vueBaseQuestion.md\":\"a7a7a406\",\"docs_interview_writeQuestion.md\":\"b59b7251\",\"docs_jsAdvanced_changelog.md\":\"233da342\",\"docs_jsAdvanced_cURL.md\":\"5cb3753d\",\"docs_jsAdvanced_gulp.md\":\"958207e2\",\"docs_jsAdvanced_husky.md\":\"fb9e0602\",\"docs_jsAdvanced_index.md\":\"78cfa234\",\"docs_jsAdvanced_jiangVui.md\":\"cee38e52\",\"docs_jsAdvanced_jsAdvanced.md\":\"f4274792\",\"docs_jsAdvanced_loadingHandle.md\":\"adcef2c6\",\"docs_jsAdvanced_mock.md\":\"d1078c95\",\"docs_jsAdvanced_monitor.md\":\"5fcd7e05\",\"docs_jsAdvanced_nvm.md\":\"afb65ddb\",\"docs_jsAdvanced_performance.md\":\"98c310de\",\"docs_jsAdvanced_pureFuntion.md\":\"3031e2a5\",\"docs_jsAdvanced_sentry.md\":\"5bec9037\",\"docs_jsAdvanced_server.md\":\"e3847893\",\"docs_jsAdvanced_standard.md\":\"b3f8225c\",\"docs_jsAdvanced_ts.md\":\"a8705ef7\",\"docs_jsAdvanced_vite.md\":\"d84b2beb\",\"docs_jsAdvanced_vue3.md\":\"989e21ab\",\"docs_jsAdvanced_vueComponent.md\":\"95f40378\",\"docs_jsBase_bind.md\":\"7704be52\",\"docs_jsBase_Cache.md\":\"1a8d3cd4\",\"docs_jsBase_closure.md\":\"af360d78\",\"docs_jsBase_context.md\":\"80535d58\",\"docs_jsBase_copy.md\":\"40d90e39\",\"docs_jsBase_cors.md\":\"82f755c1\",\"docs_jsBase_CSRF.md\":\"0f0814f7\",\"docs_jsBase_css.md\":\"e5d21f2f\",\"docs_jsBase_es6.md\":\"5c049d05\",\"docs_jsBase_eventLoop.md\":\"7a6b0268\",\"docs_jsBase_garbage.md\":\"a125085d\",\"docs_jsBase_git.md\":\"4e8babae\",\"docs_jsBase_https.md\":\"65dd22dc\",\"docs_jsBase_index.md\":\"4b04cb6c\",\"docs_jsBase_jquery.md\":\"f3395bf4\",\"docs_jsBase_memory.md\":\"7c04f972\",\"docs_jsBase_module.md\":\"e5949fb6\",\"docs_jsBase_new.md\":\"bd8308c4\",\"docs_jsBase_prototype.md\":\"9dc246ac\",\"docs_jsBase_storage.md\":\"b3adeaa6\",\"docs_jsBase_this.md\":\"8fc81baa\",\"docs_jsBase_websocket.md\":\"1507f39c\",\"docs_resources_learning.md\":\"af5859f3\",\"docs_resources_tool.md\":\"1ba858f0\",\"docs_reStudy_browser_css.md\":\"b109f4b2\",\"docs_reStudy_browser_cssdom.md\":\"7588bcee\",\"docs_reStudy_browser_dom.md\":\"1645df31\",\"docs_reStudy_browser_domApi.md\":\"878db3e4\",\"docs_reStudy_browser_event.md\":\"133fa540\",\"docs_reStudy_browser_http.md\":\"aefa28ae\",\"docs_reStudy_browser_maker.md\":\"a584a598\",\"docs_reStudy_browser_print.md\":\"6f541cdf\",\"docs_reStudy_css_animation.md\":\"088ce694\",\"docs_reStudy_css_color.md\":\"305a53ea\",\"docs_reStudy_css_compose.md\":\"d7c7cb3f\",\"docs_reStudy_css_link.md\":\"ce8f5523\",\"docs_reStudy_css_rule.md\":\"1a9ef4b3\",\"docs_reStudy_css_select.md\":\"31d9217e\",\"docs_reStudy_html_ARIA.md\":\"ae5860a4\",\"docs_reStudy_html_DTD.md\":\"0f201e28\",\"docs_reStudy_html_head.md\":\"80c79dc2\",\"docs_reStudy_html_standard.md\":\"2a19421f\",\"docs_reStudy_html_tag.md\":\"718974b5\",\"docs_reStudy_html_tramslate.md\":\"b64e0c8d\",\"docs_reStudy_js_closure.md\":\"fa4b9116\",\"docs_reStudy_js_completion.md\":\"a2be3e79\",\"docs_reStudy_js_eventLoop.md\":\"e6c7402c\",\"docs_reStudy_js_function.md\":\"710f7ab3\",\"docs_reStudy_js_grammar.md\":\"8f61f7b4\",\"docs_reStudy_js_object.md\":\"94bc30b9\",\"docs_reStudy_js_prototype.md\":\"3c2eaed0\",\"docs_reStudy_js_semicolon.md\":\"c8ad84a8\",\"docs_reStudy_js_token.md\":\"0213be35\",\"docs_reStudy_js_type.md\":\"80fc2574\",\"docs_reStudy_other_question.md\":\"1ff699d9\",\"docs_reStudy_start.md\":\"9afdd8e6\",\"docs_reStudy_sum_architecture.md\":\"25c6ac11\",\"docs_reStudy_sum_continue.md\":\"2cc6c58f\",\"docs_reStudy_sum_performance.md\":\"8207603c\",\"docs_reStudy_sum_system.md\":\"e90b1975\",\"docs_reStudy_sum_tool.md\":\"5bf127ce\",\"docs_work_h5.md\":\"24bb8ff4\",\"docs_work_vue.md\":\"ed77ade1\"}")</script>
+    <script type="module" async src="/_assets/app.bac4ca22.js"></script>
+  </body>
+</html>

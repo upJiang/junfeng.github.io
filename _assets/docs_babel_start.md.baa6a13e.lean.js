@@ -1,0 +1,1 @@
+import{g as e,f as a,E as t}from"./common-d6bd45c0.js";const r='{"title":"用途","frontmatter":{},"headers":[{"level":2,"title":"用途","slug":"用途"}],"relativePath":"docs/babel/start.md","lastUpdated":1648481083530.271}';var l={};const i=t('',12);l.render=function(t,r,l,s,p,o){return a(),e("div",null,[i])};export default l;export{r as __pageData};
